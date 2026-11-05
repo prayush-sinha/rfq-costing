@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
 import { pool } from "@/db/test-pool";
 
 const { mockState } = vi.hoisted(() => ({
-  mockState: { role: "sales_head" as "estimator" | "sales_head" },
+  mockState: { role: "sales_head" as "estimator" | "sales_head", userId: 1 },
 }));
 
 vi.mock("@/lib/auth/guards", () => {
@@ -18,7 +18,7 @@ vi.mock("@/lib/auth/guards", () => {
       if (mockState.role !== expectedRole) {
         throw new ForbiddenError(`Role '${mockState.role}' is not authorized for this action`);
       }
-      return { id: 1, email: "saleshead@companya.in", role: mockState.role };
+      return { id: mockState.userId, email: "saleshead@companya.in", role: mockState.role };
     }),
   };
 });
@@ -27,12 +27,15 @@ import { addRate } from "./actions";
 
 describe("addRate server action", () => {
   beforeAll(async () => {
-    // Ensure user 1 exists for audit log foreign key
-    await pool.query(`
-      INSERT INTO users (id, email, password_hash, role)
-      VALUES (1, 'saleshead@companya.in', 'dummy', 'sales_head')
-      ON CONFLICT (id) DO NOTHING;
+    // Ensure saleshead user exists for audit log foreign key
+    const userRes = await pool.query(`
+      INSERT INTO users (email, password_hash, role)
+      VALUES ('saleshead@companya.in', 'dummy', 'sales_head')
+      ON CONFLICT (email) DO UPDATE SET role = EXCLUDED.role
+      RETURNING id;
     `);
+    mockState.userId = userRes.rows[0].id;
+
     // Clean up test rates
     await pool.query(`DELETE FROM rate_materials WHERE grade LIKE 'ACTION_TEST_%'`);
     await pool.query(`DELETE FROM rate_machines WHERE machine_code LIKE 'ACTION_TEST_%'`);
