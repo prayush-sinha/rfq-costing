@@ -5,15 +5,19 @@ import { execSync } from "node:child_process";
 const rootDir = "c:/Users/prayu/Desktop/take home task project";
 const sourceDir = path.join(rootDir, "rfq-costing");
 const subZip = path.join(rootDir, "rfq-costing-submission.zip");
-const cleanZip = path.join(rootDir, "rfq-costing-clean.zip");
-const stagingDir = path.join(rootDir, "staging-zip", "rfq-costing");
+const redundantCleanZip = path.join(rootDir, "rfq-costing-clean.zip");
+const stagingParent = path.join(rootDir, "staging-zip");
+const stagingDir = path.join(stagingParent, "rfq-costing");
 
-// Cleanup previous staging and zips
-if (fs.existsSync(path.join(rootDir, "staging-zip"))) {
-  fs.rmSync(path.join(rootDir, "staging-zip"), { recursive: true, force: true });
+// Cleanup redundant zip and staging if present
+if (fs.existsSync(redundantCleanZip)) {
+  fs.unlinkSync(redundantCleanZip);
+  console.log(`Removed redundant zip: ${redundantCleanZip}`);
 }
 if (fs.existsSync(subZip)) fs.unlinkSync(subZip);
-if (fs.existsSync(cleanZip)) fs.unlinkSync(cleanZip);
+if (fs.existsSync(stagingParent)) {
+  fs.rmSync(stagingParent, { recursive: true, force: true });
+}
 
 fs.mkdirSync(stagingDir, { recursive: true });
 
@@ -23,12 +27,14 @@ function copyRecursive(src, dest) {
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
 
-    // Skip node_modules, .next, .git, and .env.local
+    // Strictly skip build caches, secrets, and repository internals
     if (
       entry.name === "node_modules" ||
       entry.name === ".next" ||
       entry.name === ".git" ||
-      entry.name === ".env.local"
+      entry.name === ".env.local" ||
+      entry.name.endsWith(".tsbuildinfo") ||
+      entry.name.endsWith(".log")
     ) {
       continue;
     }
@@ -42,19 +48,17 @@ function copyRecursive(src, dest) {
   }
 }
 
-console.log("Copying files to staging directory (excluding secrets, node_modules, .next, .git)...");
+console.log("Staging clean source files (excluding .env.local, node_modules, .next, .git, tsbuildinfo)...");
 copyRecursive(sourceDir, stagingDir);
 
-console.log("Creating zip archive...");
-// Use powershell Compress-Archive on the staging directory
+console.log("Compressing clean submission zip...");
 execSync(
-  `powershell -NoProfile -Command "Compress-Archive -Path '${path.join(rootDir, "staging-zip", "rfq-costing")}' -DestinationPath '${subZip}' -Force"`
+  `powershell -NoProfile -Command "Compress-Archive -Path '${stagingDir}' -DestinationPath '${subZip}' -Force"`
 );
 
-fs.copyFileSync(subZip, cleanZip);
-fs.rmSync(path.join(rootDir, "staging-zip"), { recursive: true, force: true });
+fs.rmSync(stagingParent, { recursive: true, force: true });
 
-console.log("Archive created successfully:");
 const stats = fs.statSync(subZip);
-console.log(`- ${subZip} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
-console.log(`- ${cleanZip} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+console.log(`\n✓ Pristine submission archive created:`);
+console.log(`  Path: ${subZip}`);
+console.log(`  Size: ${(stats.size / 1024 / 1024).toFixed(2)} MB (${stats.size.toLocaleString()} bytes)`);
