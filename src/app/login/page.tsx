@@ -7,7 +7,16 @@ import { useRouter, useSearchParams } from "next/navigation";
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/rfqs";
+  const rawCallback = searchParams.get("callbackUrl");
+  // Validate callbackUrl to prevent open redirects: must start with single /, no // or /\, safe characters only
+  const safeCallbackUrl =
+    rawCallback &&
+    rawCallback.startsWith("/") &&
+    !rawCallback.startsWith("//") &&
+    !rawCallback.startsWith("/\\") &&
+    /^\/[a-zA-Z0-9_\-\/]*$/.test(rawCallback)
+      ? rawCallback
+      : "/rfqs";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,17 +33,24 @@ function LoginForm() {
         email,
         password,
         redirect: false,
-        callbackUrl,
+        callbackUrl: safeCallbackUrl,
       });
 
       if (res?.error) {
-        if (res.error.toLowerCase().includes("locked")) {
+        // res.code or res.error might carry the custom "locked" code from LockedAccountError
+        const isLocked =
+          (res as { code?: string })?.code === "locked" ||
+          res.error === "locked" ||
+          res.error.toLowerCase().includes("locked") ||
+          Boolean(res.url && res.url.includes("code=locked"));
+
+        if (isLocked) {
           setError("Too many failed attempts. Account locked for 15 minutes.");
         } else {
           setError("Invalid email or password");
         }
       } else if (res?.ok) {
-        router.push(callbackUrl);
+        router.push(safeCallbackUrl);
         router.refresh();
       }
     } catch {
@@ -156,7 +172,7 @@ function LoginForm() {
 
       <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800">
         <p className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
-          Demo Logins (One-Click)
+          Demo Accounts (Prefill Email)
         </p>
         <div className="grid grid-cols-2 gap-2">
           <button

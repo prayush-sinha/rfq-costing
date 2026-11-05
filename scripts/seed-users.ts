@@ -20,10 +20,11 @@ if (!demoPassword) {
   console.error("DEMO_PASSWORD environment variable is required for seeding users");
   process.exit(1);
 }
+const validDemoPassword: string = demoPassword;
 
 async function main() {
   const pool = new Pool({ connectionString: url });
-  const hash = await bcrypt.hash(demoPassword, 10);
+  const hash = await bcrypt.hash(validDemoPassword, 10);
 
   const users = [
     { email: "estimator@companya.in", role: "estimator" },

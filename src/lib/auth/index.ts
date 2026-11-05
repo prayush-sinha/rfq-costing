@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
@@ -6,8 +6,32 @@ import { authConfig } from "./config";
 import { db } from "@/db/client";
 import { isLockedOut, recordFailure, cleanEmail } from "./throttle";
 
-// Pre-generated bcrypt hash for dummy constant-time comparison when email is not found
-const DUMMY_HASH = "$2a$10$abcdefghijklmnopqrstuuABCDEFGHIJKLMNOPQRSTUU1234567890";
+// Custom error for rate-limiting lockout with code accessible in client
+export class LockedAccountError extends CredentialsSignin {
+  code = "locked";
+}
+
+// Pre-computed valid 60-character bcrypt hash for constant-time comparison when email is not found
+const DUMMY_HASH = bcrypt.hashSync("timing-defense-constant-salt", 10);
+
+function getClientIp(request?: Request): string {
+  if (!request) return "127.0.0.1";
+  const realIp =
+    request.headers.get("x-real-ip") ||
+    request.headers.get("cf-connecting-ip");
+  if (realIp && realIp.trim()) {
+    return realIp.trim();
+  }
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    // Take the rightmost hop (closest trusted proxy) to prevent client-injected spoofing
+    const hops = forwardedFor.split(",").map((s) => s.trim()).filter(Boolean);
+    if (hops.length > 0) {
+      return hops[hops.length - 1];
+    }
+  }
+  return "127.0.0.1";
+}
 
 const credentialsSchema = z.object({
   email: z.string().trim().email("Invalid email format"),
@@ -31,15 +55,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         const { email, password } = parsed.data;
         const normalizedEmail = cleanEmail(email);
-
-        // Extract client IP from headers (first entry if comma-separated proxy list)
-        const forwardedFor = request?.headers?.get("x-forwarded-for");
-        const ip = forwardedFor ? forwardedFor.split(",")[0].trim() : "127.0.0.1";
+        const ip = getClientIp(request as Request | undefined);
 
         // Check login throttling lockout (5 failures in 15 minutes)
         const locked = await isLockedOut(normalizedEmail, ip);
         if (locked) {
-          throw new Error("Too many failed attempts. Account locked for 15 minutes.");
+          throw new LockedAccountError();
         }
 
         // Query user from database
