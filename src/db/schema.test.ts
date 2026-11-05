@@ -1,7 +1,5 @@
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
 import { pool } from "./test-pool";
-
-afterAll(() => pool.end());
 
 const fails = (sql: string, params: unknown[], re: RegExp) =>
   expect(pool.query(sql, params)).rejects.toThrow(re);

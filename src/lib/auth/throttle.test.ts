@@ -1,8 +1,6 @@
-import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
+import { describe, it, expect, beforeAll, beforeEach } from "vitest";
 import { pool } from "@/db/test-pool";
 import { isLockedOut, recordFailure } from "./throttle";
-
-afterAll(() => pool.end());
 
 describe("login throttling", () => {
   beforeAll(async () => {
