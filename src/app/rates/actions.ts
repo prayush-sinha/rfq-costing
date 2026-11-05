@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/db/client";
 import { rateMaterials, rateMachines, rateParams, auditLog } from "@/db/schema";
 import { requireRole } from "@/lib/auth/guards";
+import { todayIST, isIsoDate } from "@/lib/dates";
 
 const materialSchema = z.object({
   grade: z.string().trim().min(1, "Grade is required"),
@@ -75,8 +76,13 @@ export async function addRate(
     return { error: "validation", message: "Unknown rate kind" };
   }
 
-  // 3. Reject backdating (effectiveFrom must be >= today)
-  const today = opts?.now ?? new Date().toISOString().slice(0, 10);
+  // Validate ISO date strictly
+  if (!isIsoDate(effectiveFrom)) {
+    return { error: "validation", message: "Use a valid calendar date (YYYY-MM-DD)" };
+  }
+
+  // 3. Reject backdating (effectiveFrom must be >= today in Asia/Kolkata IST)
+  const today = opts?.now ?? todayIST();
   if (effectiveFrom < today) {
     return {
       error: "backdated",
@@ -89,10 +95,11 @@ export async function addRate(
     const result = await db.transaction(async (tx) => {
       let insertedId: number;
       if (kind === "material") {
+        const canonicalGrade = parsedPayload.grade.trim().toUpperCase();
         const [row] = await tx
           .insert(rateMaterials)
           .values({
-            grade: parsedPayload.grade,
+            grade: canonicalGrade,
             ratePerKg: parsedPayload.ratePerKg,
             scrapRatePerKg: parsedPayload.scrapRatePerKg,
             effectiveFrom: parsedPayload.effectiveFrom,
@@ -100,10 +107,11 @@ export async function addRate(
           .returning({ id: rateMaterials.id });
         insertedId = row.id;
       } else if (kind === "machine") {
+        const canonicalMachine = parsedPayload.machineCode.trim().toUpperCase();
         const [row] = await tx
           .insert(rateMachines)
           .values({
-            machineCode: parsedPayload.machineCode,
+            machineCode: canonicalMachine,
             hourRate: parsedPayload.hourRate,
             effectiveFrom: parsedPayload.effectiveFrom,
           })

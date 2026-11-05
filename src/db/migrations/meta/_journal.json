@@ -15,6 +15,13 @@
       "when": 1793844553344,
       "tag": "0001_snapshot_immutable",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793910000000,
+      "tag": "0002_rates_append_only",
+      "breakpoints": true
     }
   ]
 }

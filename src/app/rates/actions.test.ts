@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
 import { pool } from "@/db/test-pool";
+import { seedDatabase } from "@/db/seed";
 
 const { mockState } = vi.hoisted(() => ({
   mockState: { role: "sales_head" as "estimator" | "sales_head", userId: 1 },
@@ -36,14 +37,15 @@ describe("addRate server action", () => {
     `);
     mockState.userId = userRes.rows[0].id;
 
-    // Clean up test rates
-    await pool.query(`DELETE FROM rate_materials WHERE grade LIKE 'ACTION_TEST_%'`);
-    await pool.query(`DELETE FROM rate_machines WHERE machine_code LIKE 'ACTION_TEST_%'`);
+    // Reset rate tables using TRUNCATE (append-only trigger blocks DELETE)
+    await pool.query("TRUNCATE TABLE rate_materials, rate_machines, rate_params CASCADE");
+    await seedDatabase(pool);
   });
 
   afterAll(async () => {
-    await pool.query(`DELETE FROM rate_materials WHERE grade LIKE 'ACTION_TEST_%'`);
-    await pool.query(`DELETE FROM rate_machines WHERE machine_code LIKE 'ACTION_TEST_%'`);
+    // Restore base seed state
+    await pool.query("TRUNCATE TABLE rate_materials, rate_machines, rate_params CASCADE");
+    await seedDatabase(pool);
   });
 
   it("throws ForbiddenError when called by an estimator", async () => {
@@ -117,6 +119,27 @@ describe("addRate server action", () => {
         grade: "ACTION_TEST_EN8",
         ratePerKg: "78.0000",
         scrapRatePerKg: "26.0000",
+        effectiveFrom: "2099-06-01",
+      },
+      { now: "2026-11-06" }
+    );
+
+    expect(res).toEqual({
+      error: "conflict",
+      status: 409,
+      message: "A rate already exists for this item on the specified effective date.",
+    });
+  });
+
+  it("normalizes grade to uppercase and enforces case-insensitive conflict", async () => {
+    mockState.role = "sales_head";
+    // Adding lowercase 'action_test_en8' on same date '2099-06-01'
+    const res = await addRate(
+      "material",
+      {
+        grade: "action_test_en8",
+        ratePerKg: "80.0000",
+        scrapRatePerKg: "27.0000",
         effectiveFrom: "2099-06-01",
       },
       { now: "2026-11-06" }

@@ -1,4 +1,5 @@
 import { requireUser } from "@/lib/auth/guards";
+import { todayIST } from "@/lib/dates";
 import { db } from "@/db/client";
 import { rateMaterials, rateMachines, rateParams } from "@/db/schema";
 import { asc, desc } from "drizzle-orm";
@@ -27,7 +28,7 @@ export default async function RatesPage() {
     .orderBy(asc(rateParams.key), desc(rateParams.effectiveFrom));
 
   // Current date in Asia/Kolkata timezone (YYYY-MM-DD)
-  const today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  const today = todayIST();
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans">

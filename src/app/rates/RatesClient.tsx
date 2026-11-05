@@ -59,12 +59,14 @@ export function RatesClient({
   const [formError, setFormError] = useState<string | null>(null);
   const [formSuccess, setFormSuccess] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [confirmedSameDay, setConfirmedSameDay] = useState(false);
 
   const handleOpenModal = (kind: "material" | "machine" | "param") => {
     setAddKind(kind);
     setFormError(null);
     setFormSuccess(null);
     setEffectiveFrom(today);
+    setConfirmedSameDay(false);
     setShowAddModal(true);
   };
 
@@ -72,6 +74,12 @@ export function RatesClient({
     e.preventDefault();
     setFormError(null);
     setFormSuccess(null);
+
+    if (effectiveFrom === today && !confirmedSameDay) {
+      setFormError("Please confirm that this rate should take effect immediately today.");
+      return;
+    }
+
     setSubmitting(true);
 
     let payload: any;
@@ -527,6 +535,26 @@ export function RatesClient({
                 />
               </div>
 
+              {effectiveFrom === today && (
+                <div className="rounded-md border border-amber-200 bg-amber-50 p-2.5 dark:border-amber-900/50 dark:bg-amber-950/30">
+                  <p className="text-[11px] font-semibold text-amber-800 dark:text-amber-300">
+                    ⚠️ Immediate Effect Warning (Append-Only)
+                  </p>
+                  <p className="mt-1 text-[11px] text-amber-700 dark:text-amber-400">
+                    Rates effective today take effect immediately and cannot be modified or deleted. To correct an entry, you must publish a subsequent rate dated tomorrow or later.
+                  </p>
+                  <label className="mt-2 flex items-center gap-2 text-xs font-medium text-amber-900 dark:text-amber-200 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={confirmedSameDay}
+                      onChange={(e) => setConfirmedSameDay(e.target.checked)}
+                      className="rounded border-amber-400 text-amber-600 focus:ring-amber-500"
+                    />
+                    <span>I confirm this rate is accurate and should take effect immediately</span>
+                  </label>
+                </div>
+              )}
+
               <div className="flex justify-end gap-2 pt-3 border-t border-zinc-200 dark:border-zinc-800">
                 <button
                   type="button"
@@ -537,7 +565,7 @@ export function RatesClient({
                 </button>
                 <button
                   type="submit"
-                  disabled={submitting}
+                  disabled={submitting || (effectiveFrom === today && !confirmedSameDay)}
                   className="rounded-md bg-zinc-900 px-4 py-1.5 text-xs font-medium text-white hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
                 >
                   {submitting ? "Publishing..." : "Publish Rate"}

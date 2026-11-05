@@ -192,10 +192,13 @@ LIMIT 1;
 ```
 
 ### Business Rules & Safeguards
-1. **No Retroactive Backdating:** New rates added via the Sales Head UI must have `effective_from >= CURRENT_DATE`. Backdating is rejected with a validation error.
-2. **Missing Rate is a Blocking Error:** If no effective rate exists as of the quote's date, calculation immediately aborts with an informative `MissingRateError("No rate for LM24 as of 2026-01-01")`. Rates never default to zero.
-3. **No Per-Quote Overrides:** Estimators cannot manually override base machine or material rates on a quote.
-4. **Re-Price with Latest Rates:** If newer rates exist in the master than the quote's pinned date, the system displays an alert banner allowing a one-click re-pricing that updates `as_of_date = today` and logs an entry in `audit_log`.
+1. **Engine-Level Append-Only Triggers (`0002_rates_append_only.sql`):** To enforce append-only semantics at the storage engine level, a PostgreSQL row trigger `forbid_rate_change()` blocks any `UPDATE` or `DELETE` operations on `rate_materials`, `rate_machines`, and `rate_params`. Only `INSERT` is permitted (with `TRUNCATE` reserved for administrative test resets).
+2. **Case-Insensitive Uniqueness (Decision D4):** Functional unique indexes `rate_materials_grade_ci` on `(upper(grade), effective_from)` and `rate_machines_code_ci` on `(upper(machine_code), effective_from)` prevent casing anomalies (e.g. `EN8` vs `en8` on the same date). Input strings are canonicalized to uppercase upon submission.
+3. **No Retroactive Backdating & IST Rollover Protection:** New rates added via the Sales Head UI must satisfy $\text{effective\_from} \ge \text{todayIST}()$. By evaluating calendar dates strictly within the `Asia/Kolkata` time zone, the 5.5-hour UTC midnight gap is eliminated, ensuring yesterday's date cannot be selected during late UTC hours.
+4. **Immediate Effect Warning (Decision D1):** Because same-day rates take effect immediately and cannot be modified once committed, entering $\text{effective\_from} = \text{today}$ prompts a confirmation warning requiring explicit acknowledgment before publication.
+5. **Missing Rate is a Blocking Error:** If no effective rate exists as of the quote's date, calculation immediately aborts with an informative `MissingRateError("No rate for LM24 as of 2026-01-01")`. Rates never default to zero or fallback values.
+6. **No Per-Quote Overrides:** Estimators cannot manually override base machine or material rates on a quote.
+7. **Re-Price with Latest Rates:** If newer rates exist in the master than the quote's pinned date, the system displays an alert banner allowing a one-click re-pricing that updates `as_of_date = today` and logs an entry in `audit_log`.
 
 ---
 
