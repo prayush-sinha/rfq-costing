@@ -18,7 +18,8 @@
     "db:seed:test": "cross-env DB_TARGET=test tsx src/db/seed.ts",
     "db:reset": "tsx scripts/reset-demo.ts",
     "db:reset:test": "cross-env DB_TARGET=test tsx scripts/reset-demo.ts",
-    "gen:past-quotes": "tsx scripts/gen-past-quotes.ts"
+    "gen:past-quotes": "tsx scripts/gen-past-quotes.ts",
+    "import:quotes": "tsx scripts/import-quotes.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.4.0",
