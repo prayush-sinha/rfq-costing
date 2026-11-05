@@ -7,6 +7,7 @@ import { D, costTier, Breakdown } from "@/lib/costing/engine";
 import { buildRateBook, MissingRateError, RateRows } from "@/lib/costing/rates";
 import { getRoutingSuggestions, logRoutingSuggestionApplied } from "@/lib/ai/routing-actions";
 import { Suggestion } from "@/lib/ai/suggest-routing";
+import { submitQuoteForApproval } from "@/app/approvals/actions";
 
 export interface PartCostingData {
   id: number;
@@ -120,6 +121,21 @@ export function CostingLedgerClient({
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [conflictError, setConflictError] = useState<string | null>(null);
+  const [submittingApproval, setSubmittingApproval] = useState(false);
+
+  const handleSubmitForApproval = async () => {
+    if (!confirm("Submit this quote for managerial approval / commercial release?")) return;
+    setSubmittingApproval(true);
+    try {
+      const res = await submitQuoteForApproval(quote.id);
+      alert(res.message);
+      window.location.reload();
+    } catch (err: any) {
+      alert(err?.message || "Failed to submit quote");
+    } finally {
+      setSubmittingApproval(false);
+    }
+  };
 
   // Routing Suggestions state
   const [showSuggestionsModal, setShowSuggestionsModal] = useState(false);
@@ -830,6 +846,25 @@ export function CostingLedgerClient({
                 {saving ? "Saving..." : saveSuccess ? "✓ Costing Saved" : "Save Changes"}
               </button>
             )}
+
+            {quote.status === "draft" && (
+              <button
+                onClick={handleSubmitForApproval}
+                disabled={submittingApproval}
+                className="rounded-lg bg-emerald-600 px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-emerald-700 disabled:opacity-50 transition-colors shadow-xs"
+              >
+                {submittingApproval ? "Submitting..." : "Submit Quote"}
+              </button>
+            )}
+
+            <a
+              href={`/api/quotes/${quote.id}/pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg border border-zinc-300 px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 transition-colors shadow-xs"
+            >
+              📄 PDF Offer
+            </a>
           </div>
         </div>
       </div>
