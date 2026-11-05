@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Auto-Component Maker RFQ-to-Quote Costing App (Company A)
 
-## Getting Started
+**GitHub Repository:** [https://github.com/prayush-sinha/rfq-costing](https://github.com/prayush-sinha/rfq-costing)
 
-First, run the development server:
+An end-to-end, multi-role RFQ intake, multi-volume part costing, and quoting web application built for **Company A, Chakan, Pune** (machined and forged components for two-wheeler, tractor, and Tier-1 drivetrain customers).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Business Impact & Goal
+* **Current Bottleneck:** 9 working days quote turnaround vs. 4-day customer expectation, leading to 5% lost RFQs (~₹1.27 Crore annual loss). Estimators spend 2.5 hours per part manually referencing ERP machine and material rates.
+* **Target Outcome:**
+  * Cut estimator cycle time from 2.5 hours to under 1 hour per part.
+  * Reduce quote turnaround from 9 days to 4 days.
+  * 100% auditability: every submitted quote snapshots the exact rate master version it used.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Core Engineering Principles
+1. **Mathematical Determinism:** Pure mathematical formulas for all costing calculations in `src/lib/costing/` using `decimal.js`. Cost calculations never use AI.
+2. **Append-Only Rate Masters:** Rates (`rate_materials`, `rate_machines`, `rate_params`) are append-only with `effective_from`. Historical quotes always resolve the rates effective as of their creation date.
+3. **Write-Once Immutable Snapshots:** Quote snapshots are frozen upon submission and enforced at the PostgreSQL database level via a trigger rejecting `UPDATE` and `DELETE`. Customer PDFs render exclusively from frozen snapshots.
+4. **Optimistic Locking:** Every costing write verifies and increments `quotes.version` to prevent concurrent editing collisions (HTTP 409).
+5. **Untrusted AI with Human-in-the-Loop:** AI suggestions require source quote validation, numeric/unit checks, material master verification, and explicit estimator acceptance.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
+* **Framework:** Next.js (App Router) + TypeScript + Tailwind CSS
+* **Database & ORM:** PostgreSQL (Neon Serverless with connection pooling) + Drizzle ORM
+* **Math & Financials:** `decimal.js` (precision 40, half-up rounding, INR formatting)
+* **Authentication:** NextAuth (Auth.js) credentials provider with bcrypt password hashing, JWT sessions, and database-backed login throttling (5 failed attempts / 15 min lockout)
+* **Testing:** Vitest test suite executing against an isolated Neon test database branch
+* **Documents:** `@react-pdf/renderer` for customer quote generation with embedded ₹ (INR) font support
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Getting Started Locally
 
-## Deploy on Vercel
+### Prerequisites
+* Node.js v20+ or v24+
+* npm v10+
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Setup
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/prayush-sinha/rfq-costing.git
+   cd rfq-costing
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Configure environment variables:
+   Copy `.env.example` to `.env.local` and supply your database connection strings:
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Run database migrations:
+   ```bash
+   npm run db:migrate
+   npm run db:migrate:test
+   ```
+5. Run tests:
+   ```bash
+   npm test
+   ```
+6. Start development server:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Demo Roles & Access Control
+| Role | Capabilities |
+|---|---|
+| **Estimator** | Create RFQs, review AI extractions, configure routing operations, calculate multi-volume costing, submit quotes for approval |
+| **Sales Head** | Approve/reject quotes exceeding ₹25,00,000 annual value, manage rate masters, generate customer PDFs, mark quotes sent/won/lost |
