@@ -13,7 +13,12 @@
     "db:migrate": "drizzle-kit migrate",
     "db:migrate:test": "cross-env DB_TARGET=test drizzle-kit migrate",
     "db:seed:users": "tsx scripts/seed-users.ts",
-    "db:seed:users:test": "cross-env DB_TARGET=test tsx scripts/seed-users.ts"
+    "db:seed:users:test": "cross-env DB_TARGET=test tsx scripts/seed-users.ts",
+    "db:seed": "tsx src/db/seed.ts",
+    "db:seed:test": "cross-env DB_TARGET=test tsx src/db/seed.ts",
+    "db:reset": "tsx scripts/reset-demo.ts",
+    "db:reset:test": "cross-env DB_TARGET=test tsx scripts/reset-demo.ts",
+    "gen:past-quotes": "tsx scripts/gen-past-quotes.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.4.0",

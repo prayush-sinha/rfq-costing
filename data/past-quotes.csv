@@ -1,0 +1,1401 @@
+quote_no,quote_date,customer,part_name,material,gross_wt_kg,annual_volume,cycle_time_min,unit_price,outcome
+PQ-2025-00001,2025-11-13,Tata Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.252,18000,4.73,204.86,won
+PQ-2024-00002,2024-03-27,Bajaj Auto,"Brake Caliper Bracket Rev-3",LM24,1.36,129000,3.8,237.97,open
+PQ-2025-00003,2025-11-02,Dana India,"Differential Cross Pin Rev-2",20MnCr5,0.807,149000,2.38,162.76,open
+PQ-2025-00004,2025-09-10,Bharat Forge,"Transmission Pinion Rev-1",20MnCr5,1.227,58000,6.4,234.86,open
+PQ-2023-00005,2023-11-25,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,1.582,107000,5.21,243.23,lost
+PQ-2025-00006,2025-04-01,Force Motors,"Brake Caliper Bracket Rev-4",LM24,0.811,190000,3.08,244.63,won
+PQ-2026-00007,2026-03-13,Force Motors,"Steering Knuckle Rev-4",40Cr4,5.081,37000,12.56,778.46,won
+PQ-2023-00008,2023-10-17,Endurance Technologies,"Bushing Sleeve Rev-2",SS304,0.798,75000,1.95,108.61,lost
+PQ-2025-00009,2025-06-17,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,1.007,36000,3.14,145.95,open
+PQ-2025-00010,2025-02-04,Dana India,"Steering Knuckle Rev-2",40Cr4,4.617,41000,14.36,855.18,won
+PQ-2024-00011,2024-11-11,Endurance Technologies,"Cam Follower Arm Rev-3",EN8,0.859,151000,3.44,95.06,lost
+PQ-2026-00012,2026-07-22,Endurance Technologies,"Flange Hub Rev-2",EN8D,3.318,160000,8.05,387.23,lost
+PQ-2025-00013,2025-07-01,Tata Motors,"Brake Caliper Bracket Rev-2",LM24,1.562,104000,3.28,258.31,lost
+PQ-2023-00014,2023-05-01,Force Motors,"Drive Spindle Shaft Rev-4",EN8,0.652,154000,3.84,120.73,won
+PQ-2026-00015,2026-08-06,Mahindra & Mahindra,"Transmission Pinion Rev-2",20MnCr5,1.775,68000,4.38,279.89,lost
+PQ-2024-00016,2024-06-18,Force Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.604,127000,4.99,217.52,lost
+PQ-2023-00017,2023-10-11,Force Motors,"Bushing Sleeve Rev-1",SS304,0.708,32000,1.57,111.17,lost
+PQ-2025-00018,2025-10-11,Force Motors,"Bushing Sleeve Rev-2",SS304,0.533,152000,1.79,107.47,won
+PQ-2024-00019,2024-01-09,Mahindra & Mahindra,"Cam Follower Arm Rev-1",EN8,0.72,61000,2.53,99.76,open
+PQ-2026-00020,2026-04-09,Force Motors,"Bushing Sleeve Rev-3",SS304,0.408,95000,2.99,148.03,lost
+PQ-2023-00021,2023-05-09,Mahindra & Mahindra,"Transmission Pinion Rev-4",20MnCr5,1.414,139000,4.29,256.29,open
+PQ-2026-00022,2026-11-04,Mahindra & Mahindra,"Brake Caliper Bracket Rev-2",LM24,0.941,175000,4.47,219.75,won
+PQ-2024-00023,2024-08-18,Dana India,"Drive Spindle Shaft Rev-4",EN8,0.816,31000,3.99,125.86,won
+PQ-2023-00024,2023-01-08,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,1.026,150000,2.65,131.27,open
+PQ-2025-00025,2025-04-25,Tata Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.178,165000,4.56,225.55,open
+PQ-2024-00026,2024-05-28,Dana India,"Differential Cross Pin Rev-2",20MnCr5,1.081,167000,3.17,158.66,open
+PQ-2026-00027,2026-01-14,Bajaj Auto,"Gear Blank 5-Speed Rev-2",20MnCr5,1.683,17000,4.6,227.9,open
+PQ-2025-00028,2025-11-17,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.697,71000,2.35,145.53,open
+PQ-2026-00029,2026-08-11,Dana India,"Cam Follower Arm Rev-1",EN8,0.724,104000,3.31,121.01,won
+PQ-2026-00030,2026-08-18,Mahindra & Mahindra,"Differential Cross Pin Rev-4",20MnCr5,0.825,199000,3.56,128.83,lost
+PQ-2026-00031,2026-06-08,Dana India,"Steering Knuckle Rev-3",40Cr4,4.705,48000,12.34,840.44,won
+PQ-2026-00032,2026-05-10,Dana India,"Drive Spindle Shaft Rev-4",EN8,0.784,190000,3.95,120.29,won
+PQ-2025-00033,2025-05-15,Endurance Technologies,"Differential Cross Pin Rev-3",20MnCr5,-1.5,38000,3.24,142.34,open
+PQ-2024-00034,2024-08-18,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.808,21000,4.52,236.06,open
+PQ-2023-00035,2023-08-26,Tata Motors,"Cam Follower Arm Rev-1",EN8,0.576,144000,2.52,121.05,lost
+PQ-2026-00036,2026-09-26,Bharat Forge,"Brake Caliper Bracket Rev-2",LM24,0.949,40000,3.28,204.99,open
+PQ-2024-00037,2024-03-22,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,0.744,159000,2.64,110.85,lost
+PQ-2023-00038,2023-05-20,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,0.718,128000,2.24,110.97,open
+PQ-2025-00039,2025-06-25,Tata Motors,"Cam Follower Arm Rev-3",EN8,0.472,129000,2.53,115.29,open
+PQ-2024-00040,2024-05-21,Force Motors,"Steering Knuckle Rev-4",40Cr4,5.82,108000,12.22,876.24,lost
+PQ-2024-00041,2024-01-17,Mahindra & Mahindra,"Bushing Sleeve Rev-3",SS304,0.361,40000,1.84,135.55,lost
+PQ-2025-00042,2025-10-18,Bharat Forge,"Cam Follower Arm Rev-2",EN8,0.809,116000,2.92,80.45,lost
+PQ-2024-00043,2024-01-25,Tata Motors,"Brake Caliper Bracket Rev-4",LM24,0.839,91000,4.88,257.66,lost
+PQ-2026-00044,2026-02-12,Force Motors,"Drive Spindle Shaft Rev-4",EN8,0.692,171000,3.75,89.44,lost
+PQ-2023-00045,2023-05-01,Bajaj Auto,"Suspension Lift Arm Rev-1",40Cr4,4.65,12000,12.6,767.35,open
+PQ-2024-00046,2024-05-28,Dana India,"Steering Knuckle Rev-2",40Cr4,4.824,96000,12.15,872.79,won
+PQ-2025-00047,2025-10-05,Endurance Technologies,"Brake Caliper Bracket Rev-1",LM24,1.23,54000,3.06,164.93,won
+PQ-2025-00048,2025-01-25,Bajaj Auto,"Flange Hub Rev-2",EN8D,3.437,120000,6.16,396.47,lost
+PQ-2023-00049,2023-11-25,Bajaj Auto,"Flange Hub Rev-4",EN8D,1.866,101000,6.15,313.46,won
+PQ-2024-00050,2024-09-25,Mahindra & Mahindra,"Steering Knuckle Rev-4",40Cr4,5.916,96000,10.11,764.1,won
+PQ-2023-00051,2023-11-07,Bajaj Auto,"Differential Cross Pin Rev-4",20MnCr5,0.687,109000,2.8,154.55,open
+PQ-2025-00052,2025-03-12,Endurance Technologies,"Bushing Sleeve Rev-1",SS304,0.795,162000,1.81,116.23,lost
+PQ-2023-00053,2023-11-16,Mahindra & Mahindra,"Flange Hub Rev-1",EN8D,2.036,95000,7.58,352.22,won
+PQ-2024-00054,2024-09-10,Bajaj Auto,"Gear Blank 5-Speed Rev-2",20MnCr5,1.874,81000,4.22,188.04,open
+PQ-2024-00055,2024-11-02,Bharat Forge,"Suspension Lift Arm Rev-4",40Cr4,4.139,138000,10.68,803.45,lost
+PQ-2023-00056,2023-04-07,Dana India,"Transmission Pinion Rev-3",20MnCr5,2.031,31000,4.23,342.62,won
+PQ-2025-00057,2025-08-27,Force Motors,"Transmission Pinion Rev-4",20MnCr5,1.773,61000,4.58,326.34,open
+PQ-2025-00058,2025-08-01,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,1.004,90000,3.2,174.03,lost
+PQ-2024-00059,2024-10-19,Tata Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.243,100000,3.86,269.72,lost
+PQ-2026-00060,2026-01-12,Endurance Technologies,"Bushing Sleeve Rev-4",SS304,0.46,39000,2.26,109.14,lost
+PQ-2025-00061,2025-11-09,Force Motors,"Suspension Lift Arm Rev-4",40Cr4,4.44,25000,13.96,782.62,won
+PQ-2025-00062,2025-05-03,Bajaj Auto,"Cam Follower Arm Rev-3",EN8,0.859,45000,2.99,112.03,lost
+PQ-2024-00063,2024-06-10,Force Motors,"Brake Caliper Bracket Rev-4",LM24,1.324,84000,3.56,252.21,lost
+PQ-2023-00064,2023-11-20,Bharat Forge,"Flange Hub Rev-2",EN8D,1.993,181000,6.05,423.09,won
+PQ-2023-00065,2023-02-05,Mahindra & Mahindra,"Suspension Lift Arm Rev-2",40Cr4,4.755,186000,12.71,804.28,lost
+PQ-2023-00066,2023-02-24,Endurance Technologies,"Brake Caliper Bracket Rev-3",LM24,0.885,0,3.51,161.47,open
+PQ-2023-00067,2023-04-27,Bajaj Auto,"Flange Hub Rev-2",EN8D,2.788,169000,6.65,362.99,won
+PQ-2025-00068,2025-10-26,Dana India,"Differential Cross Pin Rev-2",20MnCr5,0.68,110000,2.29,168.18,lost
+PQ-2026-00069,2026-01-17,Dana India,"Flange Hub Rev-1",EN8D,1.982,122000,6.25,422.26,lost
+PQ-2024-00070,2024-04-20,Force Motors,"Bushing Sleeve Rev-4",SS304,0.538,124000,2.33,151.47,won
+PQ-2023-00071,2023-08-17,Force Motors,"Cam Follower Arm Rev-2",EN8,0.455,40000,3.06,86.17,open
+PQ-2025-00072,2025-08-05,Tata Motors,"Steering Knuckle Rev-4",40Cr4,5.08,24000,10.62,727.57,open
+PQ-2024-00073,2024-04-13,Bajaj Auto,"Gear Blank 5-Speed Rev-4",20MnCr5,1.406,172000,5.15,198.48,won
+PQ-2025-00074,2025-03-19,Force Motors,"Drive Spindle Shaft Rev-1",EN8,0.667,12000,4.09,88.31,open
+PQ-2025-00075,2025-11-08,Dana India,"Flange Hub Rev-4",EN8D,2.001,133000,6.1,388.62,lost
+PQ-2026-00076,2026-07-11,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.301,22000,4.32,258.7,lost
+PQ-2025-00077,2025-01-16,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.497,103000,2.07,124.49,lost
+PQ-2026-00078,2026-02-21,Bajaj Auto,"Gear Blank 5-Speed Rev-2",20MnCr5,1.794,55000,5.19,285.55,won
+PQ-2026-00079,2026-02-16,Force Motors,"Suspension Lift Arm Rev-3",40Cr4,5.327,172000,12.96,800.97,won
+PQ-2026-00080,2026-02-12,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.449,85000,4.86,224.15,won
+PQ-2023-00081,2023-04-01,Bharat Forge,"Differential Cross Pin Rev-4",20MnCr5,0.632,50000,3,119.85,won
+PQ-2024-00082,2024-10-03,Bajaj Auto,"Transmission Pinion Rev-2",20MnCr5,1.204,191000,5.18,319.39,open
+PQ-2025-00083,2025-05-27,Dana India,"Transmission Pinion Rev-1",20MnCr5,1.819,151000,6.41,357.72,open
+PQ-2025-00084,2025-08-04,Mahindra & Mahindra,"Differential Cross Pin Rev-3",20MnCr5,0.757,131000,2.72,149.78,open
+PQ-2025-00085,2025-01-08,Bajaj Auto,"Differential Cross Pin Rev-4",20MnCr5,1.028,175000,3.44,148.22,lost
+PQ-2026-00086,2026-06-10,Bharat Forge,"Differential Cross Pin Rev-3",20MnCr5,0.822,89000,3.6,155.22,lost
+PQ-2025-00087,2025-07-13,Force Motors,"Cam Follower Arm Rev-3",EN8,0.886,45000,2.76,98.97,won
+PQ-2023-00088,2023-05-06,Bajaj Auto,"Suspension Lift Arm Rev-4",40Cr4,4.043,185000,12.29,739.87,won
+PQ-2023-00089,2023-04-01,Dana India,"Differential Cross Pin Rev-2",20MnCr5,0.816,70000,2.71,169.92,won
+PQ-2024-00090,2024-11-03,Dana India,"Differential Cross Pin Rev-4",20MnCr5,0.739,160000,2.77,161.21,lost
+PQ-2024-00091,2024-03-14,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,1.079,32000,3.72,172.84,open
+PQ-2025-00092,2025-07-09,Force Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.163,134000,4.81,284.02,lost
+PQ-2023-00093,2023-03-11,Bharat Forge,"Suspension Lift Arm Rev-4",40Cr4,4.157,14000,13.33,869.86,won
+PQ-2025-00094,2025-09-19,Mahindra & Mahindra,"Cam Follower Arm Rev-3",EN8,0.88,58000,2.18,103.1,won
+PQ-2023-00095,2023-11-16,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.453,195000,2.11,142.08,won
+PQ-2023-00096,2023-08-14,Force Motors,"Suspension Lift Arm Rev-1",40Cr4,5.265,56000,12.18,725.97,lost
+PQ-2025-00097,2025-01-26,Bharat Forge,"Steering Knuckle Rev-1",40Cr4,4.824,18000,11.21,804.81,won
+PQ-2024-00098,2024-03-28,Bajaj Auto,"Steering Knuckle Rev-2",40Cr4,4.721,104000,11.92,894.94,won
+PQ-2025-00099,2025-09-05,Tata Motors,"Drive Spindle Shaft Rev-1",,0.79,103000,3.6,104.8,open
+PQ-2026-00100,2026-04-14,Bharat Forge,"Cam Follower Arm Rev-3",EN8,0.569,135000,3.4,87.57,lost
+PQ-2023-00101,2023-04-27,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,6.255,67000,12.64,750.36,lost
+PQ-2023-00102,2023-05-07,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.578,43000,4.72,277.53,open
+PQ-2023-00103,2023-01-15,Bajaj Auto,"Steering Knuckle Rev-4",40Cr4,5.504,101000,12.82,869.35,lost
+PQ-2025-00104,2025-07-03,Bharat Forge,"Differential Cross Pin Rev-3",20MnCr5,0.955,149000,3.68,160.84,lost
+PQ-2025-00105,2025-01-08,Tata Motors,"Drive Spindle Shaft Rev-4",EN8,0.999,197000,3.68,111.71,lost
+PQ-2024-00106,2024-05-19,Endurance Technologies,"Transmission Pinion Rev-1",20MnCr5,1.263,86000,6.88,275.57,won
+PQ-2023-00107,2023-09-01,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,0.54,115000,2.89,92.79,open
+PQ-2026-00108,2026-03-11,Tata Motors,"Bushing Sleeve Rev-3",SS304,0.653,131000,1.9,147.7,won
+PQ-2026-00109,2026-10-23,Bharat Forge,"Drive Spindle Shaft Rev-4",EN8,1.097,129000,2.92,120.36,lost
+PQ-2023-00110,2023-08-06,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.744,136000,3.37,122,won
+PQ-2025-00111,2025-07-09,Dana India,"Transmission Pinion Rev-2",20MnCr5,1.484,6000,6.76,334.44,lost
+PQ-2025-00112,2025-09-08,Mahindra & Mahindra,"Bushing Sleeve Rev-4",SS304,0.334,191000,2.87,107.51,won
+PQ-2026-00113,2026-02-11,Bajaj Auto,"Drive Spindle Shaft Rev-2",EN8,0.929,7000,3.06,100,lost
+PQ-2024-00114,2024-09-11,Tata Motors,"Drive Spindle Shaft Rev-3",EN8,0.973,86000,2.98,137.93,lost
+PQ-2023-00115,2023-04-23,Endurance Technologies,"Bushing Sleeve Rev-4",SS304,0.567,94000,1.98,96.9,won
+PQ-2023-00116,2023-08-12,Endurance Technologies,"Bushing Sleeve Rev-1",SS304,0.325,150000,2.43,140.49,open
+PQ-2026-00117,2026-08-23,Bajaj Auto,"Transmission Pinion Rev-3",20MnCr5,1.742,141000,5.83,340.59,open
+PQ-2024-00118,2024-10-21,Bharat Forge,"Differential Cross Pin Rev-2",20MnCr5,0.945,166000,2.5,145.09,won
+PQ-2024-00119,2024-05-19,Dana India,"Gear Blank 5-Speed Rev-3",20MnCr5,1.771,63000,4.41,180.79,lost
+PQ-2023-00120,2023-03-12,Mahindra & Mahindra,"Differential Cross Pin Rev-4",20MnCr5,0.782,153000,2.84,137.87,lost
+PQ-2023-00121,2023-08-24,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,0.68,115000,2.23,152.54,lost
+PQ-2026-00122,2026-05-12,Bajaj Auto,"Brake Caliper Bracket Rev-1",LM24,1.007,30000,4.87,215.36,lost
+PQ-2023-00123,2023-07-17,Tata Motors,"Flange Hub Rev-1",EN8D,2.429,134000,8.01,382.85,open
+PQ-2024-00124,2024-03-23,Dana India,"Cam Follower Arm Rev-1",EN8,0.698,198000,3.44,99.74,lost
+PQ-2026-00125,2026-11-24,Dana India,"Cam Follower Arm Rev-1",EN8,0.677,113000,2.52,108.22,won
+PQ-2026-00126,2026-04-22,Force Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.466,49000,5.1,239.47,lost
+PQ-2023-00127,2023-10-25,Tata Motors,"Steering Knuckle Rev-1",40Cr4,5.679,153000,12.75,657.98,lost
+PQ-2026-00128,2026-07-16,Mahindra & Mahindra,"Transmission Pinion Rev-2",20MnCr5,2.171,18000,5.28,257.08,open
+PQ-2026-00129,2026-10-01,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.643,106000,2.79,118.48,lost
+PQ-2026-00130,2026-03-26,Mahindra & Mahindra,"Cam Follower Arm Rev-2",EN8,0.574,134000,2.16,103.12,open
+PQ-2024-00131,2024-03-03,Force Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.607,94000,3.9,257.95,open
+PQ-2024-00132,2024-04-06,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-3",20MnCr5,-1.5,195000,5.39,213.49,open
+PQ-2025-00133,2025-08-11,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,1.875,28000,3.56,194.75,open
+PQ-2026-00134,2026-01-13,Force Motors,"Drive Spindle Shaft Rev-2",EN8,0.814,99000,3,121,lost
+PQ-2026-00135,2026-04-21,Force Motors,"Drive Spindle Shaft Rev-4",EN8,0.892,80000,4.25,94.26,lost
+PQ-2026-00136,2026-06-04,Force Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.775,191000,4.38,282.5,lost
+PQ-2026-00137,2026-05-15,Force Motors,"Bushing Sleeve Rev-1",SS304,0.388,139000,1.52,102.33,lost
+PQ-2026-00138,2026-03-07,Bharat Forge,"Transmission Pinion Rev-2",20MnCr5,1.808,24000,6.05,333.42,won
+PQ-2024-00139,2024-10-11,Endurance Technologies,"Cam Follower Arm Rev-3",EN8,0.555,82000,2.52,116.13,lost
+PQ-2026-00140,2026-07-19,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.319,60000,4.69,278.86,won
+PQ-2026-00141,2026-04-14,Endurance Technologies,"Steering Knuckle Rev-1",40Cr4,3.328,90000,13.49,665.73,won
+PQ-2023-00142,2023-08-21,Force Motors,"Suspension Lift Arm Rev-4",40Cr4,4.156,94000,13.12,876.9,won
+PQ-2025-00143,2025-04-20,Dana India,"Suspension Lift Arm Rev-2",40Cr4,4.614,175000,10.74,829.08,open
+PQ-2026-00144,2026-09-02,Endurance Technologies,"Brake Caliper Bracket Rev-4",LM24,1.032,186000,3.56,245.89,lost
+PQ-2026-00145,2026-08-25,Bharat Forge,"Drive Spindle Shaft Rev-4",EN8,0.796,28000,4.06,107.69,lost
+PQ-2024-00146,2024-08-08,Endurance Technologies,"Transmission Pinion Rev-3",20MnCr5,2.321,161000,5.44,299.02,lost
+PQ-2025-00147,2025-05-24,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,0.8,72000,3.29,152.36,open
+PQ-2026-00148,2026-03-04,Tata Motors,"Drive Spindle Shaft Rev-2",EN8,0.878,94000,3.55,113.64,lost
+PQ-2023-00149,2023-02-19,Dana India,"Flange Hub Rev-3",EN8D,2.013,157000,8.12,309.89,open
+PQ-2024-00150,2024-02-06,Mahindra & Mahindra,"Brake Caliper Bracket Rev-3",LM24,1.091,123000,3.27,245.84,open
+PQ-2025-00151,2025-10-04,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.796,114000,3.77,145.32,open
+PQ-2026-00152,2026-07-09,Endurance Technologies,"Brake Caliper Bracket Rev-4",LM24,1.288,91000,3.67,240.46,lost
+PQ-2023-00153,2023-12-05,Dana India,"Gear Blank 5-Speed Rev-3",20MnCr5,1.782,94000,5,216.3,lost
+PQ-2024-00154,2024-12-28,Tata Motors,"Transmission Pinion Rev-4",20MnCr5,2.222,122000,5.86,340.47,open
+PQ-2024-00155,2024-12-12,Bharat Forge,"Gear Blank 5-Speed Rev-4",20MnCr5,1.77,69000,5.34,286.06,won
+PQ-2026-00156,2026-12-12,Bharat Forge,"Differential Cross Pin Rev-2",20MnCr5,0.654,160000,2.47,150.57,lost
+PQ-2025-00157,2025-06-03,Dana India,"Suspension Lift Arm Rev-3",40Cr4,5.409,112000,12.86,823.99,lost
+PQ-2023-00158,2023-09-22,Force Motors,"Transmission Pinion Rev-4",20MnCr5,1.585,21000,5.77,263.66,open
+PQ-2026-00159,2026-10-02,Dana India,"Cam Follower Arm Rev-3",EN8,0.788,42000,2.85,126.31,lost
+PQ-2024-00160,2024-04-18,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-2",20MnCr5,1.248,77000,4.51,268.04,won
+PQ-2026-00161,2026-06-28,Dana India,"Drive Spindle Shaft Rev-3",EN8,0.628,167000,3.24,98.3,lost
+PQ-2024-00162,2024-04-24,Force Motors,"Suspension Lift Arm Rev-2",40Cr4,4.618,102000,13.34,865.4,won
+PQ-2023-00163,2023-04-24,Bharat Forge,"Suspension Lift Arm Rev-2",40Cr4,5.426,68000,11.06,735.36,open
+PQ-2023-00164,2023-11-13,Endurance Technologies,"Cam Follower Arm Rev-2",EN8,0.858,75000,2.91,122.44,lost
+PQ-2024-00165,2024-11-11,Force Motors,"Steering Knuckle Rev-2",40Cr4,5.514,0,12.5,888.49,won
+PQ-2024-00166,2024-07-26,Bharat Forge,"Transmission Pinion Rev-3",20MnCr5,1.805,48000,4.21,222.71,open
+PQ-2024-00167,2024-10-19,Endurance Technologies,"Cam Follower Arm Rev-2",EN8,0.881,191000,3.42,126.37,lost
+PQ-2026-00168,2026-12-28,Dana India,"Flange Hub Rev-3",EN8D,2.772,199000,7.05,302.45,lost
+PQ-2025-00169,2025-03-07,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,0.907,184000,2.72,114.45,won
+PQ-2025-00170,2025-02-23,Tata Motors,"Cam Follower Arm Rev-4",EN8,0.452,40000,2.4,77.09,lost
+PQ-2026-00171,2026-01-04,Bajaj Auto,"Gear Blank 5-Speed Rev-1",20MnCr5,1.426,19000,5.16,284.27,lost
+PQ-2023-00172,2023-11-06,Bajaj Auto,"Steering Knuckle Rev-4",40Cr4,3.643,24000,12.39,924.74,won
+PQ-2023-00173,2023-03-23,Bharat Forge,"Gear Blank 5-Speed Rev-3",20MnCr5,1.731,118000,4.55,202.44,won
+PQ-2024-00174,2024-08-05,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,0.711,92000,3.68,154.52,lost
+PQ-2025-00175,2025-03-19,Endurance Technologies,"Steering Knuckle Rev-1",40Cr4,3.576,170000,11.46,867.12,open
+PQ-2026-00176,2026-07-10,Bajaj Auto,"Bushing Sleeve Rev-1",SS304,0.585,159000,2.63,138.92,lost
+PQ-2024-00177,2024-09-27,Endurance Technologies,"Brake Caliper Bracket Rev-2",LM24,1.266,41000,3.58,172.41,lost
+PQ-2026-00178,2026-07-20,Mahindra & Mahindra,"Differential Cross Pin Rev-4",20MnCr5,0.918,14000,2.38,168.78,won
+PQ-2023-00179,2023-04-15,Tata Motors,"Bushing Sleeve Rev-1",SS304,0.436,149000,2.39,112.45,lost
+PQ-2024-00180,2024-04-24,Mahindra & Mahindra,"Differential Cross Pin Rev-1",20MnCr5,0.714,75000,2.63,125.23,open
+PQ-2026-00181,2026-05-10,Endurance Technologies,"Suspension Lift Arm Rev-2",40Cr4,4.126,190000,10.66,753.67,lost
+PQ-2023-00182,2023-05-27,Mahindra & Mahindra,"Drive Spindle Shaft Rev-1",EN8,0.691,40000,3.87,105.89,open
+PQ-2024-00183,2024-02-17,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,0.78,66000,2.48,154.01,lost
+PQ-2024-00184,2024-06-04,Bharat Forge,"Brake Caliper Bracket Rev-1",LM24,1.159,149000,4.94,214.55,open
+PQ-2023-00185,2023-12-17,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-2",20MnCr5,1.179,55000,5.5,201.07,lost
+PQ-2025-00186,2025-03-11,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,5.038,71000,14.89,727.51,lost
+PQ-2023-00187,2023-12-25,Dana India,"Differential Cross Pin Rev-1",20MnCr5,1.027,15000,3.57,137.88,open
+PQ-2025-00188,2025-04-20,Mahindra & Mahindra,"Transmission Pinion Rev-3",20MnCr5,2.095,164000,4.4,310.87,lost
+PQ-2025-00189,2025-12-20,Endurance Technologies,"Flange Hub Rev-2",EN8D,2.144,33000,6.2,420,open
+PQ-2026-00190,2026-01-18,Dana India,"Drive Spindle Shaft Rev-1",EN8,1.188,31000,3.82,106.56,won
+PQ-2026-00191,2026-09-14,Tata Motors,"Cam Follower Arm Rev-3",EN8,0.736,121000,2.41,93.33,won
+PQ-2025-00192,2025-04-27,Bajaj Auto,"Cam Follower Arm Rev-4",EN8,0.644,144000,2.62,92.48,won
+PQ-2025-00193,2025-03-14,Force Motors,"Transmission Pinion Rev-3",20MnCr5,2.043,8000,5.61,289.9,won
+PQ-2023-00194,2023-06-05,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,0.857,53000,3.73,140.53,lost
+PQ-2026-00195,2026-09-04,Endurance Technologies,"Flange Hub Rev-4",EN8D,3.262,118000,5.8,311.17,open
+PQ-2024-00196,2024-11-28,Bharat Forge,"Cam Follower Arm Rev-1",EN8,0.615,137000,3.13,103.19,lost
+PQ-2023-00197,2023-05-13,Endurance Technologies,"Brake Caliper Bracket Rev-3",LM24,0.849,77000,3.69,258.64,won
+PQ-2024-00198,2024-07-07,Bajaj Auto,"Transmission Pinion Rev-3",,1.675,158000,4.32,340.71,lost
+PQ-2023-00199,2023-02-16,Dana India,"Transmission Pinion Rev-2",20MnCr5,1.267,130000,6.05,275.4,open
+PQ-2024-00200,2024-05-12,Mahindra & Mahindra,"Brake Caliper Bracket Rev-1",LM24,1.139,30000,4.75,238.76,won
+PQ-2026-00201,2026-03-05,Mahindra & Mahindra,"Transmission Pinion Rev-2",20MnCr5,1.599,63000,5.11,331.24,open
+PQ-2024-00202,2024-08-19,Force Motors,"Suspension Lift Arm Rev-2",40Cr4,5.327,20000,13.94,803.64,won
+PQ-2026-00203,2026-03-13,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,1.09,49000,2.42,163.51,lost
+PQ-2024-00204,2024-08-26,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.936,55000,2.81,130.7,open
+PQ-2024-00205,2024-12-07,Tata Motors,"Steering Knuckle Rev-3",40Cr4,3.716,98000,13.83,798.85,open
+PQ-2025-00206,2025-05-24,Mahindra & Mahindra,"Bushing Sleeve Rev-1",SS304,0.362,145000,2.51,144.36,won
+PQ-2023-00207,2023-04-03,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,1.066,152000,3.46,153.63,lost
+PQ-2025-00208,2025-04-20,Force Motors,"Transmission Pinion Rev-3",20MnCr5,2.321,97000,6.39,369.49,lost
+PQ-2026-00209,2026-12-09,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,0.791,97000,3.08,137.08,won
+PQ-2025-00210,2025-04-09,Bajaj Auto,"Flange Hub Rev-4",EN8D,2.702,67000,5.27,326.88,won
+PQ-2026-00211,2026-08-23,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,0.86,38000,3.42,160.42,lost
+PQ-2025-00212,2025-04-23,Tata Motors,"Suspension Lift Arm Rev-1",40Cr4,4.638,11000,13.98,781.58,open
+PQ-2024-00213,2024-02-18,Bajaj Auto,"Bushing Sleeve Rev-3",SS304,0.741,117000,2.29,112.72,won
+PQ-2023-00214,2023-06-08,Dana India,"Brake Caliper Bracket Rev-1",LM24,1.264,49000,4.2,251.63,open
+PQ-2023-00215,2023-08-06,Bajaj Auto,"Bushing Sleeve Rev-3",SS304,0.494,39000,2.95,155.16,lost
+PQ-2024-00216,2024-02-12,Endurance Technologies,"Gear Blank 5-Speed Rev-4",20MnCr5,1.272,63000,5.2,285.84,open
+PQ-2025-00217,2025-12-18,Bharat Forge,"Cam Follower Arm Rev-3",EN8,0.802,86000,2.72,107.28,lost
+PQ-2023-00218,2023-04-18,Endurance Technologies,"Cam Follower Arm Rev-3",EN8,0.476,124000,2.86,101.96,lost
+PQ-2023-00219,2023-02-01,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.481,162000,4.66,205.41,lost
+PQ-2024-00220,2024-01-20,Bharat Forge,"Brake Caliper Bracket Rev-1",LM24,1.359,156000,4.07,201.27,open
+PQ-2024-00221,2024-10-04,Dana India,"Bushing Sleeve Rev-2",SS304,0.432,140000,2.6,125.72,open
+PQ-2023-00222,2023-12-04,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,1.343,101000,5.22,357.42,won
+PQ-2026-00223,2026-02-28,Tata Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.683,108000,4.65,255.53,won
+PQ-2023-00224,2023-02-18,Force Motors,"Drive Spindle Shaft Rev-3",EN8,0.802,62000,4.09,123.85,open
+PQ-2023-00225,2023-05-06,Mahindra & Mahindra,"Flange Hub Rev-1",EN8D,3.464,108000,5.54,370.3,lost
+PQ-2026-00226,2026-06-04,Dana India,"Transmission Pinion Rev-1",20MnCr5,1.568,84000,4.24,292.89,open
+PQ-2023-00227,2023-06-21,Endurance Technologies,"Transmission Pinion Rev-1",20MnCr5,1.477,96000,6.11,310.64,open
+PQ-2023-00228,2023-09-12,Mahindra & Mahindra,"Bushing Sleeve Rev-2",SS304,0.656,130000,2.36,154.56,won
+PQ-2025-00229,2025-03-03,Bharat Forge,"Brake Caliper Bracket Rev-2",LM24,0.94,15000,4.68,257.8,lost
+PQ-2024-00230,2024-09-19,Force Motors,"Brake Caliper Bracket Rev-4",LM24,1.118,63000,4.32,228.23,open
+PQ-2023-00231,2023-02-23,Tata Motors,"Transmission Pinion Rev-2",20MnCr5,-1.5,180000,5.06,377.08,lost
+PQ-2026-00232,2026-10-22,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,5.08,114000,11.28,772.97,open
+PQ-2024-00233,2024-08-04,Mahindra & Mahindra,"Steering Knuckle Rev-3",40Cr4,5.199,145000,13.77,732.21,lost
+PQ-2023-00234,2023-05-21,Bajaj Auto,"Gear Blank 5-Speed Rev-1",20MnCr5,1.124,83000,3.7,226.88,open
+PQ-2026-00235,2026-07-15,Endurance Technologies,"Gear Blank 5-Speed Rev-4",20MnCr5,1.728,35000,4.01,269.02,open
+PQ-2025-00236,2025-12-21,Endurance Technologies,"Gear Blank 5-Speed Rev-4",20MnCr5,1.287,103000,4.36,223.51,won
+PQ-2024-00237,2024-06-07,Dana India,"Differential Cross Pin Rev-4",20MnCr5,0.941,186000,3.54,145.29,open
+PQ-2024-00238,2024-10-09,Mahindra & Mahindra,"Suspension Lift Arm Rev-1",40Cr4,5.114,88000,12.25,741.39,open
+PQ-2025-00239,2025-03-04,Force Motors,"Flange Hub Rev-4",EN8D,2.721,41000,6.48,431.93,lost
+PQ-2025-00240,2025-09-14,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.961,156000,3.63,172.57,lost
+PQ-2025-00241,2025-08-22,Dana India,"Steering Knuckle Rev-1",40Cr4,5.399,125000,13.35,671.73,open
+PQ-2024-00242,2024-01-23,Tata Motors,"Transmission Pinion Rev-3",20MnCr5,2.288,175000,6.03,324.38,won
+PQ-2025-00243,2025-10-07,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,0.502,87000,3.09,119.44,won
+PQ-2025-00244,2025-02-02,Force Motors,"Flange Hub Rev-3",EN8D,3.27,36000,7.68,413.19,open
+PQ-2025-00245,2025-03-11,Mahindra & Mahindra,"Drive Spindle Shaft Rev-2",EN8,1.07,55000,3.81,87.01,won
+PQ-2025-00246,2025-06-28,Force Motors,"Steering Knuckle Rev-1",40Cr4,4.503,94000,9.28,780.97,won
+PQ-2025-00247,2025-02-11,Bharat Forge,"Brake Caliper Bracket Rev-1",LM24,0.817,55000,4.61,201.96,lost
+PQ-2024-00248,2024-04-28,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.298,181000,3.54,282.58,lost
+PQ-2024-00249,2024-06-16,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,0.514,115000,4.29,121.03,won
+PQ-2026-00250,2026-01-16,Bharat Forge,"Steering Knuckle Rev-2",40Cr4,3.87,48000,10.99,858.98,lost
+PQ-2023-00251,2023-07-20,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,0.683,61000,3.05,145.73,won
+PQ-2025-00252,2025-05-05,Bharat Forge,"Bushing Sleeve Rev-4",SS304,0.613,78000,1.87,142.04,open
+PQ-2024-00253,2024-06-13,Tata Motors,"Steering Knuckle Rev-4",40Cr4,4.62,164000,11.84,705.07,lost
+PQ-2026-00254,2026-07-07,Mahindra & Mahindra,"Brake Caliper Bracket Rev-3",LM24,1.104,52000,3.96,257.1,lost
+PQ-2026-00255,2026-07-05,Mahindra & Mahindra,"Cam Follower Arm Rev-2",EN8,0.418,178000,2.73,105.35,open
+PQ-2026-00256,2026-05-08,Dana India,"Drive Spindle Shaft Rev-3",EN8,1.18,91000,2.81,85.48,won
+PQ-2023-00257,2023-07-08,Tata Motors,"Differential Cross Pin Rev-3",20MnCr5,0.731,22000,2.83,143.17,won
+PQ-2024-00258,2024-08-11,Bajaj Auto,"Bushing Sleeve Rev-1",SS304,0.521,159000,2.92,132.06,won
+PQ-2023-00259,2023-11-17,Bajaj Auto,"Drive Spindle Shaft Rev-2",EN8,0.701,62000,4.06,119.43,lost
+PQ-2023-00260,2023-09-07,Dana India,"Drive Spindle Shaft Rev-2",EN8,0.955,132000,4.35,127.58,lost
+PQ-2024-00261,2024-03-19,Tata Motors,"Cam Follower Arm Rev-1",EN8,0.649,6000,3.07,99.06,lost
+PQ-2026-00262,2026-06-13,Endurance Technologies,"Drive Spindle Shaft Rev-2",EN8,1.149,195000,3.12,137.07,lost
+PQ-2025-00263,2025-06-14,Bharat Forge,"Cam Follower Arm Rev-1",EN8,0.891,5000,2.51,122.21,open
+PQ-2026-00264,2026-03-19,Dana India,"Brake Caliper Bracket Rev-2",LM24,1.292,0,3.28,192.29,won
+PQ-2023-00265,2023-04-10,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,0.827,30000,3.39,109.75,won
+PQ-2025-00266,2025-03-02,Dana India,"Brake Caliper Bracket Rev-3",LM24,1.596,141000,3.52,202.48,won
+PQ-2024-00267,2024-12-13,Mahindra & Mahindra,"Flange Hub Rev-2",EN8D,2.907,182000,5.72,325.77,open
+PQ-2026-00268,2026-09-18,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,0.772,109000,2.94,167.47,lost
+PQ-2024-00269,2024-09-13,Tata Motors,"Bushing Sleeve Rev-4",SS304,0.339,36000,2.53,104.78,lost
+PQ-2025-00270,2025-10-18,Endurance Technologies,"Flange Hub Rev-4",EN8D,2.257,193000,6.44,358.89,lost
+PQ-2025-00271,2025-01-07,Bajaj Auto,"Brake Caliper Bracket Rev-1",LM24,1.074,29000,4.64,164.78,lost
+PQ-2023-00272,2023-01-11,Force Motors,"Flange Hub Rev-4",EN8D,1.816,100000,5.73,280.28,won
+PQ-2025-00273,2025-01-07,Force Motors,"Steering Knuckle Rev-4",40Cr4,4.992,60000,10.88,732.33,lost
+PQ-2024-00274,2024-05-26,Tata Motors,"Transmission Pinion Rev-3",20MnCr5,2.213,62000,5.72,352.58,lost
+PQ-2024-00275,2024-05-25,Mahindra & Mahindra,"Flange Hub Rev-4",EN8D,3.276,90000,8.11,352.32,won
+PQ-2025-00276,2025-04-23,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.701,195000,4.36,277.07,lost
+PQ-2024-00277,2024-02-01,Bajaj Auto,"Bushing Sleeve Rev-3",SS304,0.496,200000,1.63,151.48,open
+PQ-2023-00278,2023-10-28,Force Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.195,75000,4.93,200.04,won
+PQ-2025-00279,2025-04-10,Force Motors,"Suspension Lift Arm Rev-4",40Cr4,4.831,54000,12.48,848.28,lost
+PQ-2026-00280,2026-06-17,Bajaj Auto,"Cam Follower Arm Rev-1",EN8,0.435,99000,2.57,107.39,lost
+PQ-2024-00281,2024-06-08,Tata Motors,"Differential Cross Pin Rev-2",20MnCr5,0.915,57000,3.27,166.79,lost
+PQ-2023-00282,2023-06-28,Mahindra & Mahindra,"Bushing Sleeve Rev-3",SS304,0.436,40000,2.51,124.66,open
+PQ-2023-00283,2023-02-24,Dana India,"Brake Caliper Bracket Rev-1",LM24,1.357,95000,3.24,173.92,lost
+PQ-2023-00284,2023-03-02,Endurance Technologies,"Steering Knuckle Rev-2",40Cr4,4.107,200000,10.95,879.88,won
+PQ-2024-00285,2024-10-10,Bajaj Auto,"Transmission Pinion Rev-2",20MnCr5,1.636,195000,4.53,231.62,won
+PQ-2026-00286,2026-09-02,Bharat Forge,"Drive Spindle Shaft Rev-2",EN8,0.81,122000,3.01,88.33,lost
+PQ-2024-00287,2024-03-13,Force Motors,"Gear Blank 5-Speed Rev-3",20MnCr5,1.443,146000,5.04,228.61,open
+PQ-2023-00288,2023-04-18,Mahindra & Mahindra,"Transmission Pinion Rev-4",20MnCr5,1.928,123000,5.11,291.99,won
+PQ-2025-00289,2025-04-24,Bajaj Auto,"Drive Spindle Shaft Rev-1",EN8,1.036,168000,4.44,134.55,won
+PQ-2023-00290,2023-10-03,Mahindra & Mahindra,"Bushing Sleeve Rev-2",SS304,0.531,168000,2.27,135.03,open
+PQ-2025-00291,2025-08-01,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.181,143000,4.61,264.44,lost
+PQ-2024-00292,2024-03-10,Tata Motors,"Bushing Sleeve Rev-3",SS304,0.711,185000,2.38,147.43,won
+PQ-2026-00293,2026-04-19,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.538,47000,1.85,139.82,lost
+PQ-2026-00294,2026-03-13,Endurance Technologies,"Bushing Sleeve Rev-2",SS304,0.582,113000,2.84,109.65,open
+PQ-2023-00295,2023-10-28,Bharat Forge,"Differential Cross Pin Rev-3",20MnCr5,0.824,63000,3.34,145.82,won
+PQ-2023-00296,2023-04-17,Endurance Technologies,"Bushing Sleeve Rev-2",SS304,0.623,27000,2.08,112.33,won
+PQ-2023-00297,2023-08-10,Dana India,"Cam Follower Arm Rev-4",,0.489,165000,3.41,114.17,lost
+PQ-2026-00298,2026-03-28,Bajaj Auto,"Differential Cross Pin Rev-3",20MnCr5,0.873,106000,3.35,113.74,won
+PQ-2026-00299,2026-08-09,Bajaj Auto,"Drive Spindle Shaft Rev-3",EN8,0.988,41000,2.84,104.62,open
+PQ-2026-00300,2026-09-15,Dana India,"Brake Caliper Bracket Rev-2",LM24,1.333,176000,3.69,200.36,won
+PQ-2026-00301,2026-08-16,Bharat Forge,"Cam Follower Arm Rev-2",EN8,0.69,149000,3.08,91.81,lost
+PQ-2023-00302,2023-07-17,Bharat Forge,"Suspension Lift Arm Rev-3",40Cr4,4.593,114000,12.41,852.17,open
+PQ-2023-00303,2023-09-07,Mahindra & Mahindra,"Drive Spindle Shaft Rev-1",EN8,0.791,128000,3.86,94.96,open
+PQ-2026-00304,2026-11-26,Bajaj Auto,"Cam Follower Arm Rev-2",EN8,0.887,92000,2.26,80.47,lost
+PQ-2025-00305,2025-12-18,Bajaj Auto,"Differential Cross Pin Rev-2",20MnCr5,1.065,184000,2.57,164.19,won
+PQ-2025-00306,2025-01-05,Force Motors,"Suspension Lift Arm Rev-3",40Cr4,5.404,183000,11.66,782.72,open
+PQ-2024-00307,2024-08-06,Force Motors,"Brake Caliper Bracket Rev-3",LM24,1.351,18000,4.81,252.28,lost
+PQ-2024-00308,2024-11-28,Tata Motors,"Transmission Pinion Rev-2",20MnCr5,1.512,158000,6.47,369.13,open
+PQ-2026-00309,2026-11-09,Dana India,"Steering Knuckle Rev-2",40Cr4,6.064,97000,9.98,839.65,lost
+PQ-2025-00310,2025-03-11,Force Motors,"Brake Caliper Bracket Rev-3",LM24,1.318,93000,3.4,194.31,open
+PQ-2024-00311,2024-01-01,Bharat Forge,"Cam Follower Arm Rev-1",EN8,0.858,105000,2.97,113.04,open
+PQ-2025-00312,2025-02-18,Tata Motors,"Bushing Sleeve Rev-3",SS304,0.784,196000,2.42,138.25,lost
+PQ-2025-00313,2025-06-18,Tata Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.665,167000,3.96,182.16,open
+PQ-2024-00314,2024-04-21,Mahindra & Mahindra,"Cam Follower Arm Rev-4",EN8,0.49,57000,2.12,91.21,open
+PQ-2023-00315,2023-03-09,Bajaj Auto,"Flange Hub Rev-4",EN8D,2.912,172000,7.5,353.8,won
+PQ-2024-00316,2024-11-06,Bajaj Auto,"Gear Blank 5-Speed Rev-1",20MnCr5,1.585,110000,4.34,214.7,lost
+PQ-2026-00317,2026-08-02,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,4.943,178000,11.98,845.93,lost
+PQ-2024-00318,2024-07-07,Bharat Forge,"Gear Blank 5-Speed Rev-4",20MnCr5,1.203,109000,3.51,214.03,lost
+PQ-2023-00319,2023-04-21,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-3",20MnCr5,1.337,123000,4.25,200.65,lost
+PQ-2024-00320,2024-12-11,Tata Motors,"Suspension Lift Arm Rev-1",40Cr4,4.834,147000,11.68,743.19,lost
+PQ-2026-00321,2026-06-02,Endurance Technologies,"Cam Follower Arm Rev-1",EN8,0.78,194000,2.39,84.24,won
+PQ-2026-00322,2026-05-23,Tata Motors,"Transmission Pinion Rev-1",20MnCr5,1.311,138000,5.02,238.14,lost
+PQ-2026-00323,2026-04-02,Bajaj Auto,"Suspension Lift Arm Rev-3",40Cr4,4.055,20000,13.22,836.1,open
+PQ-2023-00324,2023-11-11,Endurance Technologies,"Bushing Sleeve Rev-4",SS304,0.645,76000,2.06,103.64,lost
+PQ-2023-00325,2023-04-02,Mahindra & Mahindra,"Flange Hub Rev-3",EN8D,3.359,133000,6.34,441.92,open
+PQ-2026-00326,2026-04-15,Bharat Forge,"Gear Blank 5-Speed Rev-4",20MnCr5,1.263,129000,4.66,199.16,lost
+PQ-2025-00327,2025-05-20,Mahindra & Mahindra,"Drive Spindle Shaft Rev-1",EN8,0.715,95000,4.29,98.26,open
+PQ-2024-00328,2024-01-09,Bharat Forge,"Cam Follower Arm Rev-4",EN8,0.816,105000,2.47,98.73,open
+PQ-2024-00329,2024-05-15,Tata Motors,"Brake Caliper Bracket Rev-4",LM24,1.56,121000,4.32,236.82,won
+PQ-2023-00330,2023-12-14,Bajaj Auto,"Transmission Pinion Rev-3",20MnCr5,-1.5,16000,5.39,312.45,lost
+PQ-2024-00331,2024-09-19,Dana India,"Drive Spindle Shaft Rev-4",EN8,1.08,35000,4.31,102.46,open
+PQ-2024-00332,2024-02-23,Endurance Technologies,"Steering Knuckle Rev-3",40Cr4,6.271,44000,14.86,820.53,lost
+PQ-2024-00333,2024-02-15,Bajaj Auto,"Transmission Pinion Rev-3",20MnCr5,1.521,184000,4.58,308.4,lost
+PQ-2023-00334,2023-07-20,Endurance Technologies,"Drive Spindle Shaft Rev-3",EN8,0.822,48000,4.28,92.99,lost
+PQ-2024-00335,2024-05-07,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.355,155000,4.45,218.24,open
+PQ-2025-00336,2025-11-23,Mahindra & Mahindra,"Flange Hub Rev-2",EN8D,2.439,181000,7.22,332.08,open
+PQ-2024-00337,2024-11-12,Bajaj Auto,"Bushing Sleeve Rev-3",SS304,0.733,152000,1.85,95.59,lost
+PQ-2025-00338,2025-03-27,Bharat Forge,"Steering Knuckle Rev-4",40Cr4,4.585,93000,14.47,671.86,open
+PQ-2023-00339,2023-11-03,Dana India,"Cam Follower Arm Rev-4",EN8,0.869,44000,2.31,126.56,won
+PQ-2023-00340,2023-09-03,Bharat Forge,"Gear Blank 5-Speed Rev-4",20MnCr5,1.523,60000,4.64,287.77,lost
+PQ-2026-00341,2026-05-25,Endurance Technologies,"Suspension Lift Arm Rev-2",40Cr4,5.182,84000,10.07,756.38,open
+PQ-2025-00342,2025-02-19,Tata Motors,"Transmission Pinion Rev-3",20MnCr5,2.211,150000,5.01,221.54,lost
+PQ-2025-00343,2025-01-28,Mahindra & Mahindra,"Suspension Lift Arm Rev-1",40Cr4,4.881,73000,10.11,869.53,lost
+PQ-2026-00344,2026-06-07,Bajaj Auto,"Cam Follower Arm Rev-3",EN8,0.673,8000,2.84,90.96,lost
+PQ-2026-00345,2026-10-18,Bharat Forge,"Bushing Sleeve Rev-1",SS304,0.414,154000,2.53,102.04,open
+PQ-2026-00346,2026-12-13,Dana India,"Bushing Sleeve Rev-3",SS304,0.54,87000,2.82,108.41,open
+PQ-2025-00347,2025-07-05,Bharat Forge,"Steering Knuckle Rev-3",40Cr4,5.897,130000,13.11,784.16,lost
+PQ-2023-00348,2023-06-01,Endurance Technologies,"Differential Cross Pin Rev-2",20MnCr5,0.808,26000,2.5,159.78,open
+PQ-2024-00349,2024-02-25,Mahindra & Mahindra,"Transmission Pinion Rev-4",20MnCr5,2.115,143000,5.05,317.36,lost
+PQ-2023-00350,2023-04-22,Force Motors,"Brake Caliper Bracket Rev-1",LM24,1.215,17000,4.43,257.82,lost
+PQ-2025-00351,2025-01-14,Dana India,"Flange Hub Rev-4",EN8D,3.122,12000,6.68,317.11,lost
+PQ-2023-00352,2023-02-25,Dana India,"Drive Spindle Shaft Rev-2",EN8,0.519,86000,4.25,112.58,open
+PQ-2026-00353,2026-01-27,Tata Motors,"Brake Caliper Bracket Rev-4",LM24,1.457,106000,3.01,216.06,lost
+PQ-2024-00354,2024-09-14,Mahindra & Mahindra,"Flange Hub Rev-1",EN8D,2.099,151000,7.88,330.35,won
+PQ-2023-00355,2023-12-10,Endurance Technologies,"Steering Knuckle Rev-4",40Cr4,3.942,122000,9.58,930.08,lost
+PQ-2026-00356,2026-07-27,Tata Motors,"Steering Knuckle Rev-2",40Cr4,6.179,146000,9.59,848.45,won
+PQ-2025-00357,2025-04-11,Force Motors,"Steering Knuckle Rev-2",40Cr4,3.46,124000,11.61,868.51,won
+PQ-2025-00358,2025-09-26,Endurance Technologies,"Bushing Sleeve Rev-3",SS304,0.42,127000,2.45,139.77,lost
+PQ-2023-00359,2023-12-22,Force Motors,"Flange Hub Rev-4",EN8D,2.067,40000,7.37,430.86,lost
+PQ-2023-00360,2023-08-09,Endurance Technologies,"Brake Caliper Bracket Rev-1",LM24,1.571,136000,4.02,258.5,open
+PQ-2025-00361,2025-02-22,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.446,105000,1.89,97.44,open
+PQ-2025-00362,2025-02-09,Tata Motors,"Drive Spindle Shaft Rev-4",EN8,0.588,59000,3.22,125.45,open
+PQ-2026-00363,2026-02-09,Force Motors,"Steering Knuckle Rev-1",40Cr4,5.044,0,13.78,752.81,open
+PQ-2025-00364,2025-03-26,Mahindra & Mahindra,"Differential Cross Pin Rev-4",20MnCr5,1.077,168000,2.86,126.94,open
+PQ-2023-00365,2023-02-26,Mahindra & Mahindra,"Bushing Sleeve Rev-1",SS304,0.774,91000,2.05,149.17,open
+PQ-2026-00366,2026-11-28,Bharat Forge,"Steering Knuckle Rev-1",40Cr4,4.117,172000,11.72,853.23,won
+PQ-2026-00367,2026-06-26,Dana India,"Drive Spindle Shaft Rev-2",EN8,0.803,90000,3.04,135.52,won
+PQ-2026-00368,2026-10-07,Force Motors,"Flange Hub Rev-2",EN8D,2.638,20000,5.61,411.68,open
+PQ-2026-00369,2026-09-05,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,5.126,66000,14.08,793.14,open
+PQ-2023-00370,2023-04-10,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,1.969,32000,5.37,347.57,won
+PQ-2025-00371,2025-09-25,Tata Motors,"Transmission Pinion Rev-4",20MnCr5,1.512,177000,6.36,269.48,open
+PQ-2023-00372,2023-08-10,Mahindra & Mahindra,"Brake Caliper Bracket Rev-1",LM24,0.942,108000,3.43,254.97,won
+PQ-2025-00373,2025-02-20,Bharat Forge,"Steering Knuckle Rev-1",40Cr4,5.603,37000,10.89,680.34,lost
+PQ-2024-00374,2024-02-15,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,4.54,28000,12.09,725.19,open
+PQ-2026-00375,2026-03-18,Bharat Forge,"Drive Spindle Shaft Rev-4",EN8,1.148,137000,4.08,114.41,lost
+PQ-2025-00376,2025-10-10,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,1.124,146000,3.63,133.3,won
+PQ-2023-00377,2023-09-18,Tata Motors,"Bushing Sleeve Rev-1",SS304,0.445,10000,1.57,142.96,lost
+PQ-2023-00378,2023-08-11,Dana India,"Steering Knuckle Rev-1",40Cr4,4.575,47000,10.75,767.45,open
+PQ-2024-00379,2024-12-28,Dana India,"Gear Blank 5-Speed Rev-3",20MnCr5,1.273,104000,4.78,272.61,lost
+PQ-2026-00380,2026-04-24,Endurance Technologies,"Steering Knuckle Rev-1",40Cr4,3.726,147000,13.29,812.26,won
+PQ-2023-00381,2023-10-19,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.686,170000,3.82,233.19,open
+PQ-2025-00382,2025-12-06,Bharat Forge,"Differential Cross Pin Rev-2",20MnCr5,0.967,199000,3.02,123.78,won
+PQ-2024-00383,2024-02-22,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,0.688,123000,2.48,139.91,won
+PQ-2023-00384,2023-10-19,Dana India,"Flange Hub Rev-1",EN8D,2.179,29000,6.14,382.85,lost
+PQ-2026-00385,2026-02-05,Tata Motors,"Brake Caliper Bracket Rev-1",LM24,1.194,65000,3.76,255.07,open
+PQ-2024-00386,2024-03-27,Bajaj Auto,"Cam Follower Arm Rev-1",EN8,0.869,48000,3.39,79.35,lost
+PQ-2023-00387,2023-01-25,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.458,6000,1.69,133.2,lost
+PQ-2024-00388,2024-05-23,Tata Motors,"Brake Caliper Bracket Rev-4",LM24,1.028,99000,3.02,176.76,won
+PQ-2026-00389,2026-12-27,Tata Motors,"Transmission Pinion Rev-3",20MnCr5,1.909,83000,6.88,355.04,won
+PQ-2025-00390,2025-04-22,Endurance Technologies,"Bushing Sleeve Rev-4",SS304,0.386,166000,2.94,115.86,won
+PQ-2025-00391,2025-01-21,Endurance Technologies,"Bushing Sleeve Rev-1",SS304,0.589,197000,2.75,138.01,lost
+PQ-2024-00392,2024-12-14,Tata Motors,"Steering Knuckle Rev-4",40Cr4,4.98,31000,11.94,801.52,won
+PQ-2025-00393,2025-11-05,Mahindra & Mahindra,"Drive Spindle Shaft Rev-4",EN8,1.09,42000,2.65,109.65,open
+PQ-2025-00394,2025-12-11,Bajaj Auto,"Brake Caliper Bracket Rev-2",LM24,1.055,12000,4.63,221.85,lost
+PQ-2025-00395,2025-09-13,Force Motors,"Transmission Pinion Rev-2",20MnCr5,1.517,134000,4.26,222.75,lost
+PQ-2025-00396,2025-10-06,Mahindra & Mahindra,"Drive Spindle Shaft Rev-1",,1.014,97000,3.49,138.74,lost
+PQ-2024-00397,2024-02-22,Mahindra & Mahindra,"Brake Caliper Bracket Rev-1",LM24,1.452,41000,4.85,248.25,lost
+PQ-2026-00398,2026-09-16,Endurance Technologies,"Transmission Pinion Rev-4",20MnCr5,1.88,62000,4.86,371.49,lost
+PQ-2026-00399,2026-12-23,Mahindra & Mahindra,"Steering Knuckle Rev-3",40Cr4,6.361,67000,14.44,807.01,lost
+PQ-2023-00400,2023-11-23,Tata Motors,"Transmission Pinion Rev-1",20MnCr5,1.894,155000,6.02,234.31,won
+PQ-2024-00401,2024-05-15,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,1.751,79000,3.5,197.69,won
+PQ-2023-00402,2023-07-27,Bharat Forge,"Differential Cross Pin Rev-4",20MnCr5,1.068,137000,3.18,154.43,won
+PQ-2026-00403,2026-08-12,Force Motors,"Steering Knuckle Rev-2",40Cr4,4.029,166000,9.66,691.21,lost
+PQ-2023-00404,2023-12-13,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,0.748,105000,3.13,128.19,lost
+PQ-2025-00405,2025-07-26,Bajaj Auto,"Differential Cross Pin Rev-2",20MnCr5,1.057,72000,3.51,123.05,lost
+PQ-2024-00406,2024-06-11,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.854,122000,4.91,203.73,won
+PQ-2023-00407,2023-10-16,Tata Motors,"Brake Caliper Bracket Rev-3",LM24,1.051,102000,4.4,259.19,open
+PQ-2026-00408,2026-10-16,Dana India,"Flange Hub Rev-2",EN8D,2.344,172000,5.59,422.1,lost
+PQ-2025-00409,2025-04-03,Force Motors,"Gear Blank 5-Speed Rev-3",20MnCr5,1.261,189000,4.91,250.99,won
+PQ-2023-00410,2023-01-08,Tata Motors,"Transmission Pinion Rev-3",20MnCr5,1.855,197000,6.55,261.47,lost
+PQ-2024-00411,2024-08-03,Endurance Technologies,"Flange Hub Rev-4",EN8D,2.739,113000,5.71,439.81,won
+PQ-2025-00412,2025-12-12,Endurance Technologies,"Brake Caliper Bracket Rev-1",LM24,1.155,83000,3.69,202.98,open
+PQ-2025-00413,2025-09-24,Dana India,"Transmission Pinion Rev-4",20MnCr5,1.976,120000,5.32,308.1,lost
+PQ-2025-00414,2025-05-13,Endurance Technologies,"Bushing Sleeve Rev-3",SS304,0.77,132000,2.49,143.71,lost
+PQ-2025-00415,2025-04-17,Mahindra & Mahindra,"Bushing Sleeve Rev-4",SS304,0.748,195000,1.59,126.86,open
+PQ-2025-00416,2025-03-07,Dana India,"Transmission Pinion Rev-1",20MnCr5,2.029,117000,6.52,301.22,open
+PQ-2024-00417,2024-09-11,Bajaj Auto,"Flange Hub Rev-2",EN8D,2.527,32000,6.47,316.58,lost
+PQ-2025-00418,2025-12-13,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.441,19000,2.29,156.83,lost
+PQ-2023-00419,2023-04-27,Tata Motors,"Steering Knuckle Rev-4",40Cr4,3.274,195000,9.9,784.99,lost
+PQ-2025-00420,2025-06-19,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.416,52000,4.16,270.39,open
+PQ-2023-00421,2023-10-08,Bajaj Auto,"Brake Caliper Bracket Rev-2",LM24,1.57,152000,4.67,216.55,lost
+PQ-2024-00422,2024-10-17,Bajaj Auto,"Flange Hub Rev-4",EN8D,2.02,44000,7.29,351.32,won
+PQ-2024-00423,2024-08-10,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.104,90000,3.65,233.68,open
+PQ-2026-00424,2026-08-19,Endurance Technologies,"Brake Caliper Bracket Rev-1",LM24,1.436,83000,4.76,258.17,won
+PQ-2023-00425,2023-09-01,Mahindra & Mahindra,"Flange Hub Rev-2",EN8D,3.023,179000,5.49,358.45,lost
+PQ-2023-00426,2023-07-05,Mahindra & Mahindra,"Suspension Lift Arm Rev-3",40Cr4,4.504,42000,13.58,734.3,lost
+PQ-2026-00427,2026-01-18,Bajaj Auto,"Flange Hub Rev-3",EN8D,2.494,28000,7.66,310.77,won
+PQ-2024-00428,2024-07-23,Dana India,"Suspension Lift Arm Rev-4",40Cr4,4.14,35000,11.56,754.52,won
+PQ-2025-00429,2025-01-17,Bajaj Auto,"Bushing Sleeve Rev-2",SS304,-1.5,126000,2.39,101.26,open
+PQ-2023-00430,2023-09-08,Tata Motors,"Differential Cross Pin Rev-2",20MnCr5,0.862,84000,3.33,115.97,lost
+PQ-2023-00431,2023-06-19,Bharat Forge,"Gear Blank 5-Speed Rev-3",20MnCr5,1.531,95000,4.89,288.01,lost
+PQ-2023-00432,2023-07-17,Dana India,"Cam Follower Arm Rev-4",EN8,0.88,169000,2.63,109.19,open
+PQ-2024-00433,2024-05-19,Tata Motors,"Bushing Sleeve Rev-3",SS304,0.481,102000,2.59,104.22,open
+PQ-2023-00434,2023-04-16,Dana India,"Bushing Sleeve Rev-4",SS304,0.583,148000,1.82,143.07,open
+PQ-2025-00435,2025-10-11,Tata Motors,"Drive Spindle Shaft Rev-2",EN8,1.05,104000,2.56,127.3,lost
+PQ-2024-00436,2024-04-02,Endurance Technologies,"Steering Knuckle Rev-3",40Cr4,3.998,17000,10.98,839.56,open
+PQ-2026-00437,2026-01-05,Force Motors,"Suspension Lift Arm Rev-1",40Cr4,5.464,5000,13.4,744.53,open
+PQ-2023-00438,2023-11-17,Dana India,"Cam Follower Arm Rev-1",EN8,0.841,55000,2.47,95.25,lost
+PQ-2025-00439,2025-09-16,Force Motors,"Flange Hub Rev-3",EN8D,3.158,72000,5.78,332.55,open
+PQ-2023-00440,2023-12-03,Bajaj Auto,"Bushing Sleeve Rev-3",SS304,0.753,179000,1.9,118.68,lost
+PQ-2023-00441,2023-02-02,Dana India,"Differential Cross Pin Rev-1",20MnCr5,0.964,5000,2.88,121.82,lost
+PQ-2024-00442,2024-04-28,Endurance Technologies,"Transmission Pinion Rev-2",20MnCr5,2.106,190000,6.02,269.51,won
+PQ-2023-00443,2023-02-18,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-3",20MnCr5,1.427,51000,5.17,213.96,open
+PQ-2023-00444,2023-06-07,Mahindra & Mahindra,"Cam Follower Arm Rev-4",EN8,0.642,101000,3.22,84.98,lost
+PQ-2023-00445,2023-03-11,Bharat Forge,"Steering Knuckle Rev-4",40Cr4,5.974,169000,11.32,755.77,open
+PQ-2026-00446,2026-02-09,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.317,14000,3.67,180.09,won
+PQ-2026-00447,2026-02-24,Force Motors,"Cam Follower Arm Rev-2",EN8,0.564,121000,2.67,113.77,lost
+PQ-2025-00448,2025-02-07,Mahindra & Mahindra,"Drive Spindle Shaft Rev-1",EN8,0.66,111000,4.14,117.15,won
+PQ-2025-00449,2025-01-08,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.799,159000,2.87,150.79,lost
+PQ-2024-00450,2024-03-10,Endurance Technologies,"Gear Blank 5-Speed Rev-4",20MnCr5,1.773,176000,5.18,263.82,lost
+PQ-2023-00451,2023-02-20,Tata Motors,"Bushing Sleeve Rev-1",SS304,0.522,24000,1.55,140.14,lost
+PQ-2025-00452,2025-06-11,Bajaj Auto,"Cam Follower Arm Rev-3",EN8,0.406,193000,2.91,106.67,won
+PQ-2026-00453,2026-01-09,Bharat Forge,"Drive Spindle Shaft Rev-3",EN8,0.52,104000,4.18,85.14,open
+PQ-2025-00454,2025-12-23,Endurance Technologies,"Cam Follower Arm Rev-1",EN8,0.446,116000,2.8,111.16,lost
+PQ-2026-00455,2026-12-18,Tata Motors,"Transmission Pinion Rev-2",20MnCr5,1.725,90000,4.05,269.77,won
+PQ-2025-00456,2025-09-02,Bharat Forge,"Drive Spindle Shaft Rev-1",EN8,0.697,118000,2.51,138.13,won
+PQ-2025-00457,2025-09-15,Tata Motors,"Flange Hub Rev-2",EN8D,2.817,60000,6.46,376.83,won
+PQ-2023-00458,2023-08-27,Tata Motors,"Drive Spindle Shaft Rev-2",EN8,0.997,82000,2.8,123.74,lost
+PQ-2024-00459,2024-08-14,Bharat Forge,"Flange Hub Rev-4",EN8D,1.87,89000,7.87,307.05,lost
+PQ-2026-00460,2026-12-24,Endurance Technologies,"Gear Blank 5-Speed Rev-2",20MnCr5,1.301,101000,4.8,247.12,lost
+PQ-2023-00461,2023-04-06,Mahindra & Mahindra,"Drive Spindle Shaft Rev-1",EN8,0.878,12000,4.06,107.06,open
+PQ-2026-00462,2026-11-21,Bajaj Auto,"Brake Caliper Bracket Rev-1",LM24,1.202,0,4.45,187.17,lost
+PQ-2023-00463,2023-10-15,Bajaj Auto,"Drive Spindle Shaft Rev-3",EN8,0.874,42000,2.62,88.37,lost
+PQ-2024-00464,2024-05-16,Tata Motors,"Gear Blank 5-Speed Rev-3",20MnCr5,1.273,20000,4.9,225.78,lost
+PQ-2023-00465,2023-06-04,Mahindra & Mahindra,"Transmission Pinion Rev-3",20MnCr5,1.277,19000,4.69,307.2,lost
+PQ-2026-00466,2026-02-06,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,0.823,141000,3.75,140.88,open
+PQ-2025-00467,2025-05-12,Mahindra & Mahindra,"Drive Spindle Shaft Rev-3",EN8,0.869,163000,3.11,120.07,won
+PQ-2024-00468,2024-02-12,Mahindra & Mahindra,"Brake Caliper Bracket Rev-4",LM24,0.905,120000,3.78,203.87,lost
+PQ-2024-00469,2024-09-28,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,0.875,62000,2.99,136.45,won
+PQ-2023-00470,2023-06-14,Bajaj Auto,"Suspension Lift Arm Rev-1",40Cr4,4.53,138000,13.72,805.7,won
+PQ-2023-00471,2023-07-03,Dana India,"Steering Knuckle Rev-1",40Cr4,3.309,20000,10.6,677.48,lost
+PQ-2025-00472,2025-02-13,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,0.875,15000,2.29,134.81,lost
+PQ-2026-00473,2026-12-04,Bharat Forge,"Brake Caliper Bracket Rev-2",LM24,1.286,12000,4.75,184.05,open
+PQ-2024-00474,2024-12-02,Force Motors,"Brake Caliper Bracket Rev-4",LM24,0.908,146000,3.06,221.05,won
+PQ-2026-00475,2026-12-14,Force Motors,"Bushing Sleeve Rev-2",SS304,0.429,46000,2.17,120.96,open
+PQ-2024-00476,2024-12-08,Dana India,"Differential Cross Pin Rev-4",20MnCr5,0.786,19000,3.37,113.94,open
+PQ-2024-00477,2024-11-22,Force Motors,"Brake Caliper Bracket Rev-1",LM24,1.413,17000,4.61,244.97,open
+PQ-2025-00478,2025-10-14,Mahindra & Mahindra,"Suspension Lift Arm Rev-1",40Cr4,5.365,128000,10.54,807.54,won
+PQ-2023-00479,2023-11-05,Endurance Technologies,"Drive Spindle Shaft Rev-1",EN8,0.924,153000,2.79,109.18,lost
+PQ-2025-00480,2025-04-10,Force Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.325,77000,4.2,187.99,won
+PQ-2026-00481,2026-08-21,Dana India,"Steering Knuckle Rev-4",40Cr4,3.715,120000,11.48,918.21,won
+PQ-2023-00482,2023-11-02,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,0.877,194000,3.46,164.06,open
+PQ-2023-00483,2023-08-15,Force Motors,"Bushing Sleeve Rev-2",SS304,0.571,58000,2.82,142.58,open
+PQ-2026-00484,2026-07-03,Endurance Technologies,"Differential Cross Pin Rev-3",20MnCr5,0.775,176000,3.35,146.45,lost
+PQ-2025-00485,2025-06-28,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.569,88000,3.18,236.45,lost
+PQ-2023-00486,2023-07-26,Tata Motors,"Flange Hub Rev-1",EN8D,2.043,149000,5.99,391.05,lost
+PQ-2024-00487,2024-11-05,Force Motors,"Steering Knuckle Rev-1",40Cr4,5.028,92000,11.43,652.06,open
+PQ-2024-00488,2024-12-24,Mahindra & Mahindra,"Differential Cross Pin Rev-1",20MnCr5,0.637,199000,2.57,112.28,lost
+PQ-2024-00489,2024-08-04,Bharat Forge,"Gear Blank 5-Speed Rev-3",20MnCr5,1.836,83000,4.79,193.09,open
+PQ-2025-00490,2025-09-23,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,1.002,140000,3.56,125.61,won
+PQ-2026-00491,2026-09-20,Tata Motors,"Bushing Sleeve Rev-3",SS304,0.574,71000,1.95,140.51,open
+PQ-2025-00492,2025-11-20,Mahindra & Mahindra,"Bushing Sleeve Rev-4",SS304,0.798,8000,2.02,129.9,won
+PQ-2023-00493,2023-11-19,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,2.155,121000,5.03,359.23,lost
+PQ-2025-00494,2025-01-12,Tata Motors,"Cam Follower Arm Rev-4",EN8,0.441,173000,2.62,125.37,lost
+PQ-2025-00495,2025-12-09,Endurance Technologies,"Steering Knuckle Rev-3",,5.276,150000,14.34,939.3,won
+PQ-2024-00496,2024-12-16,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,1.437,94000,5.2,299.34,open
+PQ-2026-00497,2026-06-22,Force Motors,"Suspension Lift Arm Rev-4",40Cr4,4.573,91000,13.49,798.51,lost
+PQ-2024-00498,2024-02-18,Mahindra & Mahindra,"Transmission Pinion Rev-2",20MnCr5,1.435,129000,6.67,375.75,lost
+PQ-2025-00499,2025-04-23,Endurance Technologies,"Brake Caliper Bracket Rev-1",LM24,1.426,60000,4.86,219.4,won
+PQ-2025-00500,2025-07-22,Dana India,"Cam Follower Arm Rev-3",EN8,0.664,91000,3.12,75.5,open
+PQ-2026-00501,2026-10-15,Bharat Forge,"Transmission Pinion Rev-3",20MnCr5,1.559,33000,4.29,299.9,lost
+PQ-2024-00502,2024-03-11,Endurance Technologies,"Brake Caliper Bracket Rev-1",LM24,1.005,194000,4.98,202.19,lost
+PQ-2024-00503,2024-11-18,Bharat Forge,"Suspension Lift Arm Rev-1",40Cr4,4.629,122000,10.58,811.99,open
+PQ-2025-00504,2025-09-02,Force Motors,"Differential Cross Pin Rev-4",20MnCr5,0.814,148000,3.3,170.12,lost
+PQ-2025-00505,2025-01-22,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-1",20MnCr5,1.781,28000,5.22,216.79,lost
+PQ-2026-00506,2026-03-04,Mahindra & Mahindra,"Suspension Lift Arm Rev-3",40Cr4,5.375,115000,12.59,803.16,lost
+PQ-2024-00507,2024-04-09,Force Motors,"Brake Caliper Bracket Rev-4",LM24,0.901,188000,4.18,189.49,open
+PQ-2025-00508,2025-09-12,Endurance Technologies,"Flange Hub Rev-2",EN8D,3.127,179000,7.12,395.36,won
+PQ-2023-00509,2023-01-08,Endurance Technologies,"Flange Hub Rev-4",EN8D,2.377,117000,7.9,368.41,lost
+PQ-2026-00510,2026-06-12,Endurance Technologies,"Bushing Sleeve Rev-3",SS304,0.421,46000,2.51,154.99,lost
+PQ-2025-00511,2025-11-22,Dana India,"Cam Follower Arm Rev-4",EN8,0.717,173000,3.17,104.74,open
+PQ-2026-00512,2026-01-01,Dana India,"Suspension Lift Arm Rev-3",40Cr4,4.304,197000,11.28,759.51,open
+PQ-2023-00513,2023-01-11,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.667,77000,4.97,222.82,lost
+PQ-2025-00514,2025-07-20,Bajaj Auto,"Cam Follower Arm Rev-2",EN8,0.795,33000,3.25,117.44,lost
+PQ-2024-00515,2024-06-17,Bharat Forge,"Drive Spindle Shaft Rev-1",EN8,0.52,104000,3.07,93.57,lost
+PQ-2025-00516,2025-08-12,Endurance Technologies,"Gear Blank 5-Speed Rev-1",20MnCr5,1.239,160000,4.62,249.53,won
+PQ-2023-00517,2023-12-05,Force Motors,"Transmission Pinion Rev-2",20MnCr5,2.391,85000,4.25,348.38,won
+PQ-2023-00518,2023-12-22,Endurance Technologies,"Cam Follower Arm Rev-4",EN8,0.46,58000,2.85,97.07,open
+PQ-2025-00519,2025-03-11,Bharat Forge,"Flange Hub Rev-4",EN8D,3.205,33000,5.91,347.06,lost
+PQ-2023-00520,2023-12-16,Mahindra & Mahindra,"Differential Cross Pin Rev-1",20MnCr5,0.743,58000,3.26,151.35,open
+PQ-2023-00521,2023-09-05,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,2.331,50000,4.48,335.43,won
+PQ-2026-00522,2026-10-12,Mahindra & Mahindra,"Steering Knuckle Rev-1",40Cr4,4.773,10000,14.07,949.71,lost
+PQ-2024-00523,2024-01-02,Dana India,"Drive Spindle Shaft Rev-4",EN8,0.978,144000,2.67,111.48,lost
+PQ-2024-00524,2024-07-27,Dana India,"Suspension Lift Arm Rev-4",40Cr4,4.8,120000,10.71,842.64,won
+PQ-2026-00525,2026-06-01,Tata Motors,"Steering Knuckle Rev-1",40Cr4,5.031,192000,13.35,713.91,open
+PQ-2024-00526,2024-05-14,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-1",20MnCr5,1.889,156000,4.65,230.18,lost
+PQ-2024-00527,2024-06-27,Mahindra & Mahindra,"Suspension Lift Arm Rev-3",40Cr4,4.058,22000,11.11,825.98,won
+PQ-2024-00528,2024-08-15,Force Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,-1.5,98000,5.12,203.6,won
+PQ-2025-00529,2025-03-12,Mahindra & Mahindra,"Steering Knuckle Rev-3",40Cr4,5.968,39000,11.49,871.3,open
+PQ-2026-00530,2026-11-03,Bharat Forge,"Bushing Sleeve Rev-1",SS304,0.792,55000,2.07,118.87,lost
+PQ-2023-00531,2023-02-15,Bharat Forge,"Gear Blank 5-Speed Rev-3",20MnCr5,1.524,86000,3.92,215.45,lost
+PQ-2025-00532,2025-03-16,Tata Motors,"Transmission Pinion Rev-2",20MnCr5,1.307,87000,4.59,238.88,open
+PQ-2025-00533,2025-05-20,Force Motors,"Flange Hub Rev-2",EN8D,1.871,39000,5.95,318.57,open
+PQ-2024-00534,2024-06-23,Force Motors,"Flange Hub Rev-2",EN8D,3.026,174000,5.57,410.24,won
+PQ-2026-00535,2026-06-24,Dana India,"Cam Follower Arm Rev-2",EN8,0.701,160000,3.48,91.72,lost
+PQ-2024-00536,2024-06-25,Endurance Technologies,"Gear Blank 5-Speed Rev-4",20MnCr5,1.633,177000,5.13,236.43,lost
+PQ-2026-00537,2026-11-27,Bajaj Auto,"Gear Blank 5-Speed Rev-2",20MnCr5,1.753,169000,4.88,286.83,open
+PQ-2023-00538,2023-07-01,Dana India,"Gear Blank 5-Speed Rev-2",20MnCr5,1.699,175000,4.56,272.67,lost
+PQ-2026-00539,2026-08-28,Endurance Technologies,"Drive Spindle Shaft Rev-1",EN8,0.722,95000,3.73,98.29,won
+PQ-2025-00540,2025-11-22,Mahindra & Mahindra,"Bushing Sleeve Rev-4",SS304,0.344,90000,1.95,134.43,won
+PQ-2023-00541,2023-08-08,Tata Motors,"Suspension Lift Arm Rev-4",40Cr4,5.45,176000,13.74,823.73,won
+PQ-2023-00542,2023-09-22,Mahindra & Mahindra,"Flange Hub Rev-3",EN8D,3.374,143000,5.65,411.96,lost
+PQ-2025-00543,2025-11-17,Force Motors,"Suspension Lift Arm Rev-2",40Cr4,4.945,160000,11.85,828.15,won
+PQ-2023-00544,2023-08-14,Tata Motors,"Suspension Lift Arm Rev-1",40Cr4,4.949,113000,10.84,816.13,lost
+PQ-2024-00545,2024-11-27,Endurance Technologies,"Transmission Pinion Rev-3",20MnCr5,1.782,117000,4.24,320.81,lost
+PQ-2023-00546,2023-06-24,Dana India,"Drive Spindle Shaft Rev-2",EN8,0.67,71000,2.66,107.63,won
+PQ-2026-00547,2026-11-08,Bajaj Auto,"Cam Follower Arm Rev-1",EN8,0.724,169000,2.08,110.64,lost
+PQ-2023-00548,2023-05-19,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.734,25000,1.53,99.9,lost
+PQ-2025-00549,2025-01-08,Bharat Forge,"Flange Hub Rev-1",EN8D,1.942,176000,8.12,413.66,lost
+PQ-2026-00550,2026-02-27,Dana India,"Transmission Pinion Rev-3",20MnCr5,1.827,134000,5.12,355.21,open
+PQ-2023-00551,2023-11-14,Force Motors,"Flange Hub Rev-2",EN8D,2.622,148000,7.81,446.44,won
+PQ-2024-00552,2024-02-19,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.113,79000,5.02,266.62,lost
+PQ-2023-00553,2023-08-07,Bharat Forge,"Gear Blank 5-Speed Rev-2",20MnCr5,1.716,44000,3.7,242.74,lost
+PQ-2024-00554,2024-09-15,Force Motors,"Drive Spindle Shaft Rev-3",EN8,1.154,198000,3.01,113.62,open
+PQ-2026-00555,2026-09-17,Bharat Forge,"Steering Knuckle Rev-3",40Cr4,4.077,87000,14.66,742.58,open
+PQ-2026-00556,2026-11-06,Bharat Forge,"Transmission Pinion Rev-2",20MnCr5,1.589,146000,4.25,260.61,won
+PQ-2024-00557,2024-11-04,Endurance Technologies,"Cam Follower Arm Rev-2",EN8,0.614,192000,2.21,121.25,lost
+PQ-2025-00558,2025-11-02,Mahindra & Mahindra,"Drive Spindle Shaft Rev-2",EN8,0.794,179000,4.15,133.02,lost
+PQ-2026-00559,2026-10-22,Tata Motors,"Brake Caliper Bracket Rev-4",LM24,0.824,106000,4.7,185.2,open
+PQ-2024-00560,2024-04-16,Bajaj Auto,"Brake Caliper Bracket Rev-2",LM24,0.887,121000,4.24,197.58,lost
+PQ-2025-00561,2025-09-12,Force Motors,"Brake Caliper Bracket Rev-4",LM24,1.544,0,3.72,233.01,open
+PQ-2024-00562,2024-05-23,Bharat Forge,"Gear Blank 5-Speed Rev-2",20MnCr5,1.155,35000,4.69,252.38,lost
+PQ-2026-00563,2026-01-21,Bajaj Auto,"Gear Blank 5-Speed Rev-3",20MnCr5,1.764,48000,5.31,277.55,lost
+PQ-2024-00564,2024-02-09,Dana India,"Brake Caliper Bracket Rev-3",LM24,1.221,167000,3.51,223.69,lost
+PQ-2023-00565,2023-05-28,Bharat Forge,"Steering Knuckle Rev-4",40Cr4,3.973,109000,10.66,878.12,lost
+PQ-2024-00566,2024-06-06,Force Motors,"Transmission Pinion Rev-1",20MnCr5,2.052,18000,6.33,299.21,lost
+PQ-2025-00567,2025-11-16,Mahindra & Mahindra,"Flange Hub Rev-3",EN8D,2.603,6000,6.02,381.87,open
+PQ-2023-00568,2023-08-15,Endurance Technologies,"Drive Spindle Shaft Rev-4",EN8,0.524,78000,2.63,101.85,lost
+PQ-2023-00569,2023-06-15,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,4.408,158000,10.98,760.16,lost
+PQ-2023-00570,2023-06-02,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,0.866,168000,2.57,139.89,won
+PQ-2024-00571,2024-03-25,Dana India,"Cam Follower Arm Rev-2",EN8,0.461,186000,2.82,94.85,won
+PQ-2023-00572,2023-08-25,Dana India,"Transmission Pinion Rev-2",20MnCr5,1.418,59000,6.06,257.25,open
+PQ-2025-00573,2025-11-08,Endurance Technologies,"Steering Knuckle Rev-4",40Cr4,4.671,86000,9.66,848.1,lost
+PQ-2026-00574,2026-03-16,Bajaj Auto,"Flange Hub Rev-3",EN8D,2.559,22000,6.38,358.12,lost
+PQ-2025-00575,2025-06-23,Dana India,"Cam Follower Arm Rev-3",EN8,0.425,123000,2.99,79.68,open
+PQ-2023-00576,2023-04-24,Mahindra & Mahindra,"Cam Follower Arm Rev-3",EN8,0.744,57000,3.16,113.39,won
+PQ-2025-00577,2025-05-16,Tata Motors,"Suspension Lift Arm Rev-2",40Cr4,5.347,188000,12.44,840.46,won
+PQ-2026-00578,2026-01-26,Tata Motors,"Cam Follower Arm Rev-3",EN8,0.582,52000,3.18,91.47,open
+PQ-2026-00579,2026-12-08,Bharat Forge,"Bushing Sleeve Rev-2",SS304,0.635,115000,2.76,122.15,won
+PQ-2025-00580,2025-05-12,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.346,71000,4.93,201.14,lost
+PQ-2023-00581,2023-06-13,Dana India,"Suspension Lift Arm Rev-2",40Cr4,4.976,35000,10.3,769.55,lost
+PQ-2025-00582,2025-01-25,Tata Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.381,143000,4.34,259.8,open
+PQ-2026-00583,2026-12-13,Bajaj Auto,"Cam Follower Arm Rev-2",EN8,0.667,129000,3.11,96.18,open
+PQ-2026-00584,2026-04-09,Dana India,"Transmission Pinion Rev-1",20MnCr5,1.812,134000,5.83,320.02,lost
+PQ-2024-00585,2024-04-04,Force Motors,"Bushing Sleeve Rev-4",SS304,0.601,18000,1.58,136.51,lost
+PQ-2026-00586,2026-04-11,Tata Motors,"Steering Knuckle Rev-4",40Cr4,5.034,159000,12.46,694.39,lost
+PQ-2026-00587,2026-05-21,Bharat Forge,"Drive Spindle Shaft Rev-2",EN8,0.651,94000,4.14,97.01,won
+PQ-2026-00588,2026-08-22,Dana India,"Bushing Sleeve Rev-4",SS304,0.336,169000,2.11,124.88,lost
+PQ-2024-00589,2024-04-24,Force Motors,"Transmission Pinion Rev-3",20MnCr5,1.804,23000,4.99,325.02,lost
+PQ-2025-00590,2025-07-16,Tata Motors,"Brake Caliper Bracket Rev-4",LM24,1.398,199000,4.64,204,won
+PQ-2023-00591,2023-05-13,Bajaj Auto,"Flange Hub Rev-1",EN8D,3.305,52000,7.96,408.52,open
+PQ-2025-00592,2025-12-19,Endurance Technologies,"Flange Hub Rev-1",EN8D,2.662,91000,6.15,426.86,lost
+PQ-2025-00593,2025-12-05,Bharat Forge,"Flange Hub Rev-1",EN8D,2.946,11000,6.76,385.57,won
+PQ-2026-00594,2026-09-18,Tata Motors,"Flange Hub Rev-1",,3.257,141000,7.1,414.86,open
+PQ-2025-00595,2025-09-23,Tata Motors,"Transmission Pinion Rev-4",20MnCr5,1.531,176000,6.57,339.72,lost
+PQ-2024-00596,2024-11-09,Endurance Technologies,"Bushing Sleeve Rev-2",SS304,0.564,149000,2.44,138.49,open
+PQ-2024-00597,2024-04-25,Tata Motors,"Drive Spindle Shaft Rev-4",EN8,0.539,154000,2.95,97.1,lost
+PQ-2024-00598,2024-03-26,Dana India,"Cam Follower Arm Rev-3",EN8,0.594,157000,2.69,91.25,lost
+PQ-2025-00599,2025-01-18,Force Motors,"Flange Hub Rev-3",EN8D,1.903,124000,7.18,446.65,lost
+PQ-2026-00600,2026-08-19,Bajaj Auto,"Brake Caliper Bracket Rev-4",LM24,1.041,163000,4.25,183,open
+PQ-2023-00601,2023-12-11,Bharat Forge,"Steering Knuckle Rev-1",40Cr4,3.409,188000,14.31,701.25,open
+PQ-2023-00602,2023-09-15,Mahindra & Mahindra,"Differential Cross Pin Rev-2",20MnCr5,0.937,144000,2.69,140.48,lost
+PQ-2024-00603,2024-12-20,Tata Motors,"Drive Spindle Shaft Rev-4",EN8,1.157,165000,3.18,138.48,open
+PQ-2024-00604,2024-03-22,Bajaj Auto,"Brake Caliper Bracket Rev-3",LM24,0.931,180000,3.96,183.91,lost
+PQ-2026-00605,2026-09-15,Bajaj Auto,"Steering Knuckle Rev-2",40Cr4,4.932,107000,9.54,707.6,lost
+PQ-2026-00606,2026-03-09,Force Motors,"Transmission Pinion Rev-1",20MnCr5,2.081,51000,5.87,370.74,lost
+PQ-2023-00607,2023-05-24,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,0.781,22000,2.58,110.61,lost
+PQ-2025-00608,2025-07-01,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.329,166000,4.62,224.54,open
+PQ-2023-00609,2023-07-19,Dana India,"Bushing Sleeve Rev-3",SS304,0.555,47000,2.05,151.62,won
+PQ-2026-00610,2026-12-07,Dana India,"Bushing Sleeve Rev-3",SS304,0.579,103000,2.59,146.75,lost
+PQ-2026-00611,2026-02-22,Endurance Technologies,"Cam Follower Arm Rev-3",EN8,0.833,141000,2.48,84.07,lost
+PQ-2024-00612,2024-03-09,Bharat Forge,"Gear Blank 5-Speed Rev-4",20MnCr5,1.214,130000,4.66,200.96,lost
+PQ-2024-00613,2024-06-12,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,1.859,192000,4.53,259.57,open
+PQ-2025-00614,2025-04-01,Mahindra & Mahindra,"Steering Knuckle Rev-3",40Cr4,5.74,191000,9.47,676.53,open
+PQ-2025-00615,2025-01-06,Bajaj Auto,"Bushing Sleeve Rev-4",SS304,0.772,149000,2.06,118.72,open
+PQ-2025-00616,2025-12-11,Dana India,"Gear Blank 5-Speed Rev-2",20MnCr5,1.747,59000,3.87,191.78,lost
+PQ-2024-00617,2024-07-20,Bajaj Auto,"Transmission Pinion Rev-1",20MnCr5,1.722,146000,4.54,353.66,lost
+PQ-2023-00618,2023-11-21,Bajaj Auto,"Bushing Sleeve Rev-2",SS304,0.756,10000,1.85,97.61,open
+PQ-2026-00619,2026-07-13,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,1.7,66000,5.69,222.29,won
+PQ-2025-00620,2025-09-09,Bharat Forge,"Gear Blank 5-Speed Rev-3",20MnCr5,1.681,162000,4.02,195.81,open
+PQ-2025-00621,2025-05-06,Endurance Technologies,"Differential Cross Pin Rev-2",20MnCr5,0.759,109000,2.96,150.68,lost
+PQ-2023-00622,2023-10-21,Dana India,"Steering Knuckle Rev-1",40Cr4,4.447,171000,10.57,740.2,lost
+PQ-2026-00623,2026-10-21,Mahindra & Mahindra,"Bushing Sleeve Rev-3",SS304,0.339,124000,2.91,137.45,lost
+PQ-2025-00624,2025-07-16,Endurance Technologies,"Brake Caliper Bracket Rev-2",LM24,0.864,118000,4.18,211.15,open
+PQ-2024-00625,2024-01-25,Force Motors,"Cam Follower Arm Rev-2",EN8,0.751,160000,2.15,101.01,lost
+PQ-2023-00626,2023-07-24,Bharat Forge,"Transmission Pinion Rev-1",20MnCr5,1.419,49000,5.01,293.79,lost
+PQ-2026-00627,2026-08-21,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,-1.5,35000,2.37,137.39,lost
+PQ-2023-00628,2023-03-26,Dana India,"Gear Blank 5-Speed Rev-2",20MnCr5,1.796,71000,3.57,214.33,won
+PQ-2025-00629,2025-01-11,Bajaj Auto,"Drive Spindle Shaft Rev-2",EN8,1.117,194000,2.78,120.88,won
+PQ-2023-00630,2023-03-10,Bharat Forge,"Drive Spindle Shaft Rev-3",EN8,0.993,135000,4.42,94.6,won
+PQ-2023-00631,2023-03-11,Dana India,"Bushing Sleeve Rev-2",SS304,0.776,150000,2.58,155.2,lost
+PQ-2023-00632,2023-10-15,Bharat Forge,"Brake Caliper Bracket Rev-1",LM24,1.182,8000,4.52,218.98,won
+PQ-2023-00633,2023-06-25,Tata Motors,"Drive Spindle Shaft Rev-4",EN8,0.939,188000,3.35,126.65,open
+PQ-2023-00634,2023-02-07,Force Motors,"Drive Spindle Shaft Rev-3",EN8,0.583,169000,4.45,124.95,open
+PQ-2024-00635,2024-04-25,Force Motors,"Flange Hub Rev-3",EN8D,2.983,170000,6.56,302.69,lost
+PQ-2023-00636,2023-08-15,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.17,23000,4.84,218.24,open
+PQ-2025-00637,2025-02-28,Mahindra & Mahindra,"Steering Knuckle Rev-1",40Cr4,4.172,43000,9.71,652.5,won
+PQ-2026-00638,2026-04-07,Force Motors,"Drive Spindle Shaft Rev-1",EN8,0.847,186000,2.8,122.66,lost
+PQ-2025-00639,2025-03-14,Endurance Technologies,"Steering Knuckle Rev-3",40Cr4,5.251,84000,10.51,679.01,won
+PQ-2024-00640,2024-11-23,Dana India,"Transmission Pinion Rev-1",20MnCr5,1.45,16000,6.75,368.44,lost
+PQ-2025-00641,2025-01-01,Mahindra & Mahindra,"Flange Hub Rev-3",EN8D,2.235,51000,6.12,289.89,open
+PQ-2024-00642,2024-02-01,Dana India,"Brake Caliper Bracket Rev-2",LM24,1.121,114000,3.47,212.03,open
+PQ-2025-00643,2025-07-11,Dana India,"Drive Spindle Shaft Rev-3",EN8,0.937,92000,2.82,116.39,open
+PQ-2025-00644,2025-01-02,Bajaj Auto,"Suspension Lift Arm Rev-4",40Cr4,4.88,181000,12.43,746.68,open
+PQ-2026-00645,2026-03-08,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.451,57000,2.03,125.82,won
+PQ-2025-00646,2025-05-22,Bajaj Auto,"Transmission Pinion Rev-2",20MnCr5,1.571,34000,6.89,299.64,lost
+PQ-2023-00647,2023-06-20,Endurance Technologies,"Gear Blank 5-Speed Rev-2",20MnCr5,1.572,102000,5.02,204.32,won
+PQ-2025-00648,2025-06-03,Bajaj Auto,"Brake Caliper Bracket Rev-4",LM24,1.031,36000,4.87,192.1,lost
+PQ-2024-00649,2024-01-12,Force Motors,"Brake Caliper Bracket Rev-3",LM24,1.185,89000,3.28,254.21,lost
+PQ-2024-00650,2024-09-14,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.243,102000,4.11,256.78,open
+PQ-2024-00651,2024-01-14,Bajaj Auto,"Drive Spindle Shaft Rev-1",EN8,0.536,92000,3.86,97.04,won
+PQ-2023-00652,2023-07-21,Force Motors,"Suspension Lift Arm Rev-3",40Cr4,4.606,40000,12.79,863.8,open
+PQ-2026-00653,2026-02-06,Endurance Technologies,"Drive Spindle Shaft Rev-1",EN8,0.883,21000,3.84,106.58,open
+PQ-2023-00654,2023-07-28,Endurance Technologies,"Transmission Pinion Rev-1",20MnCr5,1.268,143000,5.97,228.04,lost
+PQ-2025-00655,2025-07-13,Mahindra & Mahindra,"Steering Knuckle Rev-2",40Cr4,3.358,148000,11.87,744.25,open
+PQ-2023-00656,2023-05-19,Mahindra & Mahindra,"Differential Cross Pin Rev-3",20MnCr5,0.867,132000,3.36,112.68,open
+PQ-2025-00657,2025-09-02,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,1.557,94000,4.56,375.79,won
+PQ-2026-00658,2026-11-05,Dana India,"Drive Spindle Shaft Rev-1",EN8,1.052,46000,3.17,136.75,won
+PQ-2026-00659,2026-10-06,Bajaj Auto,"Flange Hub Rev-2",EN8D,2.86,6000,7.67,299.15,won
+PQ-2023-00660,2023-02-25,Force Motors,"Drive Spindle Shaft Rev-1",EN8,0.96,0,3.5,100.67,open
+PQ-2023-00661,2023-08-22,Mahindra & Mahindra,"Bushing Sleeve Rev-1",SS304,0.668,65000,1.81,138.1,lost
+PQ-2023-00662,2023-12-17,Force Motors,"Steering Knuckle Rev-2",40Cr4,6.351,115000,12.67,870.06,open
+PQ-2023-00663,2023-12-23,Force Motors,"Suspension Lift Arm Rev-2",40Cr4,5.35,126000,11.75,814.78,won
+PQ-2023-00664,2023-04-10,Mahindra & Mahindra,"Flange Hub Rev-1",EN8D,1.975,159000,5.76,381.86,open
+PQ-2023-00665,2023-09-09,Dana India,"Transmission Pinion Rev-4",20MnCr5,2.043,58000,6.36,263.57,open
+PQ-2024-00666,2024-01-16,Force Motors,"Steering Knuckle Rev-1",40Cr4,5.69,135000,11.92,876.33,lost
+PQ-2026-00667,2026-08-07,Bharat Forge,"Steering Knuckle Rev-2",40Cr4,3.884,28000,14.01,892.89,lost
+PQ-2024-00668,2024-09-17,Bharat Forge,"Bushing Sleeve Rev-2",SS304,0.47,175000,2.03,142.09,lost
+PQ-2024-00669,2024-07-26,Force Motors,"Drive Spindle Shaft Rev-2",EN8,0.997,126000,2.69,96.96,open
+PQ-2023-00670,2023-06-24,Endurance Technologies,"Flange Hub Rev-3",EN8D,2.154,103000,5.96,319.71,open
+PQ-2024-00671,2024-02-12,Bharat Forge,"Bushing Sleeve Rev-1",SS304,0.57,43000,2.04,99.99,won
+PQ-2024-00672,2024-05-10,Tata Motors,"Brake Caliper Bracket Rev-4",LM24,1.223,133000,4.81,195.98,lost
+PQ-2025-00673,2025-06-28,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,0.843,81000,4.08,132.58,won
+PQ-2024-00674,2024-08-19,Dana India,"Cam Follower Arm Rev-3",EN8,0.507,78000,3.12,75.65,open
+PQ-2026-00675,2026-02-03,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.519,95000,3.56,256.86,lost
+PQ-2024-00676,2024-07-18,Bajaj Auto,"Differential Cross Pin Rev-3",20MnCr5,0.953,96000,2.28,145.89,open
+PQ-2026-00677,2026-09-09,Tata Motors,"Suspension Lift Arm Rev-2",40Cr4,4.926,111000,11.2,808.54,won
+PQ-2023-00678,2023-06-12,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,0.643,199000,3.23,155.73,open
+PQ-2025-00679,2025-01-14,Dana India,"Transmission Pinion Rev-2",20MnCr5,1.515,157000,6.97,281.57,open
+PQ-2026-00680,2026-01-02,Force Motors,"Flange Hub Rev-4",EN8D,3.131,39000,5.83,435.78,won
+PQ-2026-00681,2026-02-17,Mahindra & Mahindra,"Drive Spindle Shaft Rev-3",EN8,0.957,124000,3.11,100.85,open
+PQ-2024-00682,2024-07-19,Tata Motors,"Flange Hub Rev-4",EN8D,3.032,168000,7.71,358.38,open
+PQ-2026-00683,2026-11-17,Dana India,"Bushing Sleeve Rev-3",SS304,0.672,189000,2.41,126.82,lost
+PQ-2026-00684,2026-04-21,Mahindra & Mahindra,"Flange Hub Rev-2",EN8D,2.421,162000,7.28,301.02,open
+PQ-2025-00685,2025-09-28,Bharat Forge,"Differential Cross Pin Rev-3",20MnCr5,0.98,51000,2.38,170.88,won
+PQ-2026-00686,2026-02-04,Dana India,"Flange Hub Rev-3",EN8D,3.091,177000,7.13,392.67,won
+PQ-2025-00687,2025-09-27,Endurance Technologies,"Flange Hub Rev-1",EN8D,2.147,96000,8.4,297.67,lost
+PQ-2026-00688,2026-03-07,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.599,138000,1.87,144.75,lost
+PQ-2026-00689,2026-02-13,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,0.658,75000,2.29,141.57,won
+PQ-2024-00690,2024-11-12,Mahindra & Mahindra,"Differential Cross Pin Rev-4",20MnCr5,1.01,63000,3.21,134.31,lost
+PQ-2024-00691,2024-03-08,Bharat Forge,"Cam Follower Arm Rev-2",EN8,0.75,77000,2.01,101,lost
+PQ-2023-00692,2023-04-26,Endurance Technologies,"Bushing Sleeve Rev-2",SS304,0.748,120000,1.6,120.65,open
+PQ-2024-00693,2024-04-24,Bharat Forge,"Bushing Sleeve Rev-3",,0.375,142000,2.84,153.6,lost
+PQ-2025-00694,2025-12-19,Endurance Technologies,"Bushing Sleeve Rev-3",SS304,0.497,149000,1.82,103.03,lost
+PQ-2023-00695,2023-12-09,Endurance Technologies,"Gear Blank 5-Speed Rev-4",20MnCr5,1.537,51000,5.24,229.95,lost
+PQ-2025-00696,2025-05-15,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,0.747,175000,3.16,142.14,won
+PQ-2026-00697,2026-12-03,Tata Motors,"Drive Spindle Shaft Rev-3",EN8,1.058,73000,3.82,106.61,open
+PQ-2025-00698,2025-07-06,Dana India,"Flange Hub Rev-2",EN8D,2.685,176000,8.26,371.04,won
+PQ-2023-00699,2023-02-04,Tata Motors,"Cam Follower Arm Rev-2",EN8,0.894,145000,2.13,89.04,open
+PQ-2025-00700,2025-06-03,Bajaj Auto,"Steering Knuckle Rev-4",40Cr4,4.767,130000,12.94,778.99,lost
+PQ-2024-00701,2024-10-26,Mahindra & Mahindra,"Flange Hub Rev-4",EN8D,1.945,105000,5.15,323.64,open
+PQ-2023-00702,2023-04-05,Endurance Technologies,"Cam Follower Arm Rev-3",EN8,0.613,19000,2.84,121.15,lost
+PQ-2026-00703,2026-07-08,Force Motors,"Drive Spindle Shaft Rev-3",EN8,0.615,194000,4.13,106.77,open
+PQ-2023-00704,2023-05-20,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,2.398,122000,6.39,375.09,won
+PQ-2025-00705,2025-11-12,Tata Motors,"Bushing Sleeve Rev-4",SS304,0.583,173000,1.5,117.39,won
+PQ-2025-00706,2025-05-03,Mahindra & Mahindra,"Flange Hub Rev-2",EN8D,2.071,26000,6.45,329.17,won
+PQ-2025-00707,2025-10-08,Force Motors,"Suspension Lift Arm Rev-1",40Cr4,4.487,165000,12.37,770.36,lost
+PQ-2025-00708,2025-04-08,Bharat Forge,"Gear Blank 5-Speed Rev-3",20MnCr5,1.793,116000,5.25,193.12,lost
+PQ-2024-00709,2024-10-04,Mahindra & Mahindra,"Transmission Pinion Rev-2",20MnCr5,2.064,74000,4.73,308.9,won
+PQ-2024-00710,2024-09-10,Bajaj Auto,"Suspension Lift Arm Rev-4",40Cr4,5.191,164000,11.86,724.74,lost
+PQ-2023-00711,2023-12-26,Tata Motors,"Transmission Pinion Rev-4",20MnCr5,1.927,184000,6.31,326.64,lost
+PQ-2026-00712,2026-09-03,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-4",20MnCr5,1.307,57000,4.14,211.24,won
+PQ-2023-00713,2023-12-12,Dana India,"Gear Blank 5-Speed Rev-3",20MnCr5,1.223,55000,3.63,287.12,won
+PQ-2025-00714,2025-04-07,Endurance Technologies,"Steering Knuckle Rev-2",40Cr4,5.854,199000,10.72,720.53,lost
+PQ-2023-00715,2023-04-13,Mahindra & Mahindra,"Cam Follower Arm Rev-3",EN8,0.637,93000,2.5,91.26,open
+PQ-2025-00716,2025-10-17,Bharat Forge,"Suspension Lift Arm Rev-1",40Cr4,5.435,141000,12.34,833.64,open
+PQ-2025-00717,2025-10-15,Dana India,"Suspension Lift Arm Rev-3",40Cr4,4.935,59000,11.94,830.99,lost
+PQ-2025-00718,2025-06-01,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.797,19000,3.58,256.89,won
+PQ-2024-00719,2024-07-18,Mahindra & Mahindra,"Transmission Pinion Rev-1",20MnCr5,1.354,198000,5.05,225,open
+PQ-2024-00720,2024-12-04,Endurance Technologies,"Bushing Sleeve Rev-3",SS304,0.559,42000,1.62,129.5,won
+PQ-2025-00721,2025-08-05,Tata Motors,"Drive Spindle Shaft Rev-4",EN8,1.083,178000,2.97,90.73,won
+PQ-2023-00722,2023-06-16,Mahindra & Mahindra,"Steering Knuckle Rev-2",40Cr4,4.08,188000,14.16,720.87,lost
+PQ-2026-00723,2026-03-23,Mahindra & Mahindra,"Cam Follower Arm Rev-1",EN8,0.496,153000,2.9,128.38,lost
+PQ-2026-00724,2026-11-24,Endurance Technologies,"Transmission Pinion Rev-4",20MnCr5,2.354,87000,5.25,335.24,open
+PQ-2023-00725,2023-05-06,Dana India,"Transmission Pinion Rev-4",20MnCr5,1.658,21000,4.91,355.64,lost
+PQ-2024-00726,2024-09-06,Tata Motors,"Transmission Pinion Rev-4",20MnCr5,-1.5,112000,4.1,348.65,lost
+PQ-2024-00727,2024-09-25,Mahindra & Mahindra,"Bushing Sleeve Rev-3",SS304,0.657,145000,2.84,147.37,open
+PQ-2026-00728,2026-01-13,Force Motors,"Steering Knuckle Rev-4",40Cr4,3.267,165000,14.35,704.02,won
+PQ-2024-00729,2024-09-25,Endurance Technologies,"Suspension Lift Arm Rev-1",40Cr4,4.107,178000,13.37,776.2,won
+PQ-2025-00730,2025-07-25,Force Motors,"Gear Blank 5-Speed Rev-3",20MnCr5,1.429,65000,5.49,227.31,won
+PQ-2023-00731,2023-12-15,Endurance Technologies,"Cam Follower Arm Rev-2",EN8,0.458,106000,2.46,110.43,open
+PQ-2023-00732,2023-07-27,Force Motors,"Cam Follower Arm Rev-3",EN8,0.703,7000,2.65,106.11,open
+PQ-2024-00733,2024-11-01,Force Motors,"Flange Hub Rev-4",EN8D,2.174,54000,8.38,328.98,open
+PQ-2026-00734,2026-02-11,Endurance Technologies,"Suspension Lift Arm Rev-4",40Cr4,4.944,196000,13.28,727.9,lost
+PQ-2026-00735,2026-07-14,Bajaj Auto,"Gear Blank 5-Speed Rev-4",20MnCr5,1.295,168000,4.81,238.19,open
+PQ-2025-00736,2025-10-19,Tata Motors,"Brake Caliper Bracket Rev-3",LM24,1.343,64000,3.4,179.62,open
+PQ-2024-00737,2024-01-26,Force Motors,"Transmission Pinion Rev-4",20MnCr5,1.961,107000,4.72,332,lost
+PQ-2024-00738,2024-04-26,Bajaj Auto,"Gear Blank 5-Speed Rev-4",20MnCr5,1.334,167000,5.11,214.33,lost
+PQ-2025-00739,2025-02-08,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.659,11000,1.71,112.69,open
+PQ-2023-00740,2023-05-05,Endurance Technologies,"Steering Knuckle Rev-1",40Cr4,6.035,181000,9.77,919.71,lost
+PQ-2025-00741,2025-04-02,Bharat Forge,"Flange Hub Rev-2",EN8D,2.296,67000,6.86,352.23,lost
+PQ-2023-00742,2023-07-16,Bharat Forge,"Cam Follower Arm Rev-4",EN8,0.71,10000,2.65,85.51,lost
+PQ-2025-00743,2025-02-04,Tata Motors,"Transmission Pinion Rev-1",20MnCr5,1.714,160000,6.19,326.76,lost
+PQ-2023-00744,2023-11-19,Tata Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.317,119000,4.75,259.03,open
+PQ-2026-00745,2026-12-17,Endurance Technologies,"Suspension Lift Arm Rev-1",40Cr4,4.912,158000,12.33,839.77,won
+PQ-2023-00746,2023-02-04,Bharat Forge,"Bushing Sleeve Rev-2",SS304,0.625,117000,2.88,120.31,won
+PQ-2026-00747,2026-06-14,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.671,102000,3.07,174.5,open
+PQ-2026-00748,2026-09-12,Dana India,"Drive Spindle Shaft Rev-4",EN8,1.008,103000,3.51,105.24,lost
+PQ-2024-00749,2024-12-08,Force Motors,"Steering Knuckle Rev-2",40Cr4,4.993,73000,9.9,826.18,lost
+PQ-2025-00750,2025-10-05,Tata Motors,"Drive Spindle Shaft Rev-2",EN8,0.871,125000,3.78,99.2,lost
+PQ-2026-00751,2026-12-04,Tata Motors,"Cam Follower Arm Rev-2",EN8,0.453,33000,2.55,107.45,open
+PQ-2023-00752,2023-08-10,Dana India,"Brake Caliper Bracket Rev-2",LM24,1.188,169000,4.61,259.9,lost
+PQ-2024-00753,2024-06-28,Dana India,"Gear Blank 5-Speed Rev-4",20MnCr5,1.233,132000,5.11,202.64,lost
+PQ-2023-00754,2023-04-19,Mahindra & Mahindra,"Bushing Sleeve Rev-3",SS304,0.484,138000,2.48,106.86,open
+PQ-2026-00755,2026-12-26,Endurance Technologies,"Steering Knuckle Rev-1",40Cr4,6.094,134000,11.7,701.55,open
+PQ-2025-00756,2025-07-10,Endurance Technologies,"Steering Knuckle Rev-2",40Cr4,3.368,22000,12.17,915.89,lost
+PQ-2024-00757,2024-01-27,Dana India,"Cam Follower Arm Rev-4",EN8,0.427,154000,2.7,128.51,won
+PQ-2023-00758,2023-01-18,Bharat Forge,"Transmission Pinion Rev-2",20MnCr5,1.83,41000,6.93,304.08,won
+PQ-2024-00759,2024-01-17,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,1.075,0,3.3,91.86,lost
+PQ-2025-00760,2025-01-02,Dana India,"Differential Cross Pin Rev-4",20MnCr5,0.603,140000,2.82,150.63,lost
+PQ-2023-00761,2023-10-05,Force Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.704,39000,5.24,280.46,open
+PQ-2025-00762,2025-04-28,Dana India,"Flange Hub Rev-3",EN8D,2.036,61000,5.41,414.53,won
+PQ-2025-00763,2025-10-12,Dana India,"Brake Caliper Bracket Rev-3",LM24,1.588,135000,3.23,160.31,lost
+PQ-2025-00764,2025-06-18,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,1.75,54000,4.57,372.16,won
+PQ-2023-00765,2023-09-22,Dana India,"Steering Knuckle Rev-4",40Cr4,5.969,57000,9.13,853.1,lost
+PQ-2023-00766,2023-09-17,Force Motors,"Drive Spindle Shaft Rev-2",EN8,0.96,14000,3.97,126.1,lost
+PQ-2026-00767,2026-11-11,Mahindra & Mahindra,"Suspension Lift Arm Rev-2",40Cr4,4.305,50000,11.58,790.84,lost
+PQ-2024-00768,2024-06-01,Bharat Forge,"Differential Cross Pin Rev-4",20MnCr5,0.724,85000,2.84,163.61,open
+PQ-2025-00769,2025-08-10,Bharat Forge,"Differential Cross Pin Rev-2",20MnCr5,0.876,128000,3.07,121.59,lost
+PQ-2024-00770,2024-10-19,Dana India,"Differential Cross Pin Rev-4",20MnCr5,0.954,134000,2.81,161.46,open
+PQ-2025-00771,2025-03-16,Force Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.364,115000,3.96,191.74,open
+PQ-2023-00772,2023-08-17,Endurance Technologies,"Differential Cross Pin Rev-3",20MnCr5,0.737,109000,2.77,119.89,open
+PQ-2026-00773,2026-08-12,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,1.443,63000,4.87,263.57,lost
+PQ-2025-00774,2025-08-20,Force Motors,"Drive Spindle Shaft Rev-2",EN8,0.799,173000,3.17,107.18,won
+PQ-2025-00775,2025-01-13,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.571,62000,4.8,220.56,open
+PQ-2024-00776,2024-11-08,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.924,11000,3.65,148.52,open
+PQ-2025-00777,2025-12-16,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,0.772,116000,3.05,128.61,won
+PQ-2026-00778,2026-07-04,Dana India,"Differential Cross Pin Rev-2",20MnCr5,0.897,36000,2.77,119.95,lost
+PQ-2026-00779,2026-03-12,Force Motors,"Steering Knuckle Rev-4",40Cr4,5.84,126000,9.35,867.6,lost
+PQ-2026-00780,2026-05-19,Endurance Technologies,"Drive Spindle Shaft Rev-2",EN8,0.993,168000,3.92,129.65,lost
+PQ-2024-00781,2024-10-15,Mahindra & Mahindra,"Suspension Lift Arm Rev-2",40Cr4,5.262,39000,12.2,749.58,won
+PQ-2025-00782,2025-01-08,Dana India,"Gear Blank 5-Speed Rev-2",20MnCr5,1.5,114000,5.11,180.43,won
+PQ-2026-00783,2026-11-26,Force Motors,"Cam Follower Arm Rev-1",EN8,0.4,48000,2.16,126,won
+PQ-2024-00784,2024-01-04,Bajaj Auto,"Brake Caliper Bracket Rev-1",LM24,1.399,25000,4.42,213.4,lost
+PQ-2026-00785,2026-01-14,Mahindra & Mahindra,"Brake Caliper Bracket Rev-1",LM24,1.113,174000,4.93,212.71,won
+PQ-2026-00786,2026-08-22,Dana India,"Steering Knuckle Rev-1",40Cr4,5.32,9000,9.15,683.58,lost
+PQ-2026-00787,2026-07-21,Force Motors,"Brake Caliper Bracket Rev-3",LM24,1.075,43000,4.72,161.3,lost
+PQ-2023-00788,2023-06-15,Tata Motors,"Flange Hub Rev-4",EN8D,3.186,153000,5.38,409.99,lost
+PQ-2023-00789,2023-09-28,Endurance Technologies,"Cam Follower Arm Rev-4",EN8,0.721,66000,2.99,123.62,lost
+PQ-2023-00790,2023-10-25,Bharat Forge,"Drive Spindle Shaft Rev-3",EN8,0.718,56000,3.04,123.46,lost
+PQ-2024-00791,2024-02-17,Endurance Technologies,"Suspension Lift Arm Rev-4",40Cr4,5.058,13000,10.85,879.34,open
+PQ-2025-00792,2025-10-26,Tata Motors,"Bushing Sleeve Rev-2",,0.714,168000,2.2,138.1,open
+PQ-2025-00793,2025-08-14,Dana India,"Steering Knuckle Rev-2",40Cr4,4.967,9000,14.7,763.82,open
+PQ-2023-00794,2023-02-05,Dana India,"Transmission Pinion Rev-3",20MnCr5,1.935,32000,4.65,231.29,open
+PQ-2026-00795,2026-01-11,Bajaj Auto,"Gear Blank 5-Speed Rev-3",20MnCr5,1.109,102000,5.31,219.44,open
+PQ-2025-00796,2025-09-20,Mahindra & Mahindra,"Steering Knuckle Rev-2",40Cr4,6.127,165000,13,906.46,won
+PQ-2025-00797,2025-05-16,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.316,55000,2.71,145.57,open
+PQ-2024-00798,2024-08-04,Mahindra & Mahindra,"Differential Cross Pin Rev-3",20MnCr5,1.038,27000,3.05,162.3,lost
+PQ-2023-00799,2023-09-28,Endurance Technologies,"Steering Knuckle Rev-2",40Cr4,5.693,59000,12.94,924.36,lost
+PQ-2026-00800,2026-09-03,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.707,91000,2.75,139.3,lost
+PQ-2026-00801,2026-04-19,Tata Motors,"Flange Hub Rev-3",EN8D,3.447,195000,7.77,380.88,won
+PQ-2023-00802,2023-01-19,Endurance Technologies,"Differential Cross Pin Rev-3",20MnCr5,0.625,106000,2.59,122.45,won
+PQ-2026-00803,2026-07-28,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-1",20MnCr5,1.393,160000,4.13,241.75,open
+PQ-2023-00804,2023-08-18,Force Motors,"Differential Cross Pin Rev-4",20MnCr5,0.962,130000,2.26,147.44,lost
+PQ-2025-00805,2025-05-09,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.416,24000,5.26,230.89,won
+PQ-2023-00806,2023-12-09,Tata Motors,"Brake Caliper Bracket Rev-1",LM24,1.435,114000,3.87,246.31,won
+PQ-2025-00807,2025-09-23,Mahindra & Mahindra,"Brake Caliper Bracket Rev-2",LM24,0.909,146000,3.73,253.21,lost
+PQ-2026-00808,2026-02-02,Bharat Forge,"Suspension Lift Arm Rev-3",40Cr4,4.623,60000,12.83,792.45,lost
+PQ-2025-00809,2025-12-20,Bharat Forge,"Flange Hub Rev-2",EN8D,1.935,61000,6.77,387.16,won
+PQ-2023-00810,2023-12-02,Bajaj Auto,"Brake Caliper Bracket Rev-3",LM24,0.863,192000,3.54,236.28,open
+PQ-2023-00811,2023-08-20,Tata Motors,"Flange Hub Rev-1",EN8D,3.123,87000,6.07,422.46,open
+PQ-2023-00812,2023-06-26,Dana India,"Gear Blank 5-Speed Rev-3",20MnCr5,1.9,62000,4.09,243.5,lost
+PQ-2023-00813,2023-03-20,Endurance Technologies,"Drive Spindle Shaft Rev-1",EN8,0.844,137000,3.57,108.7,lost
+PQ-2023-00814,2023-02-05,Dana India,"Steering Knuckle Rev-2",40Cr4,6.16,110000,11,814.46,won
+PQ-2025-00815,2025-07-28,Bajaj Auto,"Transmission Pinion Rev-3",20MnCr5,1.988,119000,5.94,300.21,open
+PQ-2024-00816,2024-03-14,Force Motors,"Suspension Lift Arm Rev-4",40Cr4,4.357,31000,11.12,866.92,lost
+PQ-2025-00817,2025-06-02,Bharat Forge,"Suspension Lift Arm Rev-1",40Cr4,4.313,26000,13.59,781.8,lost
+PQ-2024-00818,2024-06-01,Bharat Forge,"Flange Hub Rev-1",EN8D,2.532,116000,5.47,372.41,open
+PQ-2025-00819,2025-04-11,Force Motors,"Steering Knuckle Rev-4",40Cr4,4.219,156000,11.75,855.82,lost
+PQ-2025-00820,2025-08-19,Tata Motors,"Bushing Sleeve Rev-4",SS304,0.453,177000,2.94,140.89,lost
+PQ-2026-00821,2026-10-24,Tata Motors,"Drive Spindle Shaft Rev-2",EN8,0.684,79000,3.93,136.9,lost
+PQ-2023-00822,2023-08-26,Mahindra & Mahindra,"Steering Knuckle Rev-2",40Cr4,3.326,95000,9.49,696.82,lost
+PQ-2023-00823,2023-03-26,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-2",20MnCr5,1.675,57000,4.85,222.57,lost
+PQ-2024-00824,2024-09-28,Tata Motors,"Cam Follower Arm Rev-2",EN8,0.738,27000,3.04,76.29,lost
+PQ-2026-00825,2026-04-09,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-2",20MnCr5,-1.5,180000,3.58,254.6,lost
+PQ-2023-00826,2023-12-19,Force Motors,"Cam Follower Arm Rev-2",EN8,0.671,6000,2.87,113.54,open
+PQ-2025-00827,2025-01-28,Bharat Forge,"Differential Cross Pin Rev-1",20MnCr5,0.897,136000,3.03,155.74,won
+PQ-2025-00828,2025-10-26,Mahindra & Mahindra,"Flange Hub Rev-3",EN8D,2.876,53000,7.89,383.57,lost
+PQ-2023-00829,2023-08-26,Tata Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.48,193000,4.64,250.76,lost
+PQ-2023-00830,2023-02-22,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.626,47000,1.8,102.54,won
+PQ-2025-00831,2025-02-27,Mahindra & Mahindra,"Flange Hub Rev-1",EN8D,1.925,33000,5.89,379.47,open
+PQ-2026-00832,2026-02-03,Dana India,"Steering Knuckle Rev-2",40Cr4,4.578,102000,13.61,700.21,lost
+PQ-2024-00833,2024-03-08,Dana India,"Suspension Lift Arm Rev-1",40Cr4,4.254,38000,12.51,803.33,lost
+PQ-2024-00834,2024-06-04,Force Motors,"Suspension Lift Arm Rev-1",40Cr4,4.387,139000,12.23,842.94,lost
+PQ-2024-00835,2024-03-17,Bharat Forge,"Steering Knuckle Rev-3",40Cr4,6.109,98000,12.13,722.39,lost
+PQ-2025-00836,2025-05-05,Force Motors,"Bushing Sleeve Rev-1",SS304,0.373,147000,2.91,144.28,open
+PQ-2024-00837,2024-05-01,Tata Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.758,102000,3.61,212.08,open
+PQ-2026-00838,2026-04-12,Dana India,"Suspension Lift Arm Rev-1",40Cr4,5.291,159000,13.48,752.84,lost
+PQ-2023-00839,2023-10-14,Mahindra & Mahindra,"Suspension Lift Arm Rev-1",40Cr4,4.052,39000,10.68,780.93,won
+PQ-2026-00840,2026-03-13,Endurance Technologies,"Differential Cross Pin Rev-3",20MnCr5,0.994,154000,3.2,130.46,open
+PQ-2023-00841,2023-03-03,Bajaj Auto,"Drive Spindle Shaft Rev-1",EN8,1.14,115000,3.43,134.71,open
+PQ-2024-00842,2024-08-10,Force Motors,"Steering Knuckle Rev-1",40Cr4,4.885,157000,11.93,794.63,lost
+PQ-2023-00843,2023-06-25,Bajaj Auto,"Steering Knuckle Rev-3",40Cr4,4.256,156000,9.77,672.21,lost
+PQ-2025-00844,2025-10-10,Tata Motors,"Flange Hub Rev-4",EN8D,2.951,129000,5.72,293.11,open
+PQ-2026-00845,2026-09-23,Force Motors,"Transmission Pinion Rev-3",20MnCr5,2.284,192000,5.9,258.17,lost
+PQ-2023-00846,2023-01-05,Force Motors,"Transmission Pinion Rev-2",20MnCr5,1.751,131000,4.33,276,open
+PQ-2023-00847,2023-06-16,Tata Motors,"Cam Follower Arm Rev-4",EN8,0.796,62000,2.87,112.43,open
+PQ-2023-00848,2023-06-20,Tata Motors,"Transmission Pinion Rev-3",20MnCr5,1.463,91000,5.23,292.64,lost
+PQ-2026-00849,2026-07-05,Force Motors,"Drive Spindle Shaft Rev-3",EN8,1.096,93000,4.26,117.1,won
+PQ-2026-00850,2026-01-28,Bajaj Auto,"Suspension Lift Arm Rev-4",40Cr4,5.443,21000,12.34,730.51,won
+PQ-2023-00851,2023-11-08,Bajaj Auto,"Transmission Pinion Rev-1",20MnCr5,1.474,125000,5.94,236.32,won
+PQ-2024-00852,2024-06-15,Dana India,"Flange Hub Rev-2",EN8D,2.452,11000,7.44,415.01,lost
+PQ-2024-00853,2024-06-26,Bajaj Auto,"Flange Hub Rev-3",EN8D,3.162,167000,7.11,320.76,open
+PQ-2026-00854,2026-05-01,Bharat Forge,"Steering Knuckle Rev-2",40Cr4,5.93,8000,11.38,924.7,lost
+PQ-2023-00855,2023-01-01,Bajaj Auto,"Cam Follower Arm Rev-3",EN8,0.431,35000,3.34,83.18,lost
+PQ-2025-00856,2025-09-02,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.307,192000,4.33,216.95,lost
+PQ-2023-00857,2023-10-26,Bharat Forge,"Cam Follower Arm Rev-2",EN8,0.814,7000,2.47,129.49,open
+PQ-2025-00858,2025-08-11,Endurance Technologies,"Transmission Pinion Rev-4",20MnCr5,2.171,0,6.75,318.91,lost
+PQ-2024-00859,2024-06-19,Endurance Technologies,"Flange Hub Rev-2",EN8D,2.335,97000,5.75,352.43,won
+PQ-2026-00860,2026-05-07,Dana India,"Differential Cross Pin Rev-4",20MnCr5,0.797,80000,3.68,125.65,won
+PQ-2023-00861,2023-02-25,Mahindra & Mahindra,"Bushing Sleeve Rev-2",SS304,0.679,126000,2.69,96.78,won
+PQ-2025-00862,2025-03-17,Bajaj Auto,"Bushing Sleeve Rev-2",SS304,0.378,175000,1.64,126.61,won
+PQ-2026-00863,2026-01-16,Tata Motors,"Bushing Sleeve Rev-4",SS304,0.644,117000,2.37,159.7,open
+PQ-2025-00864,2025-09-28,Force Motors,"Transmission Pinion Rev-2",20MnCr5,1.997,173000,6.34,345.39,lost
+PQ-2024-00865,2024-06-20,Bajaj Auto,"Bushing Sleeve Rev-4",SS304,0.489,8000,2.62,117.86,open
+PQ-2023-00866,2023-09-09,Dana India,"Transmission Pinion Rev-3",20MnCr5,1.481,6000,4.13,330.8,lost
+PQ-2026-00867,2026-06-09,Bharat Forge,"Cam Follower Arm Rev-1",EN8,0.642,129000,3.23,105.59,lost
+PQ-2026-00868,2026-11-17,Force Motors,"Transmission Pinion Rev-3",20MnCr5,2.352,107000,4.3,229.07,won
+PQ-2023-00869,2023-08-18,Force Motors,"Suspension Lift Arm Rev-3",40Cr4,5.195,129000,13.05,811.7,won
+PQ-2026-00870,2026-10-15,Mahindra & Mahindra,"Drive Spindle Shaft Rev-1",EN8,1.037,56000,4.28,105.75,lost
+PQ-2023-00871,2023-05-03,Tata Motors,"Transmission Pinion Rev-1",20MnCr5,1.975,6000,5.47,252.23,won
+PQ-2026-00872,2026-12-17,Bharat Forge,"Bushing Sleeve Rev-1",SS304,0.526,35000,2.57,139.34,won
+PQ-2026-00873,2026-06-15,Bharat Forge,"Suspension Lift Arm Rev-2",40Cr4,4.196,172000,13.09,805.16,open
+PQ-2024-00874,2024-05-15,Tata Motors,"Transmission Pinion Rev-4",20MnCr5,1.562,65000,5.7,268.03,lost
+PQ-2023-00875,2023-10-07,Bajaj Auto,"Cam Follower Arm Rev-1",EN8,0.506,37000,2.46,129.42,open
+PQ-2024-00876,2024-08-11,Endurance Technologies,"Gear Blank 5-Speed Rev-1",20MnCr5,1.733,173000,5.47,237.87,lost
+PQ-2024-00877,2024-01-07,Mahindra & Mahindra,"Cam Follower Arm Rev-3",EN8,0.812,9000,3.02,96.11,won
+PQ-2024-00878,2024-07-27,Endurance Technologies,"Flange Hub Rev-1",EN8D,2.439,125000,7,361.24,open
+PQ-2024-00879,2024-09-16,Endurance Technologies,"Suspension Lift Arm Rev-4",40Cr4,5.022,40000,10.99,799.95,open
+PQ-2026-00880,2026-06-13,Force Motors,"Steering Knuckle Rev-4",40Cr4,5.246,9000,9.64,772.91,won
+PQ-2025-00881,2025-12-11,Mahindra & Mahindra,"Differential Cross Pin Rev-1",20MnCr5,0.852,31000,2.52,162.02,lost
+PQ-2025-00882,2025-01-09,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,1.058,123000,3.12,133.1,open
+PQ-2023-00883,2023-07-19,Mahindra & Mahindra,"Flange Hub Rev-4",EN8D,1.934,7000,5.4,403.02,lost
+PQ-2025-00884,2025-07-06,Force Motors,"Steering Knuckle Rev-2",40Cr4,3.943,28000,10.38,876.5,lost
+PQ-2023-00885,2023-10-16,Force Motors,"Steering Knuckle Rev-2",40Cr4,5.312,84000,9.57,713.62,won
+PQ-2026-00886,2026-10-16,Dana India,"Suspension Lift Arm Rev-3",40Cr4,4.188,166000,12.72,758.83,open
+PQ-2023-00887,2023-07-10,Mahindra & Mahindra,"Differential Cross Pin Rev-2",20MnCr5,0.778,187000,3.57,137.47,lost
+PQ-2025-00888,2025-10-05,Endurance Technologies,"Drive Spindle Shaft Rev-2",EN8,1.052,147000,3.77,115.3,won
+PQ-2025-00889,2025-11-07,Endurance Technologies,"Steering Knuckle Rev-4",40Cr4,6.032,77000,9.48,895.98,open
+PQ-2023-00890,2023-03-16,Force Motors,"Brake Caliper Bracket Rev-3",LM24,1.416,130000,3.49,173.1,won
+PQ-2026-00891,2026-10-11,Force Motors,"Flange Hub Rev-1",,3.343,123000,8.12,358.65,lost
+PQ-2026-00892,2026-02-17,Bharat Forge,"Cam Follower Arm Rev-1",EN8,0.676,193000,2.73,112.35,won
+PQ-2024-00893,2024-12-21,Endurance Technologies,"Cam Follower Arm Rev-2",EN8,0.896,76000,2.76,85.37,lost
+PQ-2026-00894,2026-08-28,Bajaj Auto,"Flange Hub Rev-2",EN8D,3.052,153000,7.88,354.62,lost
+PQ-2023-00895,2023-09-21,Endurance Technologies,"Transmission Pinion Rev-2",20MnCr5,2.355,86000,5.56,310.33,lost
+PQ-2026-00896,2026-02-10,Tata Motors,"Cam Follower Arm Rev-1",EN8,0.415,142000,2.11,92.62,open
+PQ-2025-00897,2025-10-12,Mahindra & Mahindra,"Suspension Lift Arm Rev-2",40Cr4,4.026,38000,12.81,763.24,won
+PQ-2023-00898,2023-06-11,Bajaj Auto,"Transmission Pinion Rev-3",20MnCr5,2.118,145000,4.51,275.08,won
+PQ-2025-00899,2025-05-28,Bajaj Auto,"Drive Spindle Shaft Rev-2",EN8,0.647,26000,3.45,128.09,open
+PQ-2026-00900,2026-12-14,Bajaj Auto,"Suspension Lift Arm Rev-4",40Cr4,5.007,115000,10.95,735.32,lost
+PQ-2023-00901,2023-05-17,Dana India,"Steering Knuckle Rev-1",40Cr4,3.701,19000,10.45,682.12,open
+PQ-2025-00902,2025-04-18,Bharat Forge,"Differential Cross Pin Rev-4",20MnCr5,0.666,154000,3.46,143.99,lost
+PQ-2026-00903,2026-06-05,Force Motors,"Suspension Lift Arm Rev-4",40Cr4,5.178,20000,13.02,749.79,lost
+PQ-2023-00904,2023-08-19,Tata Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.827,95000,5.34,187.49,won
+PQ-2023-00905,2023-07-28,Bharat Forge,"Cam Follower Arm Rev-1",EN8,0.841,119000,2.57,116.59,open
+PQ-2025-00906,2025-11-02,Force Motors,"Suspension Lift Arm Rev-3",40Cr4,4.279,156000,13.66,778.46,lost
+PQ-2025-00907,2025-09-07,Endurance Technologies,"Brake Caliper Bracket Rev-4",LM24,1.296,125000,3.32,175.85,lost
+PQ-2024-00908,2024-04-02,Bharat Forge,"Suspension Lift Arm Rev-3",40Cr4,4.414,152000,11.39,784.49,lost
+PQ-2023-00909,2023-06-20,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,0.647,51000,2.65,151.97,lost
+PQ-2024-00910,2024-11-21,Force Motors,"Drive Spindle Shaft Rev-1",EN8,0.846,158000,4,110.88,lost
+PQ-2025-00911,2025-11-19,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,1.046,174000,2.91,153.68,won
+PQ-2024-00912,2024-04-22,Mahindra & Mahindra,"Drive Spindle Shaft Rev-2",EN8,0.92,76000,4.48,120.9,won
+PQ-2026-00913,2026-04-10,Mahindra & Mahindra,"Flange Hub Rev-3",EN8D,2.623,199000,5.73,406.84,open
+PQ-2025-00914,2025-04-17,Tata Motors,"Bushing Sleeve Rev-2",SS304,0.764,116000,2.51,113.35,open
+PQ-2026-00915,2026-11-05,Dana India,"Steering Knuckle Rev-1",40Cr4,3.208,184000,13.31,945.8,open
+PQ-2023-00916,2023-09-25,Bharat Forge,"Gear Blank 5-Speed Rev-2",20MnCr5,1.844,40000,4.58,211.46,won
+PQ-2025-00917,2025-07-17,Endurance Technologies,"Brake Caliper Bracket Rev-4",LM24,1.166,164000,4.38,205.11,lost
+PQ-2025-00918,2025-06-12,Endurance Technologies,"Flange Hub Rev-2",EN8D,3.25,151000,7.21,283.82,lost
+PQ-2023-00919,2023-06-24,Bharat Forge,"Cam Follower Arm Rev-4",EN8,0.718,171000,2.6,79.35,won
+PQ-2023-00920,2023-01-17,Force Motors,"Brake Caliper Bracket Rev-3",LM24,1.434,32000,4.48,247.2,open
+PQ-2024-00921,2024-05-18,Bajaj Auto,"Brake Caliper Bracket Rev-2",LM24,1.169,122000,3.88,194.9,open
+PQ-2024-00922,2024-05-06,Force Motors,"Cam Follower Arm Rev-1",EN8,0.429,25000,2.62,110.86,open
+PQ-2024-00923,2024-04-10,Endurance Technologies,"Cam Follower Arm Rev-2",EN8,0.459,13000,2.61,125.32,won
+PQ-2023-00924,2023-03-09,Tata Motors,"Bushing Sleeve Rev-3",SS304,-1.5,101000,1.56,106.32,won
+PQ-2025-00925,2025-05-06,Bajaj Auto,"Flange Hub Rev-4",EN8D,2.572,150000,7.16,312.7,won
+PQ-2025-00926,2025-02-10,Bajaj Auto,"Drive Spindle Shaft Rev-2",EN8,1.017,71000,4.07,121.4,won
+PQ-2026-00927,2026-03-02,Force Motors,"Flange Hub Rev-3",EN8D,2.484,197000,6.53,291.08,open
+PQ-2024-00928,2024-10-02,Tata Motors,"Cam Follower Arm Rev-4",EN8,0.499,131000,2.4,102.19,open
+PQ-2025-00929,2025-11-01,Bharat Forge,"Differential Cross Pin Rev-1",20MnCr5,0.892,95000,3.07,136.2,open
+PQ-2025-00930,2025-07-26,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,1.168,26000,3.08,93.01,won
+PQ-2024-00931,2024-05-14,Endurance Technologies,"Bushing Sleeve Rev-2",SS304,0.362,33000,2.87,150,lost
+PQ-2025-00932,2025-02-22,Bharat Forge,"Flange Hub Rev-2",EN8D,3.029,66000,6.17,351.06,open
+PQ-2025-00933,2025-02-21,Force Motors,"Drive Spindle Shaft Rev-1",EN8,1,127000,4.49,88.13,won
+PQ-2024-00934,2024-01-01,Dana India,"Bushing Sleeve Rev-3",SS304,0.361,10000,2.17,141.68,lost
+PQ-2025-00935,2025-10-26,Dana India,"Steering Knuckle Rev-4",40Cr4,3.808,148000,11.05,665.38,lost
+PQ-2026-00936,2026-11-07,Tata Motors,"Flange Hub Rev-1",EN8D,3.313,136000,8.2,368.35,won
+PQ-2026-00937,2026-11-12,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.154,95000,3.17,212.25,won
+PQ-2024-00938,2024-03-15,Dana India,"Suspension Lift Arm Rev-2",40Cr4,4.11,81000,13.82,870.51,won
+PQ-2023-00939,2023-11-28,Tata Motors,"Suspension Lift Arm Rev-2",40Cr4,5.5,135000,13.25,864.54,won
+PQ-2026-00940,2026-11-01,Bharat Forge,"Bushing Sleeve Rev-2",SS304,0.617,26000,2.15,115.03,lost
+PQ-2025-00941,2025-06-27,Bajaj Auto,"Flange Hub Rev-1",EN8D,2.024,115000,7.37,350.5,lost
+PQ-2024-00942,2024-02-24,Tata Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.622,190000,3.8,269.77,lost
+PQ-2023-00943,2023-01-28,Tata Motors,"Flange Hub Rev-4",EN8D,3.329,108000,7.72,372.46,open
+PQ-2024-00944,2024-09-17,Mahindra & Mahindra,"Drive Spindle Shaft Rev-4",EN8,0.812,54000,3.4,134.93,open
+PQ-2025-00945,2025-09-15,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,2.015,27000,4.71,326,won
+PQ-2025-00946,2025-01-02,Tata Motors,"Differential Cross Pin Rev-3",20MnCr5,0.926,160000,2.54,124.78,lost
+PQ-2024-00947,2024-10-05,Force Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.17,172000,4.25,235.69,lost
+PQ-2025-00948,2025-08-06,Mahindra & Mahindra,"Bushing Sleeve Rev-3",SS304,0.788,199000,2.87,154.68,open
+PQ-2023-00949,2023-10-26,Dana India,"Gear Blank 5-Speed Rev-3",20MnCr5,1.168,16000,3.81,205.94,open
+PQ-2025-00950,2025-07-23,Tata Motors,"Steering Knuckle Rev-1",40Cr4,6.165,127000,13.4,763.74,won
+PQ-2023-00951,2023-05-08,Dana India,"Steering Knuckle Rev-3",40Cr4,5.311,109000,9.46,809.93,open
+PQ-2025-00952,2025-10-22,Bharat Forge,"Flange Hub Rev-3",EN8D,2.335,140000,7.92,334.62,won
+PQ-2024-00953,2024-02-07,Mahindra & Mahindra,"Transmission Pinion Rev-1",20MnCr5,2.207,136000,5.89,372.96,open
+PQ-2023-00954,2023-03-08,Bajaj Auto,"Suspension Lift Arm Rev-2",40Cr4,5.452,174000,11.47,811.89,lost
+PQ-2026-00955,2026-05-11,Bharat Forge,"Gear Blank 5-Speed Rev-1",20MnCr5,1.786,80000,4.83,230.81,won
+PQ-2025-00956,2025-12-01,Dana India,"Suspension Lift Arm Rev-4",40Cr4,4.936,26000,11.2,877.66,lost
+PQ-2023-00957,2023-03-19,Tata Motors,"Suspension Lift Arm Rev-1",40Cr4,4.159,0,10.72,802.88,lost
+PQ-2023-00958,2023-06-11,Mahindra & Mahindra,"Transmission Pinion Rev-3",20MnCr5,1.29,119000,4.77,262.66,open
+PQ-2025-00959,2025-01-24,Bharat Forge,"Brake Caliper Bracket Rev-4",LM24,1.482,20000,4.29,169.25,won
+PQ-2024-00960,2024-05-12,Endurance Technologies,"Cam Follower Arm Rev-1",EN8,0.44,114000,3.38,90.87,open
+PQ-2024-00961,2024-10-20,Force Motors,"Cam Follower Arm Rev-2",EN8,0.509,5000,2.69,90.68,lost
+PQ-2025-00962,2025-07-12,Force Motors,"Transmission Pinion Rev-3",20MnCr5,1.539,80000,6.37,326.01,open
+PQ-2023-00963,2023-04-17,Bajaj Auto,"Flange Hub Rev-1",EN8D,3.463,38000,5.19,344.67,open
+PQ-2025-00964,2025-12-16,Bajaj Auto,"Suspension Lift Arm Rev-1",40Cr4,4.828,98000,13.62,852.78,open
+PQ-2026-00965,2026-02-07,Dana India,"Drive Spindle Shaft Rev-3",EN8,0.931,184000,3.36,119.17,won
+PQ-2024-00966,2024-12-03,Tata Motors,"Bushing Sleeve Rev-3",SS304,0.595,160000,2.71,136.31,won
+PQ-2024-00967,2024-08-21,Bharat Forge,"Transmission Pinion Rev-3",20MnCr5,1.941,37000,5.99,317.67,open
+PQ-2025-00968,2025-11-11,Bharat Forge,"Bushing Sleeve Rev-4",SS304,0.306,10000,1.51,142.54,won
+PQ-2024-00969,2024-08-26,Bajaj Auto,"Cam Follower Arm Rev-4",EN8,0.52,39000,3.08,106.98,lost
+PQ-2024-00970,2024-09-15,Endurance Technologies,"Drive Spindle Shaft Rev-1",EN8,0.888,189000,3.11,87.05,lost
+PQ-2023-00971,2023-02-11,Bajaj Auto,"Suspension Lift Arm Rev-1",40Cr4,4.245,133000,10.87,753.24,open
+PQ-2025-00972,2025-07-18,Dana India,"Gear Blank 5-Speed Rev-4",20MnCr5,1.365,86000,4.58,257.66,lost
+PQ-2026-00973,2026-05-03,Bharat Forge,"Gear Blank 5-Speed Rev-4",20MnCr5,1.527,137000,4.31,237.53,lost
+PQ-2025-00974,2025-05-22,Mahindra & Mahindra,"Transmission Pinion Rev-3",20MnCr5,1.208,94000,5.71,302.64,won
+PQ-2025-00975,2025-09-04,Dana India,"Flange Hub Rev-2",EN8D,2.909,122000,5.27,365.74,lost
+PQ-2025-00976,2025-05-10,Mahindra & Mahindra,"Transmission Pinion Rev-1",20MnCr5,1.501,197000,6.29,353.72,lost
+PQ-2025-00977,2025-05-14,Mahindra & Mahindra,"Cam Follower Arm Rev-3",EN8,0.772,19000,2.09,102.21,lost
+PQ-2024-00978,2024-03-09,Bajaj Auto,"Differential Cross Pin Rev-4",20MnCr5,0.983,113000,3.07,154.31,lost
+PQ-2023-00979,2023-07-22,Tata Motors,"Flange Hub Rev-4",EN8D,2.828,28000,7.68,360.6,lost
+PQ-2026-00980,2026-03-03,Force Motors,"Steering Knuckle Rev-3",40Cr4,5.872,165000,14.49,832.05,lost
+PQ-2024-00981,2024-03-07,Bajaj Auto,"Brake Caliper Bracket Rev-2",LM24,1.259,195000,4.84,252.27,open
+PQ-2026-00982,2026-02-28,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,4.988,199000,9.71,944.97,won
+PQ-2025-00983,2025-11-20,Force Motors,"Brake Caliper Bracket Rev-2",LM24,1.007,194000,3.5,220.16,lost
+PQ-2023-00984,2023-11-15,Mahindra & Mahindra,"Steering Knuckle Rev-4",40Cr4,5.036,20000,9.72,887.6,open
+PQ-2023-00985,2023-07-06,Mahindra & Mahindra,"Cam Follower Arm Rev-1",EN8,0.71,120000,2.15,85.01,lost
+PQ-2024-00986,2024-03-27,Dana India,"Brake Caliper Bracket Rev-3",LM24,1.021,27000,4.31,221.7,open
+PQ-2026-00987,2026-02-20,Bharat Forge,"Steering Knuckle Rev-1",40Cr4,3.689,148000,14.67,794.18,won
+PQ-2023-00988,2023-11-24,Dana India,"Drive Spindle Shaft Rev-2",EN8,0.517,120000,2.52,114.67,lost
+PQ-2026-00989,2026-10-08,Bharat Forge,"Cam Follower Arm Rev-4",EN8,0.525,136000,3.04,94.78,lost
+PQ-2023-00990,2023-11-17,Dana India,"Gear Blank 5-Speed Rev-2",,1.522,43000,4.45,284.41,lost
+PQ-2025-00991,2025-07-23,Dana India,"Transmission Pinion Rev-2",20MnCr5,1.477,86000,4.17,333.96,lost
+PQ-2026-00992,2026-01-12,Endurance Technologies,"Transmission Pinion Rev-3",20MnCr5,1.413,85000,5.19,340.13,lost
+PQ-2024-00993,2024-05-19,Bajaj Auto,"Brake Caliper Bracket Rev-3",LM24,1.198,55000,4.29,181.44,won
+PQ-2025-00994,2025-07-14,Endurance Technologies,"Cam Follower Arm Rev-1",EN8,0.473,177000,2.6,113.12,won
+PQ-2024-00995,2024-02-14,Mahindra & Mahindra,"Flange Hub Rev-4",EN8D,2.065,122000,8.12,392.57,open
+PQ-2025-00996,2025-10-07,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,4.887,163000,13.03,812.64,lost
+PQ-2026-00997,2026-09-07,Endurance Technologies,"Suspension Lift Arm Rev-2",40Cr4,4.098,135000,11.57,780.14,lost
+PQ-2023-00998,2023-11-23,Dana India,"Transmission Pinion Rev-2",20MnCr5,1.35,198000,6.16,317.5,open
+PQ-2025-00999,2025-04-11,Mahindra & Mahindra,"Bushing Sleeve Rev-4",SS304,0.425,199000,1.8,112.45,open
+PQ-2024-01000,2024-03-24,Mahindra & Mahindra,"Transmission Pinion Rev-3",20MnCr5,1.408,191000,4.54,309.81,won
+PQ-2024-01001,2024-02-09,Bajaj Auto,"Drive Spindle Shaft Rev-1",EN8,0.861,160000,4.35,100.81,won
+PQ-2023-01002,2023-12-06,Mahindra & Mahindra,"Transmission Pinion Rev-3",20MnCr5,1.229,107000,6.43,281.41,lost
+PQ-2026-01003,2026-05-11,Dana India,"Bushing Sleeve Rev-4",SS304,0.509,133000,2.73,107.81,lost
+PQ-2025-01004,2025-06-09,Dana India,"Suspension Lift Arm Rev-1",40Cr4,4.916,54000,13.1,869.36,won
+PQ-2023-01005,2023-06-18,Dana India,"Transmission Pinion Rev-4",20MnCr5,2.339,196000,4.22,351.74,won
+PQ-2026-01006,2026-05-28,Endurance Technologies,"Drive Spindle Shaft Rev-4",EN8,0.633,172000,3.64,86.92,lost
+PQ-2024-01007,2024-07-25,Tata Motors,"Brake Caliper Bracket Rev-3",LM24,1.549,77000,4.68,176.1,won
+PQ-2025-01008,2025-01-26,Dana India,"Cam Follower Arm Rev-2",EN8,0.656,76000,3.4,97.76,open
+PQ-2023-01009,2023-06-15,Endurance Technologies,"Flange Hub Rev-2",EN8D,1.906,145000,7.02,388.13,lost
+PQ-2023-01010,2023-10-02,Force Motors,"Brake Caliper Bracket Rev-2",LM24,1.581,98000,4.86,197.52,lost
+PQ-2024-01011,2024-07-01,Dana India,"Bushing Sleeve Rev-4",SS304,0.341,106000,2.54,116.05,open
+PQ-2025-01012,2025-04-06,Tata Motors,"Cam Follower Arm Rev-4",EN8,0.618,187000,2.16,90.43,open
+PQ-2024-01013,2024-06-03,Dana India,"Cam Follower Arm Rev-2",EN8,0.429,176000,2.78,96.26,won
+PQ-2026-01014,2026-07-24,Bajaj Auto,"Cam Follower Arm Rev-1",EN8,0.895,28000,2.78,115.84,won
+PQ-2024-01015,2024-09-22,Endurance Technologies,"Differential Cross Pin Rev-3",20MnCr5,0.683,71000,2.25,117.45,open
+PQ-2025-01016,2025-04-15,Force Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.399,113000,4.56,212.41,won
+PQ-2024-01017,2024-09-18,Bajaj Auto,"Transmission Pinion Rev-3",20MnCr5,1.675,170000,6.13,288.53,won
+PQ-2025-01018,2025-09-01,Endurance Technologies,"Cam Follower Arm Rev-4",EN8,0.898,26000,3.38,121.5,won
+PQ-2023-01019,2023-06-10,Bajaj Auto,"Bushing Sleeve Rev-3",SS304,0.478,194000,2.76,121.35,lost
+PQ-2023-01020,2023-06-28,Bharat Forge,"Flange Hub Rev-4",EN8D,2.925,54000,5.54,401.88,open
+PQ-2026-01021,2026-09-19,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,1.729,108000,6.92,256.08,lost
+PQ-2025-01022,2025-04-25,Endurance Technologies,"Flange Hub Rev-2",EN8D,2.968,50000,5.28,325.23,lost
+PQ-2026-01023,2026-04-27,Mahindra & Mahindra,"Cam Follower Arm Rev-3",EN8,-1.5,69000,2.48,90.73,lost
+PQ-2024-01024,2024-10-18,Dana India,"Bushing Sleeve Rev-2",SS304,0.455,88000,2.2,128.21,open
+PQ-2024-01025,2024-04-01,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,4.047,13000,12.42,870.64,lost
+PQ-2023-01026,2023-08-27,Force Motors,"Bushing Sleeve Rev-3",SS304,0.637,18000,1.99,123.65,lost
+PQ-2026-01027,2026-11-16,Bharat Forge,"Drive Spindle Shaft Rev-4",EN8,0.691,137000,3.25,128.55,lost
+PQ-2023-01028,2023-05-14,Bajaj Auto,"Bushing Sleeve Rev-4",SS304,0.62,35000,2.73,131.63,open
+PQ-2026-01029,2026-05-11,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,0.729,188000,2.97,128.35,open
+PQ-2026-01030,2026-07-16,Force Motors,"Drive Spindle Shaft Rev-2",EN8,0.556,100000,2.93,129.62,lost
+PQ-2026-01031,2026-06-07,Tata Motors,"Cam Follower Arm Rev-4",EN8,0.842,188000,2.32,90.13,won
+PQ-2024-01032,2024-05-18,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,4.126,140000,14.27,718.74,won
+PQ-2025-01033,2025-05-14,Dana India,"Gear Blank 5-Speed Rev-2",20MnCr5,1.845,131000,5.48,180.38,lost
+PQ-2024-01034,2024-08-19,Endurance Technologies,"Transmission Pinion Rev-4",20MnCr5,2.047,147000,5.39,324.8,lost
+PQ-2024-01035,2024-06-03,Mahindra & Mahindra,"Transmission Pinion Rev-4",20MnCr5,2.291,190000,4.39,333.98,open
+PQ-2025-01036,2025-12-25,Bharat Forge,"Brake Caliper Bracket Rev-1",LM24,1.022,45000,4.12,224.65,open
+PQ-2024-01037,2024-03-14,Endurance Technologies,"Brake Caliper Bracket Rev-3",LM24,1.391,197000,4,186.03,won
+PQ-2023-01038,2023-03-04,Bharat Forge,"Drive Spindle Shaft Rev-4",EN8,0.833,22000,3.63,119.71,lost
+PQ-2024-01039,2024-05-22,Bajaj Auto,"Steering Knuckle Rev-3",40Cr4,5.062,71000,13.61,830.65,lost
+PQ-2024-01040,2024-03-09,Bajaj Auto,"Flange Hub Rev-4",EN8D,2.619,93000,5.71,338.69,won
+PQ-2024-01041,2024-05-03,Endurance Technologies,"Steering Knuckle Rev-3",40Cr4,6.068,32000,9.29,746.84,lost
+PQ-2025-01042,2025-03-13,Force Motors,"Transmission Pinion Rev-1",20MnCr5,1.751,49000,5.89,294.26,lost
+PQ-2023-01043,2023-11-22,Endurance Technologies,"Brake Caliper Bracket Rev-4",LM24,0.996,120000,4.92,171.61,won
+PQ-2026-01044,2026-05-22,Mahindra & Mahindra,"Transmission Pinion Rev-4",20MnCr5,1.258,145000,4.5,299.53,won
+PQ-2025-01045,2025-07-14,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,5.082,189000,13.68,826.76,won
+PQ-2026-01046,2026-11-06,Force Motors,"Cam Follower Arm Rev-3",EN8,0.562,168000,2.03,120.83,won
+PQ-2026-01047,2026-08-01,Bajaj Auto,"Suspension Lift Arm Rev-4",40Cr4,4.111,164000,10.07,737.05,won
+PQ-2026-01048,2026-06-07,Endurance Technologies,"Brake Caliper Bracket Rev-4",LM24,1.438,45000,3.1,249.25,open
+PQ-2025-01049,2025-12-18,Tata Motors,"Steering Knuckle Rev-1",40Cr4,5.628,8000,10.87,784.01,won
+PQ-2025-01050,2025-12-13,Bajaj Auto,"Flange Hub Rev-4",EN8D,2.635,115000,5.92,408.9,lost
+PQ-2026-01051,2026-06-16,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,0.712,22000,3.19,134.38,lost
+PQ-2023-01052,2023-01-03,Bajaj Auto,"Flange Hub Rev-2",EN8D,1.845,48000,5.33,284.93,open
+PQ-2024-01053,2024-05-22,Bharat Forge,"Suspension Lift Arm Rev-1",40Cr4,4.303,145000,11.13,797.58,lost
+PQ-2025-01054,2025-02-26,Bharat Forge,"Cam Follower Arm Rev-3",EN8,0.702,111000,2.59,109.33,won
+PQ-2025-01055,2025-02-13,Endurance Technologies,"Drive Spindle Shaft Rev-2",EN8,0.721,168000,2.67,133.73,lost
+PQ-2026-01056,2026-05-04,Bajaj Auto,"Steering Knuckle Rev-2",40Cr4,4.245,0,9.79,858.19,open
+PQ-2023-01057,2023-10-22,Bharat Forge,"Flange Hub Rev-3",EN8D,2.419,132000,6.85,404.1,open
+PQ-2024-01058,2024-03-21,Endurance Technologies,"Suspension Lift Arm Rev-1",40Cr4,4.078,94000,10.78,794.27,won
+PQ-2023-01059,2023-03-03,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,1.536,71000,5.88,362.69,won
+PQ-2026-01060,2026-10-25,Bharat Forge,"Drive Spindle Shaft Rev-2",EN8,1.02,158000,3.18,111.88,lost
+PQ-2023-01061,2023-11-08,Force Motors,"Steering Knuckle Rev-1",40Cr4,5.939,36000,9.11,908.46,won
+PQ-2023-01062,2023-05-26,Endurance Technologies,"Suspension Lift Arm Rev-3",40Cr4,5.261,133000,13,803.64,lost
+PQ-2026-01063,2026-10-17,Bajaj Auto,"Suspension Lift Arm Rev-3",40Cr4,5.219,69000,10.03,851.38,lost
+PQ-2026-01064,2026-03-19,Mahindra & Mahindra,"Brake Caliper Bracket Rev-3",LM24,1.303,177000,4.79,176.68,open
+PQ-2024-01065,2024-05-21,Force Motors,"Differential Cross Pin Rev-1",20MnCr5,0.629,135000,3.06,162.12,open
+PQ-2024-01066,2024-04-15,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-3",20MnCr5,1.513,81000,4.97,246.59,won
+PQ-2025-01067,2025-11-15,Mahindra & Mahindra,"Bushing Sleeve Rev-1",SS304,0.722,53000,2.21,134.11,open
+PQ-2024-01068,2024-11-07,Bharat Forge,"Drive Spindle Shaft Rev-4",EN8,0.639,188000,3.6,92.83,lost
+PQ-2026-01069,2026-10-27,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-2",20MnCr5,1.463,147000,5.16,232.83,won
+PQ-2025-01070,2025-10-26,Tata Motors,"Suspension Lift Arm Rev-3",40Cr4,4.202,26000,12.74,783.19,lost
+PQ-2024-01071,2024-12-02,Bharat Forge,"Brake Caliper Bracket Rev-1",LM24,0.985,118000,4.68,203.91,open
+PQ-2026-01072,2026-06-14,Force Motors,"Flange Hub Rev-3",EN8D,2.213,88000,6.82,366.49,lost
+PQ-2026-01073,2026-01-01,Bajaj Auto,"Brake Caliper Bracket Rev-3",LM24,1.033,185000,3.26,255.21,won
+PQ-2024-01074,2024-08-25,Bharat Forge,"Transmission Pinion Rev-3",20MnCr5,1.33,66000,6.45,274.31,open
+PQ-2023-01075,2023-10-11,Force Motors,"Drive Spindle Shaft Rev-2",EN8,0.945,167000,4.19,91.14,open
+PQ-2025-01076,2025-07-21,Force Motors,"Suspension Lift Arm Rev-1",40Cr4,5.365,192000,12.16,861.95,open
+PQ-2023-01077,2023-04-10,Bajaj Auto,"Flange Hub Rev-3",EN8D,2.514,12000,8,386.29,lost
+PQ-2023-01078,2023-06-05,Dana India,"Flange Hub Rev-3",EN8D,2.245,189000,5.24,333.91,lost
+PQ-2026-01079,2026-01-16,Tata Motors,"Suspension Lift Arm Rev-1",40Cr4,5.06,195000,10.35,722.84,won
+PQ-2026-01080,2026-09-17,Bajaj Auto,"Brake Caliper Bracket Rev-1",LM24,1.092,76000,4.35,251.41,won
+PQ-2024-01081,2024-03-10,Endurance Technologies,"Cam Follower Arm Rev-2",EN8,0.756,45000,2.62,89.8,won
+PQ-2025-01082,2025-10-05,Endurance Technologies,"Transmission Pinion Rev-4",20MnCr5,1.622,143000,6.34,369.53,lost
+PQ-2026-01083,2026-12-28,Dana India,"Suspension Lift Arm Rev-1",40Cr4,5.346,13000,13.51,874.85,won
+PQ-2023-01084,2023-06-04,Bajaj Auto,"Cam Follower Arm Rev-4",EN8,0.431,31000,2.7,92.55,open
+PQ-2024-01085,2024-06-28,Endurance Technologies,"Transmission Pinion Rev-4",20MnCr5,2.318,63000,5.96,285.85,lost
+PQ-2026-01086,2026-06-17,Dana India,"Brake Caliper Bracket Rev-2",LM24,1.111,82000,3.04,226.6,lost
+PQ-2025-01087,2025-09-12,Endurance Technologies,"Steering Knuckle Rev-3",40Cr4,5.995,166000,12.33,768.21,lost
+PQ-2024-01088,2024-05-04,Bajaj Auto,"Gear Blank 5-Speed Rev-3",20MnCr5,1.838,49000,3.94,244.93,lost
+PQ-2026-01089,2026-06-04,Force Motors,"Drive Spindle Shaft Rev-2",,0.869,139000,3.6,98.63,open
+PQ-2023-01090,2023-12-02,Tata Motors,"Flange Hub Rev-1",EN8D,3.063,151000,6.82,443.67,open
+PQ-2023-01091,2023-12-05,Bharat Forge,"Gear Blank 5-Speed Rev-4",20MnCr5,1.597,7000,3.55,183.58,lost
+PQ-2024-01092,2024-03-09,Dana India,"Flange Hub Rev-4",EN8D,2.961,26000,6.97,364.97,open
+PQ-2023-01093,2023-02-15,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,0.722,41000,2.76,141.77,open
+PQ-2024-01094,2024-07-27,Mahindra & Mahindra,"Brake Caliper Bracket Rev-1",LM24,0.994,83000,4.48,189.57,won
+PQ-2026-01095,2026-07-25,Endurance Technologies,"Gear Blank 5-Speed Rev-2",20MnCr5,1.275,122000,3.71,209.45,open
+PQ-2025-01096,2025-11-08,Dana India,"Suspension Lift Arm Rev-2",40Cr4,5.438,49000,12.47,834.29,open
+PQ-2023-01097,2023-06-11,Bharat Forge,"Suspension Lift Arm Rev-1",40Cr4,4.7,10000,12.06,841.72,lost
+PQ-2024-01098,2024-12-09,Dana India,"Cam Follower Arm Rev-3",EN8,0.747,188000,3.38,113.65,open
+PQ-2026-01099,2026-03-11,Mahindra & Mahindra,"Bushing Sleeve Rev-4",SS304,0.354,133000,1.63,131.03,lost
+PQ-2026-01100,2026-12-16,Endurance Technologies,"Drive Spindle Shaft Rev-4",EN8,0.545,28000,4.19,116.88,open
+PQ-2026-01101,2026-10-13,Mahindra & Mahindra,"Bushing Sleeve Rev-1",SS304,0.306,81000,1.78,126.09,open
+PQ-2024-01102,2024-06-12,Tata Motors,"Bushing Sleeve Rev-1",SS304,0.598,61000,1.88,118.09,open
+PQ-2025-01103,2025-09-08,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,0.706,188000,2.81,148.89,won
+PQ-2023-01104,2023-07-24,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,0.73,45000,2.81,147.99,lost
+PQ-2023-01105,2023-10-24,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,4.066,31000,12.87,688.08,lost
+PQ-2023-01106,2023-10-23,Dana India,"Suspension Lift Arm Rev-2",40Cr4,5.103,146000,11.99,757.98,won
+PQ-2026-01107,2026-12-12,Dana India,"Differential Cross Pin Rev-1",20MnCr5,1.046,160000,2.51,167.71,open
+PQ-2025-01108,2025-07-17,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.433,24000,5.28,188.3,open
+PQ-2023-01109,2023-02-23,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-2",20MnCr5,1.198,28000,3.96,240.82,lost
+PQ-2026-01110,2026-10-04,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.437,75000,4.89,215.3,open
+PQ-2025-01111,2025-10-28,Force Motors,"Drive Spindle Shaft Rev-2",EN8,0.735,11000,4.27,123.04,lost
+PQ-2025-01112,2025-11-02,Bajaj Auto,"Transmission Pinion Rev-1",20MnCr5,1.272,25000,6.31,334.64,lost
+PQ-2024-01113,2024-10-14,Dana India,"Differential Cross Pin Rev-3",20MnCr5,0.705,94000,3.26,120.14,lost
+PQ-2025-01114,2025-01-26,Force Motors,"Transmission Pinion Rev-4",20MnCr5,2.246,105000,6.65,266.01,lost
+PQ-2025-01115,2025-01-09,Endurance Technologies,"Transmission Pinion Rev-1",20MnCr5,1.298,178000,5.82,364.96,open
+PQ-2026-01116,2026-05-18,Bharat Forge,"Steering Knuckle Rev-4",40Cr4,6.035,153000,14.04,698.88,lost
+PQ-2025-01117,2025-09-13,Endurance Technologies,"Brake Caliper Bracket Rev-1",LM24,1.06,12000,4.17,161.14,open
+PQ-2024-01118,2024-02-22,Force Motors,"Brake Caliper Bracket Rev-4",LM24,0.976,130000,3.97,216.25,lost
+PQ-2024-01119,2024-04-10,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,1.335,18000,3.66,282.56,won
+PQ-2023-01120,2023-08-03,Bajaj Auto,"Drive Spindle Shaft Rev-2",EN8,1.183,133000,2.52,100.73,open
+PQ-2025-01121,2025-12-24,Bajaj Auto,"Flange Hub Rev-4",EN8D,2.362,105000,6.09,419.13,won
+PQ-2023-01122,2023-08-09,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,-1.5,186000,5.29,185.3,open
+PQ-2023-01123,2023-07-05,Mahindra & Mahindra,"Transmission Pinion Rev-2",20MnCr5,2.08,142000,4.84,379.55,lost
+PQ-2026-01124,2026-12-08,Endurance Technologies,"Differential Cross Pin Rev-3",20MnCr5,0.979,34000,2.69,172.72,open
+PQ-2024-01125,2024-09-15,Endurance Technologies,"Drive Spindle Shaft Rev-1",EN8,0.838,93000,4.01,132.66,lost
+PQ-2025-01126,2025-04-02,Force Motors,"Drive Spindle Shaft Rev-3",EN8,1.14,80000,3.91,131.21,open
+PQ-2026-01127,2026-01-09,Dana India,"Suspension Lift Arm Rev-3",40Cr4,4.624,134000,10.89,849.12,open
+PQ-2026-01128,2026-04-13,Tata Motors,"Gear Blank 5-Speed Rev-3",20MnCr5,1.539,23000,5.33,195,open
+PQ-2024-01129,2024-08-28,Dana India,"Steering Knuckle Rev-4",40Cr4,3.512,152000,13.38,683.15,won
+PQ-2024-01130,2024-12-13,Tata Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.752,92000,4.86,248.11,lost
+PQ-2024-01131,2024-03-20,Tata Motors,"Bushing Sleeve Rev-1",SS304,0.435,93000,2.69,101.21,open
+PQ-2026-01132,2026-12-14,Force Motors,"Brake Caliper Bracket Rev-2",LM24,1.117,73000,3.8,240.1,lost
+PQ-2024-01133,2024-05-02,Mahindra & Mahindra,"Steering Knuckle Rev-2",40Cr4,4.771,157000,10.89,836.67,won
+PQ-2024-01134,2024-05-22,Mahindra & Mahindra,"Steering Knuckle Rev-4",40Cr4,4.063,43000,9.62,771.51,lost
+PQ-2025-01135,2025-11-21,Tata Motors,"Brake Caliper Bracket Rev-2",LM24,1.533,122000,4.39,226.78,lost
+PQ-2026-01136,2026-12-24,Mahindra & Mahindra,"Steering Knuckle Rev-2",40Cr4,6.468,136000,12.72,919.75,won
+PQ-2024-01137,2024-02-23,Force Motors,"Bushing Sleeve Rev-2",SS304,0.516,190000,2.14,104.17,open
+PQ-2024-01138,2024-10-28,Tata Motors,"Suspension Lift Arm Rev-4",40Cr4,4.979,113000,11.13,798.65,lost
+PQ-2026-01139,2026-05-13,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,1.976,83000,5.3,287.27,open
+PQ-2026-01140,2026-03-05,Tata Motors,"Brake Caliper Bracket Rev-1",LM24,1.083,89000,4.32,187.73,lost
+PQ-2025-01141,2025-08-26,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,1.609,53000,4.33,200.84,won
+PQ-2024-01142,2024-01-10,Bharat Forge,"Drive Spindle Shaft Rev-4",EN8,0.897,11000,3,99.87,open
+PQ-2026-01143,2026-05-27,Mahindra & Mahindra,"Flange Hub Rev-4",EN8D,2.138,75000,5.91,383.74,lost
+PQ-2024-01144,2024-07-13,Bajaj Auto,"Differential Cross Pin Rev-4",20MnCr5,0.756,100000,3.21,148.55,open
+PQ-2025-01145,2025-11-21,Dana India,"Flange Hub Rev-3",EN8D,3.467,24000,6.9,305.33,lost
+PQ-2025-01146,2025-06-25,Force Motors,"Transmission Pinion Rev-2",20MnCr5,2.284,160000,6.74,363.71,won
+PQ-2024-01147,2024-07-28,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,6.251,87000,10.91,758.4,lost
+PQ-2025-01148,2025-06-17,Tata Motors,"Steering Knuckle Rev-3",40Cr4,4.689,73000,13.35,845.37,open
+PQ-2023-01149,2023-01-25,Tata Motors,"Suspension Lift Arm Rev-2",40Cr4,5.154,91000,12.42,815.22,open
+PQ-2023-01150,2023-05-18,Dana India,"Bushing Sleeve Rev-2",SS304,0.381,87000,2.63,147.81,lost
+PQ-2024-01151,2024-08-27,Mahindra & Mahindra,"Steering Knuckle Rev-2",40Cr4,4.168,121000,9.77,783.04,open
+PQ-2025-01152,2025-06-10,Endurance Technologies,"Gear Blank 5-Speed Rev-4",20MnCr5,1.195,135000,4.63,212.31,open
+PQ-2023-01153,2023-07-19,Bharat Forge,"Brake Caliper Bracket Rev-4",LM24,1.314,75000,4.79,211.55,open
+PQ-2026-01154,2026-05-22,Tata Motors,"Bushing Sleeve Rev-3",SS304,0.475,197000,2.93,95.5,won
+PQ-2023-01155,2023-02-08,Tata Motors,"Transmission Pinion Rev-2",20MnCr5,2.22,0,4.73,296.74,lost
+PQ-2026-01156,2026-01-15,Mahindra & Mahindra,"Differential Cross Pin Rev-3",20MnCr5,0.927,38000,3.65,145.81,won
+PQ-2026-01157,2026-08-02,Tata Motors,"Suspension Lift Arm Rev-4",40Cr4,4.871,114000,11.52,762.89,lost
+PQ-2026-01158,2026-11-09,Bajaj Auto,"Brake Caliper Bracket Rev-4",LM24,0.906,140000,3.79,213.61,won
+PQ-2026-01159,2026-12-04,Bharat Forge,"Differential Cross Pin Rev-1",20MnCr5,0.64,75000,2.64,144.99,open
+PQ-2023-01160,2023-11-24,Endurance Technologies,"Brake Caliper Bracket Rev-4",LM24,0.868,155000,4.65,259.95,lost
+PQ-2026-01161,2026-07-13,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-1",20MnCr5,1.741,121000,4.12,242.49,lost
+PQ-2024-01162,2024-07-26,Tata Motors,"Steering Knuckle Rev-3",40Cr4,4.711,145000,13.33,712.14,open
+PQ-2025-01163,2025-08-08,Endurance Technologies,"Gear Blank 5-Speed Rev-1",20MnCr5,1.611,7000,5.3,278.17,lost
+PQ-2025-01164,2025-11-28,Endurance Technologies,"Gear Blank 5-Speed Rev-1",20MnCr5,1.14,88000,5.25,288.31,won
+PQ-2023-01165,2023-11-01,Endurance Technologies,"Drive Spindle Shaft Rev-4",EN8,0.547,117000,2.98,125.73,lost
+PQ-2025-01166,2025-04-08,Bajaj Auto,"Suspension Lift Arm Rev-2",40Cr4,4.844,120000,12.97,871.89,lost
+PQ-2024-01167,2024-04-21,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,1.597,65000,5.27,184.85,open
+PQ-2023-01168,2023-07-27,Endurance Technologies,"Suspension Lift Arm Rev-1",40Cr4,5.282,200000,13.7,782.99,open
+PQ-2023-01169,2023-10-03,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,0.91,133000,3.76,156.96,won
+PQ-2025-01170,2025-09-07,Bharat Forge,"Differential Cross Pin Rev-3",20MnCr5,0.702,150000,3.33,139.7,lost
+PQ-2025-01171,2025-02-15,Dana India,"Cam Follower Arm Rev-2",EN8,0.825,137000,3.12,98.65,won
+PQ-2025-01172,2025-10-22,Bharat Forge,"Transmission Pinion Rev-4",20MnCr5,1.545,184000,5.01,279.08,won
+PQ-2024-01173,2024-07-26,Endurance Technologies,"Cam Follower Arm Rev-4",EN8,0.747,96000,2.9,101.34,lost
+PQ-2023-01174,2023-01-22,Tata Motors,"Cam Follower Arm Rev-3",EN8,0.514,182000,3.29,94.26,open
+PQ-2023-01175,2023-09-06,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,0.732,123000,3.42,142.48,lost
+PQ-2025-01176,2025-07-15,Tata Motors,"Brake Caliper Bracket Rev-3",LM24,1.121,11000,4.24,174.49,lost
+PQ-2026-01177,2026-12-28,Force Motors,"Bushing Sleeve Rev-4",SS304,0.544,186000,2.08,157.31,open
+PQ-2025-01178,2025-11-28,Bajaj Auto,"Gear Blank 5-Speed Rev-1",20MnCr5,1.351,194000,4.9,191.05,won
+PQ-2026-01179,2026-03-26,Bajaj Auto,"Differential Cross Pin Rev-4",20MnCr5,1.006,87000,2.54,165.58,lost
+PQ-2026-01180,2026-07-27,Force Motors,"Transmission Pinion Rev-2",20MnCr5,2.211,166000,5.81,278.85,open
+PQ-2023-01181,2023-05-12,Bajaj Auto,"Steering Knuckle Rev-3",40Cr4,4.16,45000,14.77,925.71,lost
+PQ-2023-01182,2023-03-01,Tata Motors,"Steering Knuckle Rev-3",40Cr4,5.878,142000,12.11,876.51,won
+PQ-2025-01183,2025-06-21,Mahindra & Mahindra,"Suspension Lift Arm Rev-1",40Cr4,4.995,53000,10.64,757.1,lost
+PQ-2023-01184,2023-04-05,Tata Motors,"Transmission Pinion Rev-1",20MnCr5,2.035,166000,4.37,233.94,open
+PQ-2023-01185,2023-05-05,Tata Motors,"Flange Hub Rev-3",EN8D,3.095,105000,6.21,289.82,open
+PQ-2024-01186,2024-05-25,Dana India,"Transmission Pinion Rev-4",20MnCr5,1.623,115000,6.72,239.15,won
+PQ-2023-01187,2023-08-28,Mahindra & Mahindra,"Differential Cross Pin Rev-1",20MnCr5,0.908,14000,3.01,136.28,won
+PQ-2026-01188,2026-07-16,Mahindra & Mahindra,"Cam Follower Arm Rev-3",,0.41,98000,3.28,128.26,lost
+PQ-2024-01189,2024-09-03,Bharat Forge,"Transmission Pinion Rev-3",20MnCr5,1.848,156000,5.93,301.47,open
+PQ-2025-01190,2025-08-23,Mahindra & Mahindra,"Differential Cross Pin Rev-2",20MnCr5,0.759,75000,3.16,113.11,open
+PQ-2023-01191,2023-12-07,Force Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.764,45000,3.89,229.57,won
+PQ-2026-01192,2026-05-14,Dana India,"Bushing Sleeve Rev-4",SS304,0.483,93000,2.61,136.31,open
+PQ-2024-01193,2024-05-11,Mahindra & Mahindra,"Differential Cross Pin Rev-2",20MnCr5,0.815,127000,3.33,170.72,open
+PQ-2023-01194,2023-04-24,Bharat Forge,"Steering Knuckle Rev-2",40Cr4,5.933,184000,14.48,673.02,open
+PQ-2025-01195,2025-07-28,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.278,21000,3.91,223.48,lost
+PQ-2023-01196,2023-10-11,Bajaj Auto,"Suspension Lift Arm Rev-3",40Cr4,5.315,63000,10.61,789.92,won
+PQ-2023-01197,2023-07-04,Force Motors,"Transmission Pinion Rev-1",20MnCr5,1.346,142000,6.06,252.13,lost
+PQ-2023-01198,2023-06-12,Bharat Forge,"Brake Caliper Bracket Rev-3",LM24,1.575,36000,3.65,179.27,won
+PQ-2024-01199,2024-02-04,Endurance Technologies,"Transmission Pinion Rev-2",20MnCr5,2.221,12000,4.94,286.8,won
+PQ-2024-01200,2024-04-19,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.447,101000,4.61,289.81,lost
+PQ-2025-01201,2025-05-07,Mahindra & Mahindra,"Transmission Pinion Rev-3",20MnCr5,1.891,102000,5.85,307.42,open
+PQ-2023-01202,2023-09-28,Tata Motors,"Flange Hub Rev-2",EN8D,2.251,131000,7.32,385.91,won
+PQ-2023-01203,2023-02-06,Bajaj Auto,"Drive Spindle Shaft Rev-4",EN8,0.686,53000,3.29,103.75,lost
+PQ-2023-01204,2023-03-12,Bajaj Auto,"Brake Caliper Bracket Rev-2",LM24,1.424,54000,3,181.31,lost
+PQ-2023-01205,2023-01-08,Mahindra & Mahindra,"Cam Follower Arm Rev-1",EN8,0.895,179000,2.2,102.5,lost
+PQ-2023-01206,2023-04-18,Endurance Technologies,"Transmission Pinion Rev-3",20MnCr5,2.024,194000,4.53,255.96,lost
+PQ-2025-01207,2025-12-11,Bajaj Auto,"Transmission Pinion Rev-4",20MnCr5,1.717,97000,6.74,224.98,lost
+PQ-2023-01208,2023-04-13,Force Motors,"Transmission Pinion Rev-3",20MnCr5,1.214,11000,4.25,249.06,won
+PQ-2024-01209,2024-03-28,Force Motors,"Transmission Pinion Rev-4",20MnCr5,1.55,44000,6.07,230.59,lost
+PQ-2024-01210,2024-11-13,Tata Motors,"Brake Caliper Bracket Rev-3",LM24,0.818,165000,3.43,202.85,won
+PQ-2024-01211,2024-12-26,Tata Motors,"Suspension Lift Arm Rev-1",40Cr4,5.224,104000,12.28,860.14,won
+PQ-2025-01212,2025-10-11,Mahindra & Mahindra,"Bushing Sleeve Rev-1",SS304,0.6,14000,2.25,117.61,open
+PQ-2026-01213,2026-06-22,Bharat Forge,"Differential Cross Pin Rev-4",20MnCr5,1.075,95000,3.34,111.69,won
+PQ-2025-01214,2025-01-21,Mahindra & Mahindra,"Differential Cross Pin Rev-3",20MnCr5,0.989,83000,2.28,132,lost
+PQ-2026-01215,2026-05-22,Force Motors,"Differential Cross Pin Rev-4",20MnCr5,0.688,183000,3.04,135.97,lost
+PQ-2026-01216,2026-02-10,Tata Motors,"Suspension Lift Arm Rev-4",40Cr4,5.11,15000,10.25,864.89,open
+PQ-2025-01217,2025-08-10,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,0.981,127000,3.04,114.53,lost
+PQ-2024-01218,2024-08-05,Tata Motors,"Drive Spindle Shaft Rev-1",EN8,0.558,8000,4.2,110.84,lost
+PQ-2026-01219,2026-07-16,Bajaj Auto,"Gear Blank 5-Speed Rev-1",20MnCr5,1.644,194000,5.35,196.15,lost
+PQ-2023-01220,2023-09-14,Bajaj Auto,"Flange Hub Rev-1",EN8D,1.839,177000,7.54,447.87,lost
+PQ-2023-01221,2023-09-01,Mahindra & Mahindra,"Suspension Lift Arm Rev-1",40Cr4,-1.5,168000,10.32,863.99,lost
+PQ-2023-01222,2023-10-16,Force Motors,"Drive Spindle Shaft Rev-1",EN8,0.747,141000,3.9,132.22,lost
+PQ-2025-01223,2025-04-20,Bharat Forge,"Steering Knuckle Rev-4",40Cr4,5.243,104000,14.24,848.79,lost
+PQ-2025-01224,2025-10-28,Force Motors,"Steering Knuckle Rev-3",40Cr4,3.483,78000,10.54,874.95,open
+PQ-2024-01225,2024-01-14,Endurance Technologies,"Suspension Lift Arm Rev-3",40Cr4,4.444,63000,13.66,803.59,lost
+PQ-2023-01226,2023-06-19,Tata Motors,"Steering Knuckle Rev-2",40Cr4,4.458,123000,11.8,896.02,open
+PQ-2023-01227,2023-04-16,Bajaj Auto,"Cam Follower Arm Rev-3",EN8,0.83,18000,3.37,125.39,won
+PQ-2023-01228,2023-02-22,Bajaj Auto,"Differential Cross Pin Rev-4",20MnCr5,0.701,17000,3.23,172.66,open
+PQ-2023-01229,2023-08-05,Bharat Forge,"Cam Follower Arm Rev-2",EN8,0.797,199000,2.29,99.37,open
+PQ-2024-01230,2024-11-20,Bajaj Auto,"Brake Caliper Bracket Rev-1",LM24,1.427,60000,3.16,169.43,lost
+PQ-2026-01231,2026-04-23,Tata Motors,"Differential Cross Pin Rev-1",20MnCr5,1.034,28000,2.4,171.55,lost
+PQ-2023-01232,2023-05-20,Force Motors,"Flange Hub Rev-3",EN8D,2.48,130000,6.74,366.21,lost
+PQ-2026-01233,2026-09-28,Mahindra & Mahindra,"Steering Knuckle Rev-1",40Cr4,3.918,93000,9.48,880.45,lost
+PQ-2026-01234,2026-09-05,Force Motors,"Drive Spindle Shaft Rev-3",EN8,1.019,57000,4.47,106.28,lost
+PQ-2023-01235,2023-07-14,Tata Motors,"Flange Hub Rev-2",EN8D,3.494,80000,7.07,348.12,lost
+PQ-2025-01236,2025-09-26,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,0.897,52000,3.6,147.68,open
+PQ-2026-01237,2026-05-15,Force Motors,"Transmission Pinion Rev-1",20MnCr5,1.762,99000,6.94,333.42,lost
+PQ-2025-01238,2025-07-27,Bharat Forge,"Steering Knuckle Rev-3",40Cr4,5.377,24000,11.81,664.04,lost
+PQ-2026-01239,2026-02-14,Bajaj Auto,"Brake Caliper Bracket Rev-3",LM24,1.367,176000,3.7,193.69,won
+PQ-2024-01240,2024-04-21,Mahindra & Mahindra,"Cam Follower Arm Rev-4",EN8,0.844,35000,2.16,90.29,lost
+PQ-2025-01241,2025-10-14,Tata Motors,"Gear Blank 5-Speed Rev-3",20MnCr5,1.665,5000,3.84,212.14,lost
+PQ-2024-01242,2024-10-21,Force Motors,"Brake Caliper Bracket Rev-2",LM24,1.115,88000,3.1,207.86,lost
+PQ-2025-01243,2025-09-11,Bajaj Auto,"Brake Caliper Bracket Rev-1",LM24,1.191,194000,3.92,195.31,open
+PQ-2023-01244,2023-04-13,Tata Motors,"Steering Knuckle Rev-1",40Cr4,4.023,199000,10.1,780.96,won
+PQ-2024-01245,2024-09-28,Dana India,"Suspension Lift Arm Rev-2",40Cr4,5.265,9000,11.67,820.58,lost
+PQ-2023-01246,2023-01-13,Tata Motors,"Differential Cross Pin Rev-2",20MnCr5,0.698,92000,2.51,149.92,won
+PQ-2026-01247,2026-11-16,Tata Motors,"Flange Hub Rev-1",EN8D,1.932,105000,7.38,349.23,won
+PQ-2023-01248,2023-04-17,Force Motors,"Brake Caliper Bracket Rev-1",LM24,1.383,152000,4.23,259.39,lost
+PQ-2025-01249,2025-07-14,Force Motors,"Transmission Pinion Rev-1",20MnCr5,2.031,141000,6.94,238.68,lost
+PQ-2025-01250,2025-02-04,Bharat Forge,"Gear Blank 5-Speed Rev-3",20MnCr5,1.613,132000,5.05,243.6,lost
+PQ-2025-01251,2025-05-24,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,1.036,124000,2.26,145.89,won
+PQ-2025-01252,2025-06-16,Bharat Forge,"Steering Knuckle Rev-1",40Cr4,6.073,102000,10.25,877.8,open
+PQ-2024-01253,2024-08-23,Bharat Forge,"Drive Spindle Shaft Rev-3",EN8,0.626,132000,2.99,135.94,won
+PQ-2025-01254,2025-11-08,Tata Motors,"Drive Spindle Shaft Rev-2",EN8,0.602,0,2.82,138.17,won
+PQ-2026-01255,2026-05-06,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,0.721,84000,2.73,145.4,lost
+PQ-2026-01256,2026-01-12,Mahindra & Mahindra,"Differential Cross Pin Rev-1",20MnCr5,0.743,146000,2.56,115.31,open
+PQ-2023-01257,2023-02-15,Bharat Forge,"Brake Caliper Bracket Rev-4",LM24,0.96,173000,4.11,242.47,won
+PQ-2023-01258,2023-09-01,Endurance Technologies,"Differential Cross Pin Rev-1",20MnCr5,0.731,104000,2.78,174.19,lost
+PQ-2024-01259,2024-02-15,Endurance Technologies,"Drive Spindle Shaft Rev-3",EN8,1.005,76000,3.05,111.34,won
+PQ-2025-01260,2025-05-15,Bajaj Auto,"Bushing Sleeve Rev-1",SS304,0.471,141000,2.64,132.86,lost
+PQ-2025-01261,2025-02-10,Force Motors,"Bushing Sleeve Rev-1",SS304,0.408,121000,1.67,126.15,open
+PQ-2025-01262,2025-07-16,Endurance Technologies,"Gear Blank 5-Speed Rev-3",20MnCr5,1.509,81000,4.87,289.53,open
+PQ-2026-01263,2026-02-17,Tata Motors,"Brake Caliper Bracket Rev-3",LM24,1.086,146000,3.68,216.94,won
+PQ-2024-01264,2024-04-14,Force Motors,"Bushing Sleeve Rev-1",SS304,0.314,29000,2.26,108.1,lost
+PQ-2024-01265,2024-08-08,Dana India,"Steering Knuckle Rev-2",40Cr4,5.168,55000,11.32,847.78,lost
+PQ-2024-01266,2024-01-20,Endurance Technologies,"Flange Hub Rev-4",EN8D,2.816,64000,8.24,378.22,open
+PQ-2026-01267,2026-11-26,Dana India,"Transmission Pinion Rev-3",20MnCr5,1.931,65000,6.39,356.54,lost
+PQ-2023-01268,2023-05-05,Dana India,"Gear Blank 5-Speed Rev-1",20MnCr5,1.814,184000,4.69,257.71,open
+PQ-2025-01269,2025-11-24,Mahindra & Mahindra,"Gear Blank 5-Speed Rev-4",20MnCr5,1.794,144000,4.83,267.9,open
+PQ-2025-01270,2025-09-07,Force Motors,"Flange Hub Rev-1",EN8D,2.354,15000,5.61,444.84,won
+PQ-2025-01271,2025-10-19,Bharat Forge,"Bushing Sleeve Rev-2",SS304,0.373,91000,2.35,118.79,lost
+PQ-2026-01272,2026-10-07,Force Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.301,51000,4.53,271,lost
+PQ-2023-01273,2023-11-01,Force Motors,"Differential Cross Pin Rev-2",20MnCr5,0.913,152000,3.13,130.88,won
+PQ-2024-01274,2024-07-12,Mahindra & Mahindra,"Brake Caliper Bracket Rev-4",LM24,0.88,87000,3.56,188.64,lost
+PQ-2024-01275,2024-05-14,Mahindra & Mahindra,"Brake Caliper Bracket Rev-2",LM24,0.896,120000,3.79,240.17,open
+PQ-2025-01276,2025-01-25,Endurance Technologies,"Suspension Lift Arm Rev-4",40Cr4,4.117,81000,11.45,868.14,lost
+PQ-2026-01277,2026-02-07,Dana India,"Cam Follower Arm Rev-2",EN8,0.538,10000,2.66,126.09,won
+PQ-2025-01278,2025-12-04,Bajaj Auto,"Gear Blank 5-Speed Rev-4",20MnCr5,1.395,45000,5.04,245.4,lost
+PQ-2026-01279,2026-10-11,Dana India,"Transmission Pinion Rev-4",20MnCr5,1.562,68000,6.07,232.38,open
+PQ-2026-01280,2026-10-18,Bajaj Auto,"Differential Cross Pin Rev-4",20MnCr5,1.014,11000,2.85,149.19,lost
+PQ-2025-01281,2025-12-12,Bajaj Auto,"Bushing Sleeve Rev-4",SS304,0.739,37000,2.89,144.32,open
+PQ-2024-01282,2024-03-08,Dana India,"Transmission Pinion Rev-3",20MnCr5,1.558,85000,6.93,245.29,won
+PQ-2025-01283,2025-09-17,Endurance Technologies,"Steering Knuckle Rev-4",40Cr4,6.458,39000,9.68,754.47,open
+PQ-2026-01284,2026-11-10,Tata Motors,"Suspension Lift Arm Rev-3",40Cr4,4.362,9000,11.54,799.36,open
+PQ-2026-01285,2026-09-11,Force Motors,"Gear Blank 5-Speed Rev-3",20MnCr5,1.372,182000,5.12,236.93,won
+PQ-2026-01286,2026-01-02,Bajaj Auto,"Transmission Pinion Rev-2",20MnCr5,2.003,187000,4.89,287.89,open
+PQ-2026-01287,2026-06-13,Bajaj Auto,"Bushing Sleeve Rev-2",,0.655,40000,1.83,109.42,won
+PQ-2024-01288,2024-01-18,Mahindra & Mahindra,"Drive Spindle Shaft Rev-2",EN8,0.569,107000,3,126.77,won
+PQ-2024-01289,2024-04-07,Bajaj Auto,"Gear Blank 5-Speed Rev-2",20MnCr5,1.259,59000,3.61,206.13,open
+PQ-2026-01290,2026-07-20,Bajaj Auto,"Suspension Lift Arm Rev-3",40Cr4,4.965,176000,12.98,751.63,lost
+PQ-2025-01291,2025-02-11,Dana India,"Bushing Sleeve Rev-3",SS304,0.329,93000,2.47,103.88,open
+PQ-2025-01292,2025-06-08,Bajaj Auto,"Transmission Pinion Rev-3",20MnCr5,2.162,69000,5.36,363.24,open
+PQ-2025-01293,2025-01-11,Tata Motors,"Drive Spindle Shaft Rev-2",EN8,0.908,182000,4.2,87.18,won
+PQ-2023-01294,2023-12-22,Tata Motors,"Suspension Lift Arm Rev-2",40Cr4,5.324,50000,12.54,850.96,won
+PQ-2025-01295,2025-10-27,Dana India,"Differential Cross Pin Rev-4",20MnCr5,1.086,196000,3.06,128.75,open
+PQ-2025-01296,2025-12-26,Bajaj Auto,"Bushing Sleeve Rev-3",SS304,0.324,100000,1.64,97.35,lost
+PQ-2024-01297,2024-12-19,Tata Motors,"Gear Blank 5-Speed Rev-2",20MnCr5,1.526,154000,3.82,208.79,lost
+PQ-2024-01298,2024-08-24,Tata Motors,"Flange Hub Rev-2",EN8D,2.152,130000,7.93,341.45,won
+PQ-2026-01299,2026-09-24,Endurance Technologies,"Gear Blank 5-Speed Rev-2",20MnCr5,1.496,107000,4.63,279.13,lost
+PQ-2024-01300,2024-10-02,Tata Motors,"Suspension Lift Arm Rev-1",40Cr4,4.648,25000,10.75,739.47,won
+PQ-2025-01301,2025-06-06,Force Motors,"Drive Spindle Shaft Rev-4",EN8,1.029,104000,2.66,95.46,open
+PQ-2024-01302,2024-05-25,Bajaj Auto,"Gear Blank 5-Speed Rev-4",20MnCr5,1.849,120000,4.44,184.18,open
+PQ-2025-01303,2025-05-19,Endurance Technologies,"Steering Knuckle Rev-3",40Cr4,5.375,66000,11.08,725.69,open
+PQ-2023-01304,2023-08-22,Force Motors,"Drive Spindle Shaft Rev-1",EN8,0.76,81000,3.5,108,won
+PQ-2023-01305,2023-11-27,Tata Motors,"Bushing Sleeve Rev-4",SS304,0.306,106000,2.58,111.51,lost
+PQ-2025-01306,2025-08-06,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.351,118000,2.88,101.61,lost
+PQ-2024-01307,2024-05-17,Dana India,"Suspension Lift Arm Rev-3",40Cr4,4.596,124000,10.92,731.27,lost
+PQ-2023-01308,2023-10-24,Bharat Forge,"Drive Spindle Shaft Rev-3",EN8,0.749,177000,3.19,96.87,lost
+PQ-2025-01309,2025-01-18,Tata Motors,"Differential Cross Pin Rev-3",20MnCr5,0.645,41000,3.04,134,open
+PQ-2025-01310,2025-01-26,Dana India,"Transmission Pinion Rev-2",20MnCr5,2.055,195000,5.6,240.85,won
+PQ-2026-01311,2026-06-10,Bharat Forge,"Flange Hub Rev-2",EN8D,2.815,158000,6.46,290.42,open
+PQ-2024-01312,2024-09-23,Endurance Technologies,"Cam Follower Arm Rev-3",EN8,0.513,146000,2.62,122.26,open
+PQ-2023-01313,2023-04-28,Dana India,"Differential Cross Pin Rev-3",20MnCr5,0.804,11000,3.4,146.25,won
+PQ-2026-01314,2026-10-11,Endurance Technologies,"Differential Cross Pin Rev-4",20MnCr5,0.669,15000,3.54,126.26,lost
+PQ-2026-01315,2026-08-26,Endurance Technologies,"Gear Blank 5-Speed Rev-2",20MnCr5,1.584,108000,4.92,205.01,won
+PQ-2024-01316,2024-01-08,Tata Motors,"Bushing Sleeve Rev-4",SS304,0.625,90000,1.82,113.58,won
+PQ-2024-01317,2024-12-06,Bharat Forge,"Flange Hub Rev-2",EN8D,3.045,40000,6.16,352.02,won
+PQ-2025-01318,2025-06-24,Force Motors,"Flange Hub Rev-4",EN8D,2.935,123000,7.47,421.65,open
+PQ-2024-01319,2024-10-11,Force Motors,"Differential Cross Pin Rev-4",20MnCr5,0.703,145000,2.89,135.12,open
+PQ-2026-01320,2026-07-03,Endurance Technologies,"Bushing Sleeve Rev-3",SS304,-1.5,69000,1.6,116.65,open
+PQ-2026-01321,2026-07-04,Dana India,"Brake Caliper Bracket Rev-4",LM24,1.329,195000,4.62,210.64,open
+PQ-2026-01322,2026-05-18,Tata Motors,"Gear Blank 5-Speed Rev-4",20MnCr5,1.156,70000,3.58,191.49,open
+PQ-2026-01323,2026-04-25,Bajaj Auto,"Steering Knuckle Rev-1",40Cr4,3.593,64000,11.13,913.92,open
+PQ-2026-01324,2026-03-05,Bharat Forge,"Transmission Pinion Rev-2",20MnCr5,2.045,175000,4.02,226.39,won
+PQ-2026-01325,2026-07-19,Bajaj Auto,"Bushing Sleeve Rev-1",SS304,0.593,16000,2.28,111.85,won
+PQ-2026-01326,2026-03-03,Mahindra & Mahindra,"Flange Hub Rev-3",EN8D,2.188,158000,6.89,440.23,won
+PQ-2025-01327,2025-09-04,Force Motors,"Transmission Pinion Rev-1",20MnCr5,2.301,91000,6.75,296.88,open
+PQ-2026-01328,2026-12-17,Dana India,"Drive Spindle Shaft Rev-4",EN8,0.532,53000,4.03,107.22,lost
+PQ-2026-01329,2026-10-12,Bharat Forge,"Differential Cross Pin Rev-3",20MnCr5,0.644,127000,2.24,171.38,won
+PQ-2026-01330,2026-04-20,Bajaj Auto,"Flange Hub Rev-2",EN8D,2.837,111000,6.61,430.1,open
+PQ-2024-01331,2024-04-23,Bharat Forge,"Brake Caliper Bracket Rev-2",LM24,1.014,112000,4.58,212.77,lost
+PQ-2023-01332,2023-09-10,Endurance Technologies,"Bushing Sleeve Rev-1",SS304,0.523,69000,2.72,102.7,open
+PQ-2024-01333,2024-03-06,Bajaj Auto,"Suspension Lift Arm Rev-4",40Cr4,4.227,122000,13.06,738.05,lost
+PQ-2024-01334,2024-11-14,Bharat Forge,"Suspension Lift Arm Rev-3",40Cr4,4.393,177000,12.68,864.01,lost
+PQ-2024-01335,2024-01-03,Dana India,"Steering Knuckle Rev-1",40Cr4,3.929,9000,14.71,830.62,lost
+PQ-2025-01336,2025-05-07,Endurance Technologies,"Flange Hub Rev-3",EN8D,1.905,142000,7.05,340.65,open
+PQ-2025-01337,2025-02-09,Mahindra & Mahindra,"Suspension Lift Arm Rev-4",40Cr4,4.842,9000,11.34,726.17,won
+PQ-2024-01338,2024-07-17,Mahindra & Mahindra,"Suspension Lift Arm Rev-2",40Cr4,4.821,51000,10.14,800.65,lost
+PQ-2023-01339,2023-07-17,Bajaj Auto,"Steering Knuckle Rev-3",40Cr4,3.975,65000,14.53,740.5,won
+PQ-2024-01340,2024-12-15,Mahindra & Mahindra,"Brake Caliper Bracket Rev-1",LM24,0.938,138000,3.85,223.63,lost
+PQ-2023-01341,2023-10-21,Dana India,"Flange Hub Rev-3",EN8D,3.154,66000,7.06,346.93,open
+PQ-2024-01342,2024-09-08,Bajaj Auto,"Differential Cross Pin Rev-1",20MnCr5,0.949,32000,2.96,118.81,open
+PQ-2024-01343,2024-01-04,Endurance Technologies,"Drive Spindle Shaft Rev-3",EN8,0.843,21000,4.35,117.18,won
+PQ-2024-01344,2024-11-18,Force Motors,"Differential Cross Pin Rev-3",20MnCr5,0.926,52000,2.91,120.28,won
+PQ-2025-01345,2025-11-20,Endurance Technologies,"Brake Caliper Bracket Rev-2",LM24,1.593,42000,4.03,211.4,won
+PQ-2023-01346,2023-11-04,Dana India,"Cam Follower Arm Rev-4",EN8,0.891,100000,2.12,79.71,lost
+PQ-2025-01347,2025-02-11,Mahindra & Mahindra,"Cam Follower Arm Rev-3",EN8,0.793,135000,3.05,128.37,lost
+PQ-2025-01348,2025-02-17,Endurance Technologies,"Transmission Pinion Rev-3",20MnCr5,1.239,152000,4.97,257.08,lost
+PQ-2026-01349,2026-02-22,Mahindra & Mahindra,"Differential Cross Pin Rev-3",20MnCr5,0.66,21000,3.58,171.46,open
+PQ-2024-01350,2024-02-08,Endurance Technologies,"Brake Caliper Bracket Rev-2",LM24,0.903,42000,3.34,176.97,lost
+PQ-2023-01351,2023-09-23,Bharat Forge,"Flange Hub Rev-2",EN8D,2.888,179000,6.01,322.49,won
+PQ-2025-01352,2025-01-21,Endurance Technologies,"Brake Caliper Bracket Rev-3",LM24,0.829,51000,3.66,235.15,lost
+PQ-2024-01353,2024-07-21,Tata Motors,"Differential Cross Pin Rev-3",20MnCr5,0.744,0,3,142.24,lost
+PQ-2026-01354,2026-11-14,Dana India,"Transmission Pinion Rev-4",20MnCr5,2.237,165000,5.62,264.41,lost
+PQ-2024-01355,2024-09-03,Bharat Forge,"Brake Caliper Bracket Rev-3",LM24,0.82,23000,3.26,179.29,won
+PQ-2023-01356,2023-07-17,Bharat Forge,"Differential Cross Pin Rev-3",20MnCr5,0.82,94000,3.1,116.3,lost
+PQ-2026-01357,2026-02-15,Bajaj Auto,"Bushing Sleeve Rev-4",SS304,0.6,129000,1.72,141.08,lost
+PQ-2026-01358,2026-11-04,Force Motors,"Brake Caliper Bracket Rev-4",LM24,0.911,130000,4.82,201.27,lost
+PQ-2024-01359,2024-01-16,Force Motors,"Suspension Lift Arm Rev-4",40Cr4,5.419,161000,12.09,791.88,won
+PQ-2023-01360,2023-11-04,Dana India,"Transmission Pinion Rev-2",20MnCr5,2.017,163000,4.76,361.27,lost
+PQ-2024-01361,2024-06-09,Tata Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.222,18000,5.42,185.91,open
+PQ-2025-01362,2025-11-01,Tata Motors,"Suspension Lift Arm Rev-4",40Cr4,5.381,67000,13.81,869.68,open
+PQ-2024-01363,2024-07-25,Mahindra & Mahindra,"Steering Knuckle Rev-3",40Cr4,5.285,35000,10.52,678.33,lost
+PQ-2025-01364,2025-08-13,Endurance Technologies,"Steering Knuckle Rev-3",40Cr4,4.961,157000,9.52,881.07,lost
+PQ-2024-01365,2024-08-07,Force Motors,"Brake Caliper Bracket Rev-3",LM24,1.133,49000,3.41,233.97,open
+PQ-2025-01366,2025-07-08,Bajaj Auto,"Differential Cross Pin Rev-3",20MnCr5,0.653,28000,3.78,131.3,lost
+PQ-2024-01367,2024-04-15,Bharat Forge,"Suspension Lift Arm Rev-2",40Cr4,4.245,26000,12.83,801.92,open
+PQ-2026-01368,2026-11-25,Dana India,"Bushing Sleeve Rev-3",SS304,0.753,47000,2.75,95.77,open
+PQ-2023-01369,2023-12-11,Bajaj Auto,"Suspension Lift Arm Rev-2",40Cr4,4.116,51000,11.2,733.07,won
+PQ-2025-01370,2025-04-13,Bajaj Auto,"Flange Hub Rev-3",EN8D,2.866,9000,7.08,358.65,lost
+PQ-2023-01371,2023-09-19,Force Motors,"Flange Hub Rev-3",EN8D,2.645,31000,8.14,416.59,open
+PQ-2023-01372,2023-06-14,Bharat Forge,"Bushing Sleeve Rev-3",SS304,0.646,196000,1.56,108.78,lost
+PQ-2024-01373,2024-06-16,Bharat Forge,"Flange Hub Rev-2",EN8D,1.989,62000,8.01,353.17,lost
+PQ-2026-01374,2026-08-04,Tata Motors,"Suspension Lift Arm Rev-3",40Cr4,5.056,71000,13.84,814.46,lost
+PQ-2025-01375,2025-11-28,Tata Motors,"Suspension Lift Arm Rev-4",40Cr4,4.369,61000,11.71,817.5,won
+PQ-2026-01376,2026-08-06,Bajaj Auto,"Bushing Sleeve Rev-2",SS304,0.739,87000,2.41,156.71,open
+PQ-2023-01377,2023-10-07,Dana India,"Transmission Pinion Rev-1",20MnCr5,1.681,158000,4.73,232.56,won
+PQ-2023-01378,2023-12-27,Force Motors,"Gear Blank 5-Speed Rev-1",20MnCr5,1.654,168000,3.75,194.6,lost
+PQ-2023-01379,2023-06-19,Mahindra & Mahindra,"Brake Caliper Bracket Rev-2",LM24,0.874,40000,3.19,227.12,won
+PQ-2026-01380,2026-07-20,Bharat Forge,"Drive Spindle Shaft Rev-3",EN8,0.931,73000,2.6,134.32,open
+PQ-2026-01381,2026-04-12,Tata Motors,"Brake Caliper Bracket Rev-1",LM24,0.936,100000,3.69,180.04,won
+PQ-2024-01382,2024-03-12,Force Motors,"Suspension Lift Arm Rev-1",40Cr4,4.157,17000,12.65,740.84,lost
+PQ-2026-01383,2026-02-23,Mahindra & Mahindra,"Suspension Lift Arm Rev-1",40Cr4,5.217,169000,10.25,873.73,lost
+PQ-2026-01384,2026-10-02,Endurance Technologies,"Flange Hub Rev-1",EN8D,2.763,168000,7.55,420.87,lost
+PQ-2025-01385,2025-09-13,Tata Motors,"Differential Cross Pin Rev-4",20MnCr5,0.836,15000,2.22,141.04,open
+PQ-2026-01386,2026-11-22,Bajaj Auto,"Transmission Pinion Rev-1",,1.851,195000,4.63,288.25,won
+PQ-2024-01387,2024-08-07,Endurance Technologies,"Drive Spindle Shaft Rev-4",EN8,1.109,20000,3.44,95.88,lost
+PQ-2025-01388,2025-11-14,Endurance Technologies,"Steering Knuckle Rev-1",40Cr4,5.591,133000,11.96,882.19,won
+PQ-2023-01389,2023-12-17,Mahindra & Mahindra,"Bushing Sleeve Rev-4",SS304,0.366,197000,1.99,150.06,open
+PQ-2024-01390,2024-11-21,Dana India,"Differential Cross Pin Rev-1",20MnCr5,0.841,124000,2.51,144.2,open
+PQ-2026-01391,2026-05-05,Tata Motors,"Brake Caliper Bracket Rev-2",LM24,1.473,43000,3.09,169.35,lost
+PQ-2023-01392,2023-12-22,Bajaj Auto,"Transmission Pinion Rev-2",20MnCr5,1.204,135000,6.99,312.91,won
+PQ-2024-01393,2024-01-02,Bharat Forge,"Bushing Sleeve Rev-2",SS304,0.588,65000,2.38,120.63,lost
+PQ-2023-01394,2023-05-18,Endurance Technologies,"Flange Hub Rev-1",EN8D,2.22,113000,8.45,325.14,open
+PQ-2023-01395,2023-07-20,Force Motors,"Cam Follower Arm Rev-2",EN8,0.721,73000,3.18,129.09,open
+PQ-2026-01396,2026-05-09,Endurance Technologies,"Brake Caliper Bracket Rev-2",LM24,0.969,25000,3.94,194.73,won
+PQ-2024-01397,2024-06-28,Bajaj Auto,"Suspension Lift Arm Rev-3",40Cr4,4.371,126000,13.63,813.23,open
+PQ-2026-01398,2026-11-04,Force Motors,"Cam Follower Arm Rev-1",EN8,0.776,180000,2.11,79.41,lost
+PQ-2025-01399,2025-01-27,Force Motors,"Flange Hub Rev-2",EN8D,1.976,60000,5.04,302.77,open
+PQ-2023-01400,2023-04-21,Endurance Technologies,"Differential Cross Pin Rev-2",20MnCr5,0.607,39000,2.53,132.54,lost
