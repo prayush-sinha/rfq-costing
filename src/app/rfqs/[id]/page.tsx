@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { requireUser } from "@/lib/auth/guards";
 import { db } from "@/db/client";
 import { rfqs, customers, users, parts, routingOps, quotes, auditLog } from "@/db/schema";
@@ -100,9 +101,9 @@ export default async function RfqDetailPage({ params }: PageProps) {
 
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 space-y-6">
         <div className="flex items-center gap-2 text-xs font-mono text-zinc-500 uppercase">
-          <a href="/rfqs" className="hover:underline">
+          <Link href="/rfqs" className="hover:underline">
             ← Back to RFQ Register
-          </a>
+          </Link>
           <span>•</span>
           <span>{rfq.rfqNo}</span>
         </div>

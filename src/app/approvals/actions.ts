@@ -334,7 +334,7 @@ async function generateQuoteSnapshot(
   quoteId: number,
   asOfDate: string,
   rateBook: ReturnType<typeof buildRateBook>,
-  userId: number
+  _userId: number
 ) {
   // Query quote, rfq, customer
   const qRes = await db

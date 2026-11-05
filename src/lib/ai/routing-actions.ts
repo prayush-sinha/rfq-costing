@@ -2,7 +2,7 @@
 
 import { requireUser, requireRole } from "@/lib/auth/guards";
 import { db } from "@/db/client";
-import { parts, routingOps, rfqs, pastQuotes, auditLog, rateMachines } from "@/db/schema";
+import { parts, routingOps, rfqs, pastQuotes, auditLog } from "@/db/schema";
 import { eq, isNotNull, sql } from "drizzle-orm";
 import { suggestRouting, PastPart, Suggestion } from "./suggest-routing";
 

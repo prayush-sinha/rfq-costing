@@ -7,11 +7,6 @@ import {
   TextRun,
   HeadingLevel,
   AlignmentType,
-  Table,
-  TableRow,
-  TableCell,
-  WidthType,
-  BorderStyle,
 } from "docx";
 
 async function main() {
