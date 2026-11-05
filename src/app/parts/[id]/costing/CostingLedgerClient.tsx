@@ -5,6 +5,8 @@ import Link from "next/link";
 import { saveCosting, repriceWithLatestRates } from "@/lib/quotes/actions";
 import { D, costTier, Breakdown } from "@/lib/costing/engine";
 import { buildRateBook, MissingRateError, RateRows } from "@/lib/costing/rates";
+import { getRoutingSuggestions, logRoutingSuggestionApplied } from "@/lib/ai/routing-actions";
+import { Suggestion } from "@/lib/ai/suggest-routing";
 
 export interface PartCostingData {
   id: number;
@@ -118,6 +120,45 @@ export function CostingLedgerClient({
   const [saving, setSaving] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [conflictError, setConflictError] = useState<string | null>(null);
+
+  // Routing Suggestions state
+  const [showSuggestionsModal, setShowSuggestionsModal] = useState(false);
+  const [loadingSuggestions, setLoadingSuggestions] = useState(false);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [suggestionsError, setSuggestionsError] = useState<string | null>(null);
+
+  const handleOpenSuggestions = async () => {
+    setShowSuggestionsModal(true);
+    setLoadingSuggestions(true);
+    setSuggestionsError(null);
+    try {
+      const res = await getRoutingSuggestions(part.id);
+      setSuggestions(res.suggestions);
+    } catch (err: any) {
+      setSuggestionsError(err?.message || "Failed to load routing suggestions");
+    } finally {
+      setLoadingSuggestions(false);
+    }
+  };
+
+  const handleApplySuggestion = async (sug: Suggestion) => {
+    const newOps: InitialOp[] = sug.source.ops.map((op, i) => ({
+      seq: i + 1,
+      opName: op.opName,
+      machineCode: op.machineCode || availableMachines[0]?.machineCode || "CNC-LATHE-01",
+      cycleMin: op.cycleMin.toFixed(3),
+      setupMin: op.setupMin.toFixed(2),
+    }));
+
+    setOps(newOps);
+    setShowSuggestionsModal(false);
+
+    try {
+      await logRoutingSuggestionApplied(part.id, sug.source.quoteNo);
+    } catch (e) {
+      console.warn("Audit logging for suggestion failed:", e);
+    }
+  };
 
   // Build rate book as of the pinned quote date
   const rateBook = useMemo(() => {
@@ -427,13 +468,22 @@ export function CostingLedgerClient({
               </p>
             </div>
             {isEstimator && (
-              <button
-                type="button"
-                onClick={handleAddOp}
-                className="rounded bg-zinc-100 px-2 py-1 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300"
-              >
-                + Add Op
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={handleOpenSuggestions}
+                  className="rounded bg-purple-50 text-purple-700 border border-purple-200 px-2.5 py-1 text-xs font-semibold hover:bg-purple-100 dark:bg-purple-950/40 dark:border-purple-800 dark:text-purple-300 transition-colors shadow-xs"
+                >
+                  ✦ Suggest Routings
+                </button>
+                <button
+                  type="button"
+                  onClick={handleAddOp}
+                  className="rounded bg-zinc-100 px-2 py-1 text-xs font-semibold text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300"
+                >
+                  + Add Op
+                </button>
+              </div>
             )}
           </div>
 
@@ -783,6 +833,118 @@ export function CostingLedgerClient({
           </div>
         </div>
       </div>
+      {/* Routing Suggestions Modal */}
+      {showSuggestionsModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
+          <div className="w-full max-w-2xl rounded-xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-800 dark:bg-zinc-900 space-y-4">
+            <div className="flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800">
+              <div>
+                <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+                  <span>✦ Historical Routing Suggestions</span>
+                  <span className="rounded bg-purple-50 px-2 py-0.5 text-[10px] font-semibold text-purple-700 dark:bg-purple-950 dark:text-purple-300">
+                    Similarity Ranked
+                  </span>
+                </h3>
+                <p className="text-xs text-zinc-500">
+                  Top 3 matching past parts with identical material ({part.material}) and ±30% gross blank weight.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSuggestionsModal(false)}
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-lg"
+              >
+                ✕
+              </button>
+            </div>
+
+            {loadingSuggestions ? (
+              <div className="py-12 text-center text-xs text-zinc-500">
+                Searching 1,400+ past quotes and costed parts for similar routings...
+              </div>
+            ) : suggestionsError ? (
+              <div className="rounded-lg bg-red-50 p-3 text-xs text-red-700 dark:bg-red-950/40 dark:text-red-400">
+                {suggestionsError}
+              </div>
+            ) : suggestions.length === 0 ? (
+              <div className="py-10 text-center text-xs text-zinc-500 space-y-1">
+                <p>No similar historical parts found matching material <strong>{part.material}</strong> within ±30% blank weight ({part.grossWtKg} kg).</p>
+                <p className="text-[11px] text-zinc-400">Add routing operations manually using the &quot;+ Add Op&quot; button.</p>
+              </div>
+            ) : (
+              <div className="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
+                {suggestions.map((sug, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-800/30 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors space-y-3"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-xs text-zinc-900 dark:text-zinc-100">
+                            {sug.source.partName}
+                          </span>
+                          <span className="rounded bg-zinc-200 px-1.5 py-0.5 text-[10px] font-mono font-medium text-zinc-700 dark:bg-zinc-700 dark:text-zinc-300">
+                            {sug.source.quoteNo}
+                          </span>
+                        </div>
+                        <div className="text-[11px] text-zinc-500 font-mono mt-0.5">
+                          Grade: {sug.source.material} • Gross Wt: {sug.source.grossWtKg.toFixed(3)} kg
+                        </div>
+                      </div>
+
+                      <div className="text-right">
+                        <span className="inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                          Score: {sug.score.toFixed(2)}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Operations Sequence */}
+                    <div className="rounded border border-zinc-200/80 bg-white p-2.5 dark:border-zinc-700/60 dark:bg-zinc-900/60 text-xs space-y-1.5">
+                      <span className="text-[10px] uppercase font-mono text-zinc-400 font-semibold">
+                        Suggested Operations ({sug.source.ops.length}):
+                      </span>
+                      <ul className="divide-y divide-zinc-100 dark:divide-zinc-800">
+                        {sug.source.ops.map((op, oIdx) => (
+                          <li key={oIdx} className="py-1 flex items-center justify-between text-xs">
+                            <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                              {oIdx + 1}. {op.opName}
+                            </span>
+                            <span className="font-mono text-[11px] text-zinc-500 tabular-nums">
+                              Cycle: {op.cycleMin.toFixed(2)}m • Setup: {op.setupMin.toFixed(0)}m
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex justify-end pt-1">
+                      <button
+                        type="button"
+                        onClick={() => handleApplySuggestion(sug)}
+                        className="rounded-md bg-purple-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-purple-700 transition-colors shadow-xs"
+                      >
+                        ✓ Apply Routing Operations
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="flex justify-end pt-3 border-t border-zinc-200 dark:border-zinc-800">
+              <button
+                type="button"
+                onClick={() => setShowSuggestionsModal(false)}
+                className="rounded-md border border-zinc-300 px-3.5 py-1.5 text-xs font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
