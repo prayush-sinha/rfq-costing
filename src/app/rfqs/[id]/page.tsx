@@ -6,6 +6,8 @@ import { eq, sql } from "drizzle-orm";
 import { Navbar } from "@/components/Navbar";
 import { RfqDetailClient, PartItem, RfqDetailData } from "./RfqDetailClient";
 import { todayIST } from "@/lib/rfqs/urgency";
+import { IntakePanel } from "@/components/intake/IntakePanel";
+import { getAiSuggestions } from "./intake-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -89,6 +91,9 @@ export default async function RfqDetailPage({ params }: PageProps) {
 
   const today = todayIST();
 
+  // Query existing AI suggestions
+  const initialSuggestions = await getAiSuggestions(rfqId);
+
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans">
       <Navbar user={user} />
@@ -106,6 +111,12 @@ export default async function RfqDetailPage({ params }: PageProps) {
           rfq={detailData}
           parts={partRows as PartItem[]}
           today={today}
+          userRole={user.role}
+        />
+
+        <IntakePanel
+          rfqId={rfq.id}
+          initialSuggestions={initialSuggestions as any}
           userRole={user.role}
         />
       </main>
