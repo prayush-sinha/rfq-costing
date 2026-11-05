@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 dotenv.config({ path: path.resolve(__dirname, ".env.local") });
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 
+(process.env as Record<string, string>).NODE_ENV = "test";
+(process.env as Record<string, string>).DB_TARGET = "test";
+
 export default defineConfig({
   resolve: {
     alias: {

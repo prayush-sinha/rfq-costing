@@ -11,7 +11,9 @@
     "typecheck": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:migrate:test": "cross-env DB_TARGET=test drizzle-kit migrate"
+    "db:migrate:test": "cross-env DB_TARGET=test drizzle-kit migrate",
+    "db:seed:users": "tsx scripts/seed-users.ts",
+    "db:seed:users:test": "cross-env DB_TARGET=test tsx scripts/seed-users.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.4.0",
@@ -43,6 +45,7 @@
     "eslint-config-next": "16.4.5",
     "pdf-parse": "^2.4.5",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.1.0"
   }

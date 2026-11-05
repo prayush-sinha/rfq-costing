@@ -13,6 +13,8 @@ jobs:
     env:
       DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
       TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+      AUTH_SECRET: ci-secret-test-auth-key-at-least-32-chars-long
+      DEMO_PASSWORD: ci-test-password-only
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,5 +28,6 @@ jobs:
           PGPASSWORD: postgres
       - run: npm run db:migrate
       - run: npm run db:migrate:test
+      - run: npm run db:seed:users:test
       - run: npm test
       - run: npm audit --audit-level=high

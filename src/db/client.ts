@@ -2,8 +2,18 @@ import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 import * as schema from "./schema";
 
+const isTest =
+  process.env.VITEST === "true" ||
+  process.env.NODE_ENV === "test" ||
+  process.env.DB_TARGET === "test";
+
+const connectionString =
+  isTest && process.env.TEST_DATABASE_URL
+    ? process.env.TEST_DATABASE_URL
+    : process.env.DATABASE_URL;
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString,
   max: 5,
 });
 
