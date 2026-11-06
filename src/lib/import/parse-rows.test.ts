@@ -30,7 +30,7 @@ describe("parseRow", () => {
     if (r.ok) expect(r.row.cycleTimeMin).toBeUndefined();
   });
   it("defaults outcome to open", () => {
-    const { outcome, ...rest } = good;
+    const { outcome: _outcome, ...rest } = good;
     const r = parseRow(rest);
     expect(r.ok && r.row.outcome).toBe("open");
   });

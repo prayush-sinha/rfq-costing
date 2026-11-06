@@ -44,7 +44,7 @@ Best regards,
 Head of Sourcing & Supply Chain
 Bajaj Auto Limited, Chakan, Pune`;
 
-export function IntakePanel({ rfqId, initialSuggestions, userRole }: IntakePanelProps) {
+export function IntakePanel({ rfqId, initialSuggestions, userRole: _userRole }: IntakePanelProps) {
   const [emailText, setEmailText] = useState("");
   const [suggestions, setSuggestions] = useState<SuggestionItem[]>(initialSuggestions);
   const [discarded, setDiscarded] = useState<DiscardedField[]>([]);

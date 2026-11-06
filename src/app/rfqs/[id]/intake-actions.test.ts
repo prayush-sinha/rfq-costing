@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, vi, beforeAll } from "vitest";
 import { pool } from "@/db/test-pool";
 import { runAiIntake, decideSuggestion } from "./intake-actions";
 
@@ -20,7 +20,6 @@ vi.mock("next/cache", () => ({
 
 describe("AI Intake Actions Integration", () => {
   let testRfqId: number;
-  let testPartId: number;
 
   beforeAll(async () => {
     // 1. Ensure user exists
@@ -59,13 +58,12 @@ describe("AI Intake Actions Integration", () => {
     testRfqId = rfqRes.rows[0].id;
 
     // 5. Create a Part
-    const partRes = await pool.query(
+    await pool.query(
       `INSERT INTO parts (rfq_id, name, material, gross_wt_kg, scrap_pct, annual_volume, tooling_cost, tooling_years)
        VALUES ($1, 'Old Shaft', 'EN8', 1.000, 0.0800, 10000, 0, 2.0)
        RETURNING id`,
       [testRfqId]
     );
-    testPartId = partRes.rows[0].id;
   });
 
   it("extracts, verifies, and stores suggestions from email text", async () => {

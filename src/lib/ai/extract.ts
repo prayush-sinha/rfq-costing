@@ -86,7 +86,7 @@ export class ClaudeExtractor implements Extractor {
     // 3. Call Claude 3.5 Sonnet
     try {
       const response = await this.client.messages.create({
-        model: "claude-3-5-sonnet-20241022",
+        model: process.env.ANTHROPIC_MODEL || "claude-3-5-sonnet-20241022",
         max_tokens: 1024,
         system: EXTRACTION_SYSTEM_PROMPT,
         messages: [

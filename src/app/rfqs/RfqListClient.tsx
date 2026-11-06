@@ -33,7 +33,7 @@ export function RfqListClient({
   rfqs,
   customers,
   today,
-  userRole,
+  userRole: _userRole,
 }: RfqListClientProps) {
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");

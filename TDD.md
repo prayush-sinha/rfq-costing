@@ -4,9 +4,9 @@
 **Company A Precision Engineering Pvt. Ltd. — Chakan, Pune**
 
 **System:** Enterprise Automotive Component RFQ Costing, Rate Versioning & Quotation Platform  
-**Author:** Technical Architecture & Cost Engineering Team  
+**Author:** Prayush Sinha  
 **Date:** November 2026  
-**Version:** 1.0.0 (Production Release)  
+**Version:** 1.0.0 (Candidate Submission)  
 **GitHub Repository:** [https://github.com/prayush-sinha/rfq-costing](https://github.com/prayush-sinha/rfq-costing)
 
 ---

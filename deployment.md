@@ -21,7 +21,7 @@ This application is an enterprise-grade, deterministic RFQ-to-quotation costing 
 - **Authentication:** Auth.js v5 (NextAuth Credentials Provider with bcrypt password hashing, constant-time dummy comparisons, IP throttling, and server-side database role re-verification)
 - **Document Generation:** `@react-pdf/renderer` (formal commercial quotation PDF generated strictly from immutable database snapshots)
 - **Styling:** Tailwind CSS v4
-- **Testing:** Vitest 5 (120 unit, integration, and database constraint tests)
+- **Testing:** Vitest 5 (134 unit, integration, and database constraint tests across 24 test files)
 
 ---
 
@@ -89,7 +89,7 @@ npm run db:seed
 ```
 
 #### Step 6: Import Historical Quotes
-Import and validate the 1,400 benchmark historical quotes into `past_quotes`:
+Import and validate the 1,400 benchmark historical quotes into `past_quotes` (1,358 valid rows imported, 42 malformed validation test rows cleanly rejected by schema validation):
 ```bash
 npm run import:quotes
 ```
@@ -99,7 +99,7 @@ Run the complete Vitest test suite to verify all constraints, guards, and engine
 ```bash
 npm test
 ```
-*Expected result:* 120 tests passing across 22 test files.
+*Expected result:* 134 tests passing across 24 test files.
 
 #### Step 8: Start Development Server
 ```bash

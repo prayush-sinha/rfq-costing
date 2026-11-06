@@ -51,14 +51,26 @@ function copyRecursive(src, dest) {
 console.log("Staging clean source files (excluding .env.local, node_modules, .next, .git, tsbuildinfo)...");
 copyRecursive(sourceDir, stagingDir);
 
-console.log("Compressing clean submission zip...");
-execSync(
-  `powershell -NoProfile -Command "Compress-Archive -Path '${stagingDir}' -DestinationPath '${subZip}' -Force"`
-);
+console.log("Compressing clean submission zip with POSIX forward-slash separators...");
+const cleanStaging = stagingDir.replace(/\\/g, "/");
+const cleanZipPath = subZip.replace(/\\/g, "/");
+
+const psScript = `
+[System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression') | Out-Null;
+[System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') | Out-Null;
+$zip = [System.IO.Compression.ZipFile]::Open('${cleanZipPath}', [System.IO.Compression.ZipArchiveMode]::Create);
+Get-ChildItem -Path '${cleanStaging}' -Recurse -File | ForEach-Object {
+    $rel = 'rfq-costing/' + $_.FullName.Substring('${cleanStaging}'.Length).TrimStart('\\', '/').Replace('\\', '/');
+    [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $_.FullName, $rel, [System.IO.Compression.CompressionLevel]::Optimal) | Out-Null;
+};
+$zip.Dispose();
+`;
+
+execSync(`powershell -NoProfile -Command "${psScript.replace(/\r?\n/g, " ")}"`);
 
 fs.rmSync(stagingParent, { recursive: true, force: true });
 
 const stats = fs.statSync(subZip);
-console.log(`\n✓ Pristine submission archive created:`);
+console.log(`\n✓ Pristine submission archive created with POSIX paths:`);
 console.log(`  Path: ${subZip}`);
 console.log(`  Size: ${(stats.size / 1024 / 1024).toFixed(2)} MB (${stats.size.toLocaleString()} bytes)`);

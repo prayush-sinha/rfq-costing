@@ -58,7 +58,7 @@ async function main() {
           color: "4F46E5",
         }),
         new TextRun({
-          text: "Author: Cost Engineering & Technical Architecture Team • Version 1.0.0 • November 2026",
+          text: "Author: Prayush Sinha • Candidate Submission • November 2026",
           size: 18,
           color: "71717A",
         }),

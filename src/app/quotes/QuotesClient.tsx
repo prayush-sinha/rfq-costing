@@ -31,17 +31,15 @@ interface QuotesClientProps {
   userRole: "estimator" | "sales_head";
 }
 
-export function QuotesClient({ initialData, knownMaterials, userRole }: QuotesClientProps) {
+export function QuotesClient({ initialData, knownMaterials, userRole: _userRole }: QuotesClientProps) {
   const [data, setData] = useState(initialData);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedOutcome, setSelectedOutcome] = useState<string>("all");
   const [selectedMaterial, setSelectedMaterial] = useState<string>("all");
-  const [page, setPage] = useState(1);
   const [isSearching, startSearchTransition] = useTransition();
 
   // Import Modal State
   const [showImportModal, setShowImportModal] = useState(false);
-  const [fileToImport, setFileToImport] = useState<File | null>(null);
   const [parsing, setParsing] = useState(false);
   const [parsedRows, setParsedRows] = useState<Record<string, string>[] | null>(null);
   const [importResult, setImportResult] = useState<ImportResult | null>(null);
@@ -59,7 +57,6 @@ export function QuotesClient({ initialData, knownMaterials, userRole }: QuotesCl
           pageSize: 25,
         });
         setData(res as any);
-        setPage(newPage);
       } catch (err: any) {
         alert(err?.message || "Search failed");
       }
@@ -75,7 +72,6 @@ export function QuotesClient({ initialData, knownMaterials, userRole }: QuotesCl
       return;
     }
 
-    setFileToImport(file);
     setImportError(null);
     setImportResult(null);
     setParsing(true);
@@ -165,7 +161,6 @@ export function QuotesClient({ initialData, knownMaterials, userRole }: QuotesCl
             setImportResult(null);
             setImportError(null);
             setParsedRows(null);
-            setFileToImport(null);
           }}
           className="self-start sm:self-auto inline-flex items-center rounded-lg bg-zinc-900 px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 transition-colors shadow-xs"
         >

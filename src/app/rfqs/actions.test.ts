@@ -28,7 +28,7 @@ vi.mock("@/lib/auth/guards", () => {
   };
 });
 
-import { markWonLost, createRfq } from "./actions";
+import { markWonLost } from "./actions";
 
 describe("rfq actions", () => {
   let testRfqId: number;
