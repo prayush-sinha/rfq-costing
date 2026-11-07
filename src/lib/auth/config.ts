@@ -5,6 +5,7 @@ import type { NextAuthConfig } from "next-auth";
  * Safe for use in middleware / proxy and client environments.
  */
 export const authConfig: NextAuthConfig = {
+  trustHost: true,
   pages: {
     signIn: "/login",
   },
