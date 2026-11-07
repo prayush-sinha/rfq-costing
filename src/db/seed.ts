@@ -29,11 +29,11 @@ export async function seedDatabase(pool: Pool) {
     userIds[u.role] = res.rows[0].id;
   }
 
-  // 2. Seed Customers
+  // 2. Seed Customers (Strictly aligned with client brief)
   const customerNames = [
-    "Customer B (Tata Motors Tier-1)",
-    "Customer C (Bajaj Auto Tier-1)",
-    "Customer D (Mahindra Tier-1)",
+    "Company B (two-wheelers)",
+    "Company C (tractors)",
+    "Company D (drivetrains)",
   ];
 
   const customerIds: Record<string, number> = {};
@@ -109,7 +109,7 @@ export async function seedDatabase(pool: Pool) {
      VALUES ($1, $2, $3, $4, $5)
      ON CONFLICT (rfq_no) DO UPDATE SET due_date = EXCLUDED.due_date
      RETURNING id`,
-    ["RFQ-2611-014", customerIds["Customer B (Tata Motors Tier-1)"], "2026-11-20", userIds["estimator"], "estimating"]
+    ["RFQ-2611-014", customerIds["Company B (two-wheelers)"], "2026-11-20", userIds["estimator"], "estimating"]
   );
   const rfq1Id = rfq1Res.rows[0].id;
 
@@ -118,7 +118,7 @@ export async function seedDatabase(pool: Pool) {
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
      ON CONFLICT DO NOTHING
      RETURNING id`,
-    [rfq1Id, "Drive Spindle Shaft", "EN8", "0.610", "0.0800", 180000, "0", "2.0", "DWG-SPINDLE-REV2"]
+    [rfq1Id, "Rear wheel spindle", "EN8", "0.610", "0.0800", 180000, "0", "2.0", "DWG-SPINDLE-REV2"]
   );
   const part1Id = part1Res.rows[0]?.id;
   if (part1Id) {
@@ -154,7 +154,7 @@ export async function seedDatabase(pool: Pool) {
      VALUES ($1, $2, $3, $4, $5)
      ON CONFLICT (rfq_no) DO UPDATE SET due_date = EXCLUDED.due_date
      RETURNING id`,
-    ["RFQ-2611-019", customerIds["Customer C (Bajaj Auto Tier-1)"], "2026-11-25", userIds["estimator"], "sent"]
+    ["RFQ-2611-019", customerIds["Company C (tractors)"], "2026-11-25", userIds["estimator"], "sent"]
   );
   const rfq2Id = rfq2Res.rows[0].id;
 
@@ -163,7 +163,7 @@ export async function seedDatabase(pool: Pool) {
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
      ON CONFLICT DO NOTHING
      RETURNING id`,
-    [rfq2Id, "Suspension Lift Arm", "40Cr4", "4.600", "0.0500", 24000, "800000.00", "2.0", "DWG-LIFTARM-FORGING-01"]
+    [rfq2Id, "Hydraulic lift arm", "40Cr4", "4.600", "0.0500", 24000, "800000.00", "2.0", "DWG-LIFTARM-FORGING-01"]
   );
   const part2Id = part2Res.rows[0]?.id;
   if (part2Id) {
@@ -193,13 +193,13 @@ export async function seedDatabase(pool: Pool) {
     }
   }
 
-  // RFQ 3: RFQ-2611-022 (Gear Blank, Won, Approved Quote)
+  // RFQ 3: RFQ-2611-023 (Gear Blank, Won, Approved Quote)
   const rfq3Res = await pool.query(
     `INSERT INTO rfqs (rfq_no, customer_id, due_date, owner_id, status)
      VALUES ($1, $2, $3, $4, $5)
      ON CONFLICT (rfq_no) DO UPDATE SET due_date = EXCLUDED.due_date
      RETURNING id`,
-    ["RFQ-2611-022", customerIds["Customer D (Mahindra Tier-1)"], "2026-11-28", userIds["estimator"], "won"]
+    ["RFQ-2611-023", customerIds["Company D (drivetrains)"], "2026-11-28", userIds["estimator"], "won"]
   );
   const rfq3Id = rfq3Res.rows[0].id;
 
@@ -208,7 +208,7 @@ export async function seedDatabase(pool: Pool) {
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
      ON CONFLICT DO NOTHING
      RETURNING id`,
-    [rfq3Id, "Transmission Gear Blank", "20MnCr5", "1.480", "0.0700", 60000, "0", "2.0", "DWG-GEAR-BLANK-5SPD"]
+    [rfq3Id, "Gear blank", "20MnCr5", "1.480", "0.0700", 60000, "0", "2.0", "DWG-GEAR-BLANK-5SPD"]
   );
   const part3Id = part3Res.rows[0]?.id;
   if (part3Id) {
@@ -245,7 +245,7 @@ export async function seedDatabase(pool: Pool) {
      ON CONFLICT (rfq_no) DO UPDATE SET lost_reason = EXCLUDED.lost_reason`,
     [
       "RFQ-2611-008",
-      customerIds["Customer B (Tata Motors Tier-1)"],
+      customerIds["Company B (two-wheelers)"],
       "2026-10-15",
       userIds["estimator"],
       "lost",

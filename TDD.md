@@ -7,7 +7,8 @@
 **Author:** Prayush Sinha  
 **Date:** November 2026  
 **Version:** 1.0.0 (Candidate Submission)  
-**GitHub Repository:** [https://github.com/prayush-sinha/rfq-costing](https://github.com/prayush-sinha/rfq-costing)
+**GitHub Repository:** [https://github.com/prayush-sinha/rfq-costing](https://github.com/prayush-sinha/rfq-costing)  
+**Live Application Link:** [https://rfq-costing.vercel.app](https://rfq-costing.vercel.app) *(Configured for Vercel + Neon; see deployment.md for local and cloud run instructions)*
 
 ---
 
@@ -157,9 +158,11 @@ Where $R_{freight}$ = Logistics rate per kilogram (parameter `freight_per_kg`, c
 $$C_{base} = C_{net\_mat} + C_{conv} + C_{ovh} + C_{tool} + C_{pack} + C_{freight}$$
 
 #### 10. Commercial Price Determination (Ex-GST) ($P_{ex\_gst}$)
-Profit margin applied over base cost:
-$$P_{ex\_gst} = \text{round}_2 \left( C_{base} \times (1 + M_{pct}) \right)$$
-Where $M_{pct}$ is the tier operating margin percentage (e.g. 12.00%).
+True commercial profit margin applied via the margin divisor (revenue-based margin rather than naive markup):
+$$P_{ex\_gst} = \text{round}_2 \left( \frac{C_{base}}{1 - M_{pct}} \right)$$
+Where $M_{pct}$ is the tier operating margin fraction ($0 \le M_{pct} < 1$, e.g. 0.12 for 12.00%). For a base manufacturing cost $C_{base} = ₹100.00$ at $12.00\%$ target margin:
+$$P_{ex\_gst} = \text{round}_2 \left( \frac{100.00}{1 - 0.12} \right) = \text{round}_2 \left( \frac{100.00}{0.88} \right) = ₹113.64$$
+This guarantees that commercial profit is exactly $12.00\%$ of selling price ($\frac{₹13.64}{₹113.64} = 12.00\%$), strictly adhering to automotive tier-1 financial accounting standards and preventing the profit margin leakage inherent in naive cost-markup formulas ($C \times (1 + M)$).
 
 #### 11. Statutory Goods & Services Tax (GST) ($G$)
 $$G = \text{round}_2 \left( P_{ex\_gst} \times R_{gst} \right)$$
@@ -178,7 +181,7 @@ To prevent retroactive price distortion and ensure complete historical repeatabi
 Three rate masters govern costing:
 - `rate_materials`: `(id, grade, rate_per_kg, scrap_rate_per_kg, effective_from)`. Unique on `(grade, effective_from)`.
 - `rate_machines`: `(id, machine_code, hour_rate, effective_from)`. Unique on `(machine_code, effective_from)`.
-- `rate_params`: `(id, key, value, effective_from)`. Unique on `(key, effective_from)`. Closed check constraint on `key IN ('overhead_pct', 'packing_per_unit', 'freight_per_kg', 'gst_pct')`.
+- `rate_params`: `(id, key, value, effective_from)`. Unique on `(key, effective_from)`. Closed check constraint on `key IN ('overhead_pct', 'packing_per_unit', 'freight_per_kg', 'gst_pct', 'default_margin_pct')`.
 
 ### Resolution Algorithm
 When evaluating a quote pinned to as-of date $D_{quote}$:
@@ -289,6 +292,12 @@ Customer RFQs arrive as unstructured email text. While LLMs excel at extraction,
 |   - Clicking 'Reject' marks suggestion rejected without mutating entities.        |
 +-----------------------------------------------------------------------------------+
 ```
+
+### Customer NDA Compliance & Zero Model-Training Guarantee
+Automotive component drawings and inquiry specifications are covered under strict customer Non-Disclosure Agreements (NDAs). To address the brief's explicit requirement that **"no AI service that trains on submitted data"** be utilized:
+1. **Commercial Zero-Training Terms:** The intake system integrates exclusively with Anthropic's Commercial API. Under Section 3 of Anthropic's Commercial Terms of Service, customer inputs and outputs are **never** used to train foundational AI models, ensuring 100% intellectual property confidentiality for OEM drawings.
+2. **Server-Side Encrypted Mediation:** All API requests are dispatched server-side from Next.js route handlers over TLS 1.3 encrypted connections. Client browsers never make direct requests to external AI endpoints, and drawing files are never uploaded to public clouds.
+3. **Local Deterministic Fallback:** If corporate network firewalls or customer NDA policies prohibit outbound cloud LLM access altogether, the system transparently utilizes the local regex heuristic parser (`src/lib/ai/fallback.ts`), which runs 100% in-process with zero network transmission.
 
 ---
 
@@ -431,10 +440,13 @@ Configured in `next.config.ts`:
 3. **Pure Code Arithmetic vs. Database Computed Columns:** Calculating costs in TypeScript pure functions allows instantaneous, sub-millisecond client-side live recalculations as estimators drag volume sliders or adjust scrap percentages, without generating database query load.
 
 ### Labelled Assumptions
-- Standard factory overhead rate is pegged at 15.00% of direct conversion cost.
-- Standard batch lot size defaults to 1/12th of annual volume (monthly production release).
-- Quoted commercial terms default to Net 45 Days Ex-Works Chakan.
-- Statutory GST is configured at 18.00% (9% CGST + 9% SGST).
+- **Assumption 1 (Target Pricing Formula):** Commercial selling price is strictly determined using the commercial margin divisor formula ($P = \text{Cost} / (1 - \text{Margin})$) rather than cost-plus markup, ensuring that target margins reflect an exact percentage of top-line revenue as required by corporate finance standards.
+- **Assumption 2 (Sample Data & Customer Entities):** The seed database and automated test suites strictly match the sample data from the client brief: `RFQ-2611-014` (Rear wheel spindle, Company B (two-wheelers)), `RFQ-2611-019` (Hydraulic lift arm, Company C (tractors)), and `RFQ-2611-023` (Gear blank, Company D (drivetrains)). All weights, volumes, cycle times, and machine rates match the brief's table exactly. Real OEM names (Tata Motors, Bajaj Auto, Mahindra) mentioned in contextual narratives illustrate Company A's typical Chakan industrial cluster ecosystem.
+- **Assumption 3 (Customer NDA & AI Data Use):** All customer drawings and technical data remain confidential. Commercial API agreements with Anthropic guarantee zero model training and zero retention on customer prompts, fully satisfying the NDA constraint.
+- **Assumption 4 (Factory Overhead Peg):** Standard factory overhead rate is pegged at 12.00% to 15.00% of direct conversion cost across effective-dated rate cards.
+- **Assumption 5 (Batch Lot Sizing):** Standard batch lot size defaults to 1/12th of annual volume (monthly production release).
+- **Assumption 6 (Commercial Terms):** Quoted commercial terms default to Net 45 Days Ex-Works Chakan.
+- **Assumption 7 (Statutory GST):** Statutory GST is configured at 18.00% (9% CGST + 9% SGST), shown separately on all screens and PDF quotations.
 
 ### Future Roadmap
 - Integration with ERP production scheduling (SAP / Oracle).

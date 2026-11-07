@@ -16,7 +16,7 @@ import {
   rateMachines,
   rateParams,
 } from "@/db/schema";
-import { eq, sql, desc } from "drizzle-orm";
+import { eq, and, sql, desc } from "drizzle-orm";
 import { annualValue, needsApproval } from "@/lib/quotes/approval";
 import { buildRateBook } from "@/lib/costing/rates";
 import { costTier, D } from "@/lib/costing/engine";
@@ -62,6 +62,13 @@ export async function submitQuoteForApproval(quoteId: number) {
   const quote = quoteRows[0];
   if (quote.status === "approved") {
     return { success: true, status: "approved", message: "Quote is already approved." };
+  }
+
+  const allowedStatuses = ["draft", "rejected"];
+  if (!allowedStatuses.includes(quote.status)) {
+    throw new Error(
+      `Cannot submit quote in status '${quote.status}'. Only draft or rejected quotes can be submitted for approval.`
+    );
   }
 
   // 2. Fetch all parts for this RFQ
@@ -487,6 +494,12 @@ export async function getQuotesForReview(): Promise<QuoteReviewItem[]> {
     .leftJoin(users, eq(quotes.approvedBy, users.id))
     .orderBy(desc(quotes.createdAt));
 
+  const rateRows = {
+    materials: await db.select().from(rateMaterials),
+    machines: await db.select().from(rateMachines),
+    params: await db.select().from(rateParams),
+  };
+
   const items: QuoteReviewItem[] = [];
 
   for (const r of rows) {
@@ -495,25 +508,88 @@ export async function getQuotesForReview(): Promise<QuoteReviewItem[]> {
       .from(parts)
       .where(eq(parts.rfqId, r.rfqId));
 
-    // Approximate annual value calculation for list display
-    const partRows = await db
-      .select({
-        annualVolume: parts.annualVolume,
-      })
-      .from(parts)
-      .where(eq(parts.rfqId, r.rfqId));
+    let realTotal = new D(0);
 
-    // Quick estimation for queue view: sum of parts annual volumes * estimated unit price, or based on tiers
-    let approxTotal = new D(0);
-    for (const p of partRows) {
-      approxTotal = approxTotal.plus(new D(p.annualVolume).times(150)); // conservative estimate
+    // 1. If snapshot exists, read exact sealed tier-2 price from snapshot payload
+    const snapRows = await db
+      .select({ payload: quoteSnapshots.payload })
+      .from(quoteSnapshots)
+      .where(eq(quoteSnapshots.quoteId, r.id))
+      .orderBy(desc(quoteSnapshots.snapshotNo))
+      .limit(1);
+
+    if (snapRows.length > 0 && snapRows[0].payload) {
+      const snapPayload = snapRows[0].payload as any;
+      if (Array.isArray(snapPayload.parts)) {
+        for (const p of snapPayload.parts) {
+          const t2 = p.tiers?.find((t: any) => t.tierNo === 2) || p.tiers?.[0];
+          const price = t2?.breakdown?.price;
+          if (price && p.annualVolume) {
+            realTotal = realTotal.plus(new D(price).times(p.annualVolume));
+          }
+        }
+      }
+    } else {
+      // 2. Otherwise calculate real Tier-2 annual value using quotePartTiers, routingOps, and rateBook
+      try {
+        const rateBook = buildRateBook(rateRows, r.asOfDate);
+        const rParts = await db.select().from(parts).where(eq(parts.rfqId, r.rfqId));
+        for (const p of rParts) {
+          const pTiers = await db
+            .select()
+            .from(quotePartTiers)
+            .where(and(eq(quotePartTiers.quoteId, r.id), eq(quotePartTiers.partId, p.id)))
+            .orderBy(quotePartTiers.tierNo);
+
+          const tier2 = pTiers.find((t) => t.tierNo === 2) || pTiers[0];
+          if (!tier2) continue;
+
+          const pOps = await db
+            .select()
+            .from(routingOps)
+            .where(eq(routingOps.partId, p.id))
+            .orderBy(routingOps.seq);
+
+          if (pOps.length === 0) continue;
+
+          const breakdown = costTier(
+            {
+              grossWtKg: new D(p.grossWtKg),
+              scrapPct: new D(p.scrapPct),
+              toolingCost: new D(p.toolingCost),
+              toolingYears: new D(p.toolingYears),
+              ops: pOps.map((o) => ({
+                cycleMin: new D(o.cycleMin),
+                setupMin: new D(o.setupMin),
+                hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
+              })),
+            },
+            {
+              materialPerKg: new D(rateBook.materialPerKg(p.material).value),
+              scrapPerKg: new D(rateBook.scrapPerKg(p.material).value),
+              overheadPct: new D(rateBook.param("overhead_pct").value),
+              packingPerUnit: new D(rateBook.param("packing_per_unit").value),
+              freightPerKg: new D(rateBook.param("freight_per_kg").value),
+              gstPct: new D(rateBook.param("gst_pct").value),
+            },
+            {
+              volume: new D(tier2.volume),
+              lotSize: new D(tier2.lotSize),
+              marginPct: new D(tier2.marginPct),
+            }
+          );
+          realTotal = realTotal.plus(breakdown.price.times(p.annualVolume));
+        }
+      } catch {
+        // Fallback to 0 if rates or configurations are incomplete
+      }
     }
 
-    const needsHeadApproval = approxTotal.gt(2500000);
+    const needsHeadApproval = realTotal.gt(2500000);
 
     items.push({
       ...r,
-      annualValue: approxTotal.toFixed(2),
+      annualValue: realTotal.toFixed(2),
       needsHeadApproval,
       partsCount: partCountRes[0]?.count || 0,
     });

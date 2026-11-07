@@ -170,4 +170,14 @@ describe("Approval Workflow Integration", () => {
     expect(secondCall.success).toBe(true);
     expect(secondCall.status).toBe("approved");
   });
+
+  it("rejects submitting quote when already approved or sent (status whitelist)", async () => {
+    // Quote is now approved: submitting returns early with status 'approved'
+    const res = await submitQuoteForApproval(testQuoteId);
+    expect(res.status).toBe("approved");
+
+    // If status is 'sent', submitting throws an error
+    await pool.query(`UPDATE quotes SET status = 'sent' WHERE id = $1`, [testQuoteId]);
+    await expect(submitQuoteForApproval(testQuoteId)).rejects.toThrow(/Cannot submit quote in status 'sent'/);
+  });
 });

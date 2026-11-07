@@ -25,14 +25,14 @@ describe("database seed", () => {
     const rfqCount1 = parseInt(rfqCountRes1.rows[0].count, 10);
     expect(rfqCount1).toBeGreaterThanOrEqual(4);
 
-    // Assert 3 sample RFQs exist
+    // Assert 3 sample RFQs exist (strictly matching problem statement)
     const sampleRfqs = await pool.query(
-      "SELECT rfq_no FROM rfqs WHERE rfq_no IN ('RFQ-2611-014', 'RFQ-2611-019', 'RFQ-2611-022') ORDER BY rfq_no"
+      "SELECT rfq_no FROM rfqs WHERE rfq_no IN ('RFQ-2611-014', 'RFQ-2611-019', 'RFQ-2611-023') ORDER BY rfq_no"
     );
     expect(sampleRfqs.rows.map((r) => r.rfq_no)).toEqual([
       "RFQ-2611-014",
       "RFQ-2611-019",
-      "RFQ-2611-022",
+      "RFQ-2611-023",
     ]);
 
     // Assert EN8 has two rate rows
@@ -64,7 +64,7 @@ describe("database seed", () => {
 
     // Assert lift arm has tooling cost of 800000
     const liftArm = await pool.query(
-      "SELECT * FROM parts WHERE name LIKE '%Lift Arm%'"
+      "SELECT * FROM parts WHERE name ILIKE '%lift arm%'"
     );
     expect(liftArm.rows.length).toBe(1);
     expect(Number(liftArm.rows[0].tooling_cost)).toBe(800000);
