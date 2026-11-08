@@ -4,6 +4,7 @@ import { execSync } from "node:child_process";
 
 const rootDir = "c:/Users/prayu/Desktop/take home task project";
 const sourceDir = path.join(rootDir, "rfq-costing");
+const projectZip = path.join(rootDir, "project.zip");
 const subZip = path.join(rootDir, "rfq-costing-submission.zip");
 const twoFileZip = path.join(rootDir, "submission.zip");
 const redundantCleanZip = path.join(rootDir, "rfq-costing-clean.zip");
@@ -11,10 +12,9 @@ const stagingParent = path.join(rootDir, "staging-zip");
 const stagingDir = path.join(stagingParent, "rfq-costing");
 
 // Cleanup redundant zip and staging if present
-if (fs.existsSync(redundantCleanZip)) {
-  fs.unlinkSync(redundantCleanZip);
-  console.log(`Removed redundant zip: ${redundantCleanZip}`);
-}
+if (fs.existsSync(redundantCleanZip)) fs.unlinkSync(redundantCleanZip);
+if (fs.existsSync(projectZip)) fs.unlinkSync(projectZip);
+if (fs.existsSync(path.join(sourceDir, "project.zip"))) fs.unlinkSync(path.join(sourceDir, "project.zip"));
 if (fs.existsSync(subZip)) fs.unlinkSync(subZip);
 if (fs.existsSync(twoFileZip)) fs.unlinkSync(twoFileZip);
 if (fs.existsSync(stagingParent)) {
@@ -34,7 +34,9 @@ function copyRecursive(src, dest) {
       entry.name === "node_modules" ||
       entry.name === ".next" ||
       entry.name === ".git" ||
-      entry.name === ".env.local" ||
+      entry.name === ".env" ||
+      (entry.name.startsWith(".env") && entry.name !== ".env.example") ||
+      entry.name.endsWith(".zip") ||
       entry.name.endsWith(".tsbuildinfo") ||
       entry.name.endsWith(".log")
     ) {
@@ -50,13 +52,34 @@ function copyRecursive(src, dest) {
   }
 }
 
-console.log("Staging clean source files (excluding .env.local, node_modules, .next, .git, tsbuildinfo)...");
+console.log("Staging clean source files (excluding .env, node_modules, .next, .git, tsbuildinfo, zip)...");
 copyRecursive(sourceDir, stagingDir);
 
 console.log("Compressing clean submission zip with POSIX forward-slash separators...");
 const cleanStaging = stagingDir.replace(/\\/g, "/");
 const cleanZipPath = subZip.replace(/\\/g, "/");
+const cleanProjectZipPath = projectZip.replace(/\\/g, "/");
 
+// 1. Create project.zip (root relative as zip -r project.zip . would produce)
+const psProjectZipScript = `
+[System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression') | Out-Null;
+[System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') | Out-Null;
+$zipProj = [System.IO.Compression.ZipFile]::Open('${cleanProjectZipPath}', [System.IO.Compression.ZipArchiveMode]::Create);
+Get-ChildItem -Path '${cleanStaging}' -Recurse -File | ForEach-Object {
+    $rel = $_.FullName.Substring('${cleanStaging}'.Length).TrimStart('\\', '/').Replace('\\', '/');
+    [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zipProj, $_.FullName, $rel, [System.IO.Compression.CompressionLevel]::Optimal) | Out-Null;
+};
+$zipProj.Dispose();
+`;
+execSync(`powershell -NoProfile -Command "${psProjectZipScript.replace(/\r?\n/g, " ")}"`);
+fs.copyFileSync(projectZip, path.join(sourceDir, "project.zip"));
+const statsProj = fs.statSync(projectZip);
+console.log(`\n✓ project.zip created (flat root matching 'zip -r project.zip .'):`);
+console.log(`  Path: ${projectZip}`);
+console.log(`  Path (in project): ${path.join(sourceDir, "project.zip")}`);
+console.log(`  Size: ${(statsProj.size / 1024 / 1024).toFixed(2)} MB (${statsProj.size.toLocaleString()} bytes)`);
+
+// 2. Create rfq-costing-submission.zip (with rfq-costing/ folder prefix)
 const psScript = `
 [System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression') | Out-Null;
 [System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') | Out-Null;
