@@ -3,8 +3,9 @@
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db/client";
-import { rfqs, parts, auditLog } from "@/db/schema";
+import { rfqs, parts, auditLog, quotes } from "@/db/schema";
 import { requireUser, requireRole } from "@/lib/auth/guards";
+import { todayIST } from "@/lib/dates";
 import { eq } from "drizzle-orm";
 
 const createRfqSchema = z.object({
@@ -41,30 +42,41 @@ export async function createRfq(rawInput: unknown) {
   }
 
   try {
-    const [created] = await db
-      .insert(rfqs)
-      .values({
-        rfqNo: parsed.data.rfqNo,
-        customerId: parsed.data.customerId,
-        dueDate: parsed.data.dueDate,
-        ownerId: user.id,
-        status: "estimating",
-      })
-      .returning({ id: rfqs.id });
+    const createdId = await db.transaction(async (tx) => {
+      const [created] = await tx
+        .insert(rfqs)
+        .values({
+          rfqNo: parsed.data.rfqNo,
+          customerId: parsed.data.customerId,
+          dueDate: parsed.data.dueDate,
+          ownerId: user.id,
+          status: "estimating",
+        })
+        .returning({ id: rfqs.id });
 
-    await db.insert(auditLog).values({
-      actorId: user.id,
-      action: "create",
-      entity: "rfq",
-      entityId: String(created.id),
-      detail: parsed.data,
+      await tx.insert(quotes).values({
+        rfqId: created.id,
+        status: "draft",
+        version: 1,
+        asOfDate: todayIST(),
+      });
+
+      await tx.insert(auditLog).values({
+        actorId: user.id,
+        action: "create",
+        entity: "rfq",
+        entityId: String(created.id),
+        detail: parsed.data,
+      });
+
+      return created.id;
     });
 
     try {
       revalidatePath("/rfqs");
     } catch {}
 
-    return { success: true, id: created.id };
+    return { success: true, id: createdId };
   } catch (err: any) {
     if (err?.code === "23505" || err?.cause?.code === "23505") {
       return { error: "conflict", message: "An RFQ with this RFQ number already exists." };

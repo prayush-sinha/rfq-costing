@@ -4,7 +4,7 @@
 > **A modern, deterministic web application replacing spreadsheet-based estimation for automotive precision components.**  
 > Built with Next.js 16 (Turbopack), PostgreSQL 16 (Neon), Drizzle ORM, `decimal.js`, and TypeScript.  
 > **Repository:** [https://github.com/prayush-sinha/rfq-costing](https://github.com/prayush-sinha/rfq-costing)  
-> **Status:** 134/134 Tests Passing • 0 TypeScript Errors • 0 ESLint Warnings • 11/11 Routes Building Cleanly
+> **Status:** 143/143 Tests Passing • 0 TypeScript Errors • 0 ESLint Warnings • 11/11 Routes Building Cleanly
 
 ---
 
@@ -298,10 +298,10 @@ Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 | Role | Email | Password | Capabilities |
 |---|---|---|---|
-| **Estimator** | `estimator@companya.in` | `CompanyaDemo2026!` | RFQ creation, AI extraction, routing, costing, quotes $\le$ ₹25L |
-| **Sales Head** | `saleshead@companya.in` | `CompanyaDemo2026!` | Approval queue (> ₹25L), rate card editing, PDF generation, Won/Lost tracking |
+| **Estimator** | `estimator@companya.in` | *Configured via `DEMO_PASSWORD` (see deployment.md)* | RFQ creation, AI extraction, routing, costing, quotes $\le$ ₹25L |
+| **Sales Head** | `saleshead@companya.in` | *Configured via `DEMO_PASSWORD` (see deployment.md)* | Approval queue (> ₹25L), rate card editing, PDF generation, Won/Lost tracking |
 
-*(Password can be customized via `DEMO_PASSWORD` in your `.env.local` prior to seeding).*
+*(Password is set via the `DEMO_PASSWORD` environment variable in `.env.local` prior to seeding per Rule 15).*
 
 ---
 
@@ -315,9 +315,9 @@ npm test
 
 ### Verified Test Results
 ```
- Test Files  24 passed (24)
-      Tests  134 passed (134)
-   Duration  305s (against live PostgreSQL)
+ Test Files  26 passed (26)
+      Tests  143 passed (143)
+   Duration  304s (against live PostgreSQL)
 ```
 
 | Test Category | Suite / File | Tests | Coverage Scope |
@@ -326,15 +326,18 @@ npm test
 | **Part Pricing** | `price-part.test.ts` | 5 | Rate resolution, missing rate exceptions, setup/tooling amortization |
 | **Database Constraints** | `schema.test.ts` | 21 | Check constraints, foreign keys, lost reasons, scrap limits, sequence order |
 | **Append-Only Triggers** | `rates-append-only.test.ts` | 9 | PostgreSQL trigger blocking UPDATE/DELETE, case-insensitive uniqueness |
-| **Snapshot Immutability** | `snapshot-immutable.test.ts` | 5 | PostgreSQL trigger blocking tampering with sealed quotes |
-| **Approval Workflow** | `approval-actions.test.ts` | 4 | ₹25 Lakh threshold routing, rejection rationale, re-submission cycle |
-| **AI Intake & Verification** | `extract.test.ts`, `verify-source.test.ts` | 15 | Regex extraction, unit validation, prompt safety, hallucination guards |
+| **Approval Workflow** | `actions.test.ts` | 6 | ₹25 Lakh threshold routing, rejection rationale to draft, mark sent, versioning |
+| **Costing Optimistic Locking** | `save-costing.test.ts` | 4 | Zod validation, RFQ part ownership checks, version incrementing |
+| **Security & Route Protection** | `route-protection.test.ts`, `headers.test.ts` | 6 | Estimator 403 on PDF, 400 on un-snapshotted quote, strict CSP, HSTS, DENY |
+| **AI Intake & Verification** | `extract.test.ts`, `verify-source.test.ts`, `intake-actions.test.ts` | 18 | Regex extraction, unit validation, prompt safety, hallucination guards |
 | **Routing Suggestions** | `suggest-routing.test.ts`, `routing-actions.test.ts` | 8 | Similarity scoring, material matching, weight tolerance, audit logging |
 | **Authentication & RBAC** | `guards.test.ts`, `throttle.test.ts` | 7 | Role enforcement, login rate-limiting (5 in 15 min), timing-attack dummy compare |
 | **Quotes Importer** | `parse-rows.test.ts`, `import-actions.test.ts` | 10 | CSV/Excel parsing, batch validation, 1,358 quote import validation |
 | **PDF Generation** | `pdf.test.ts` | 1 | React-PDF rendering, ₹ Indian numbering format, GST breakdown |
-| **Health & Dates** | `route.test.ts`, `dates.test.ts`, `urgency.test.ts` | 11 | DB health ping, Asia/Kolkata date resolution, SLA urgency calculations |
-| **Total** | **24 Test Files** | **134** | **100% Passing** |
+| **RFQ Actions & Outcomes** | `actions.test.ts` (rfqs) | 4 | Mark won/lost, mandatory lost reason validation, atomic draft quote init |
+| **Seed & Rates Actions** | `seed.test.ts`, `actions.test.ts` (rates) | 6 | Idempotent multi-run seeding, future rate scheduling, duplicate prevention |
+| **Health & Dates** | `route.test.ts`, `dates.test.ts`, `urgency.test.ts` | 19 | DB health ping, Asia/Kolkata date resolution, SLA urgency calculations |
+| **Total** | **26 Test Files** | **143** | **100% Passing** |
 
 ---
 

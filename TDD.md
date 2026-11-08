@@ -327,22 +327,28 @@ Estimators can inspect suggestions, review matching past quote references, and a
 Commercial quotations representing large annual revenue commitments require managerial approval from the Sales Head.
 
 ### Threshold Formulation
-Commercial value is evaluated on Tier 2 (the standard annual production volume tier):
+Commercial value is evaluated on Tier 2 (the nominal annual baseline production volume tier):
 $$\text{Annual Commercial Value} = \sum_{p=1}^{k} \left( P_{tier2, p} \times V_{annual, p} \right)$$
 - If $\text{Annual Commercial Value} > \text{₹25,00,000}$: Status moves to `pending_approval`.
 - If $\text{Annual Commercial Value} \le \text{₹25,00,000}$: Quote is auto-approved and snapshot is immediately sealed.
 
 ### Roles & Responsibilities
-- **Estimator:** Prepares costings and submits quotes. If the quote exceeds ₹25L, submission alerts the user that executive approval is required.
-- **Sales Head:** Reviews quotes in the dedicated `/approvals` dashboard. Has exclusive authority to approve or reject.
-  - **Approve:** Seals the quote, creates the immutable snapshot, and sets status to `approved`. Action is idempotent.
-  - **Reject:** Requires a mandatory rejection reason (e.g. "Hurdle margin below 14%, re-negotiate batch lot sizes"). Records reason in `rejection_reason` and returns status to `rejected`.
+- **Estimator:** Prepares cost calculations and submits quotes (`submitQuoteForApproval`). Restricted strictly to the `estimator` role. If the quote exceeds ₹25L, submission alerts the user that executive Sales Head approval is required.
+- **Sales Head:** Reviews quotes in the dedicated `/approvals` dashboard. Has exclusive authority to approve, reject, export PDFs, and mark quotations as sent.
+  - **Approve (`approveQuote`):** Executes in an atomic ACID transaction (`db.transaction`) with pessimistic row locking (`FOR UPDATE`). Increments quote `version`, creates the immutable snapshot with `snapshot_no = MAX(snapshot_no) + 1`, and sets status to `approved`. Action is idempotent.
+  - **Reject (`rejectQuote`):** Requires a mandatory non-empty rejection reason (e.g. "Hurdle margin below 14%, re-negotiate batch lot sizes"). Records reason in `rejection_reason` and returns status to `draft`, enabling estimators to modify costing parameters and resubmit.
+  - **Mark Sent (`markQuoteSent`):** Moves an `approved` quotation to `sent` status once dispatched to the OEM, recording actor, timestamp, and audit trail.
 
 ---
 
 ## 9. Formal PDF Commercial Quotation Generation
 
 Official commercial offers are generated dynamically on the server via `@react-pdf/renderer` (`/api/quotes/[id]/pdf`).
+
+### Governance & Snapshot Immutability (Rule 4)
+- **Role-Gated Access:** Only the Sales Head (`requireRole("sales_head")`) can download or generate formal customer PDF quotations. Estimators attempting to access `/api/quotes/[id]/pdf` receive HTTP 403 Forbidden.
+- **Snapshot-Only Rendering:** PDFs render strictly from sealed immutable database snapshots (`quote_snapshots`). Requests for quotes lacking a sealed snapshot return HTTP 400 Bad Request with zero live calculation fallback, guaranteeing that customer-facing documents can never drift when rates change.
+- **Rate Reference Auditability (`rateRefs`):** Snapshot payloads capture complete `rateRefs` recording the exact material rates, machine hour rates, and parameter values alongside their `effective_from` dates at the time the quotation was frozen.
 
 ### Document Structure & Design
 - **Corporate Letterhead:** Company A Precision Engineering Pvt. Ltd., Plot B-42 MIDC Chakan, Pune; IATF 16949 certification and GSTIN credentials.
@@ -440,13 +446,17 @@ Configured in `next.config.ts`:
 3. **Pure Code Arithmetic vs. Database Computed Columns:** Calculating costs in TypeScript pure functions allows instantaneous, sub-millisecond client-side live recalculations as estimators drag volume sliders or adjust scrap percentages, without generating database query load.
 
 ### Labelled Assumptions
-- **Assumption 1 (Target Pricing Formula):** Commercial selling price is strictly determined using the commercial margin divisor formula ($P = \text{Cost} / (1 - \text{Margin})$) rather than cost-plus markup, ensuring that target margins reflect an exact percentage of top-line revenue as required by corporate finance standards.
-- **Assumption 2 (Sample Data & Customer Entities):** The seed database and automated test suites strictly match the sample data from the client brief: `RFQ-2611-014` (Rear wheel spindle, Company B (two-wheelers)), `RFQ-2611-019` (Hydraulic lift arm, Company C (tractors)), and `RFQ-2611-023` (Gear blank, Company D (drivetrains)). All weights, volumes, cycle times, and machine rates match the brief's table exactly. Real OEM names (Tata Motors, Bajaj Auto, Mahindra) mentioned in contextual narratives illustrate Company A's typical Chakan industrial cluster ecosystem.
-- **Assumption 3 (Customer NDA & AI Data Use):** All customer drawings and technical data remain confidential. Commercial API agreements with Anthropic guarantee zero model training and zero retention on customer prompts, fully satisfying the NDA constraint.
-- **Assumption 4 (Factory Overhead Peg):** Standard factory overhead rate is pegged at 12.00% to 15.00% of direct conversion cost across effective-dated rate cards.
-- **Assumption 5 (Batch Lot Sizing):** Standard batch lot size defaults to 1/12th of annual volume (monthly production release).
-- **Assumption 6 (Commercial Terms):** Quoted commercial terms default to Net 45 Days Ex-Works Chakan.
-- **Assumption 7 (Statutory GST):** Statutory GST is configured at 18.00% (9% CGST + 9% SGST), shown separately on all screens and PDF quotations.
+- **Assumption 1 (Illustrative Baseline Rates):** Material ₹/kg, scrap recovery ₹/kg, factory overhead %, packing rate per unit, freight per kg, and default margin % are illustrative engineering estimates; the brief provides cycle times and machine hour rates (₹850, ₹1450, ₹950) but does not supply baseline material/scrap prices.
+- **Assumption 2 (Gross Weight & Scrap Modeling):** Component net weight is not provided in customer RFQ specifications; machining scrap is modeled as a percentage ($S_{pct}$, constrained between 0.00 and 0.50) of gross blank weight ($W_{gross}$).
+- **Assumption 3 (Setup Time & Batch Lot Sizing):** Setup time per operation ($T_{setup}$) is estimator-entered; batch lot size defaults to 1/12th of tier volume ($L_{tier} = V_{tier} / 12$, reflecting monthly OEM release schedules) and is fully editable per tier.
+- **Assumption 4 (Volume Tiers Multipliers):** Production volume tiers are set at 0.5×, 1× (nominal baseline), and 2× of the stated OEM annual volume.
+- **Assumption 5 (Overhead Allocation & Margin Application):** Factory overhead applies strictly as a percentage of direct conversion cost ($C_{conv}$); commercial profit margin is applied on total selling price ($P = \text{Cost} / (1 - M)$) and is configurable per tier (defaulting from `rate_params.default_margin_pct`).
+- **Assumption 6 (Tooling Amortization Horizon):** Tooling is a one-time capital expense ($K_{tool}$) amortized over contract volume ($V_{tier} \times Y_{tool}$) with a standard default amortization horizon of 2.0 years ($Y_{tool} = 2.0$, default cost ₹0, seeded on the forging lift arm with illustrative ₹45,000 tooling).
+- **Assumption 7 (Statutory GST Configuration):** Statutory GST is configurable in the rate parameters master (`rate_params.gst_pct`, default 18.00% standard automotive rate: 9% CGST + 9% SGST) and is shown separately across all breakdown tables, summary cards, and PDF quotation exports.
+- **Assumption 8 (Annual Value & Approval Governance Threshold):** Total annual commercial contract value for approval gate evaluation is calculated pre-GST at the nominal 1× tier volume, summed across all parts of the RFQ ($\sum [V_{tier=2} \times P_{ex\_gst, tier=2}]$). Quotes exceeding ₹25,00,000 require Sales Head approval; quotes $\le$ ₹25,00,000 can be submitted/finalized directly by estimators.
+- **Assumption 9 (Sales Head Quotation Authority & Mark Sent):** The Sales Head holds sole commercial authorization to export formal customer PDF quotations and mark approved quotes as sent to the OEM. Approved quotations cannot be altered.
+- **Assumption 10 (Customer NDA & AI Data Use Terms):** All customer drawings and technical data remain confidential. Commercial API agreements with Anthropic guarantee zero model training and zero data retention on customer API inputs, fully satisfying the client brief's mandatory NDA constraint ("no AI service that trains on submitted data").
+- **Assumption 11 (Quote Validity & Historical Excel Import Schema):** Formal PDF commercial quotations carry a standard 30-day validity window from the quotation date. Historical quote benchmarking imports follow the designated 10-column schema (`quote_no`, `quote_date`, `customer`, `part_name`, `material`, `gross_wt_kg`, `annual_volume`, `cycle_time_min`, `unit_price`, `outcome`).
 
 ### Future Roadmap
 - Integration with ERP production scheduling (SAP / Oracle).

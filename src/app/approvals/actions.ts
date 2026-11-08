@@ -39,260 +39,288 @@ export interface QuoteReviewItem {
   approvedBy?: string | null;
 }
 
+/**
+ * Submit quote for approval (Estimator only per spec).
+ * Transactional: checks and increments quote version, verifies all parts have routings and tiers,
+ * calculates annual commercial value, and either routes to pending_approval (> ₹25L) or auto-approves
+ * with an atomic snapshot (<= ₹25L).
+ */
 export async function submitQuoteForApproval(quoteId: number) {
-  const user = await requireRole("estimator", "sales_head");
+  // Only estimators submit quotes per spec (Task 11 & Section 7)
+  const user = await requireRole("estimator");
 
-  // 1. Fetch quote with RFQ info
-  const quoteRows = await db
-    .select({
-      id: quotes.id,
-      rfqId: quotes.rfqId,
-      asOfDate: quotes.asOfDate,
-      status: quotes.status,
-      version: quotes.version,
-    })
-    .from(quotes)
-    .where(eq(quotes.id, quoteId))
-    .limit(1);
-
-  if (!quoteRows || quoteRows.length === 0) {
-    throw new Error("Quote not found");
-  }
-
-  const quote = quoteRows[0];
-  if (quote.status === "approved") {
-    return { success: true, status: "approved", message: "Quote is already approved." };
-  }
-
-  const allowedStatuses = ["draft", "rejected"];
-  if (!allowedStatuses.includes(quote.status)) {
-    throw new Error(
-      `Cannot submit quote in status '${quote.status}'. Only draft or rejected quotes can be submitted for approval.`
-    );
-  }
-
-  // 2. Fetch all parts for this RFQ
-  const partList = await db
-    .select()
-    .from(parts)
-    .where(eq(parts.rfqId, quote.rfqId));
-
-  if (partList.length === 0) {
-    throw new Error("Cannot submit quote: RFQ has no parts defined.");
-  }
-
-  // 3. Verify every part has routing operations and tiers
-  for (const p of partList) {
-    const ops = await db
-      .select()
-      .from(routingOps)
-      .where(eq(routingOps.partId, p.id));
-    if (ops.length === 0) {
-      throw new Error(`Part '${p.name}' has no routing operations defined. Complete costing before submission.`);
-    }
-
-    const tiers = await db
-      .select()
-      .from(quotePartTiers)
-      .where(eq(quotePartTiers.partId, p.id));
-    if (tiers.length < 3) {
-      throw new Error(`Part '${p.name}' is missing volume tiers. Save all 3 tiers before submission.`);
-    }
-  }
-
-  // 4. Calculate total annual commercial value across parts using Tier 2 (annual volume tier)
-  const rateRows = {
-    materials: await db.select().from(rateMaterials),
-    machines: await db.select().from(rateMachines),
-    params: await db.select().from(rateParams),
-  };
-  const rateBook = buildRateBook(rateRows, quote.asOfDate);
-
-  const valueLines: { unitPrice: string; annualVolume: number }[] = [];
-
-  for (const p of partList) {
-    const pOps = await db
-      .select()
-      .from(routingOps)
-      .where(eq(routingOps.partId, p.id))
-      .orderBy(routingOps.seq);
-
-    const pTiers = await db
-      .select()
-      .from(quotePartTiers)
-      .where(eq(quotePartTiers.partId, p.id))
-      .orderBy(quotePartTiers.tierNo);
-
-    const tier2 = pTiers.find((t) => t.tierNo === 2) || pTiers[0];
-
-    const breakdown = costTier(
-      {
-        grossWtKg: new D(p.grossWtKg),
-        scrapPct: new D(p.scrapPct),
-        toolingCost: new D(p.toolingCost),
-        toolingYears: new D(p.toolingYears),
-        ops: pOps.map((o) => ({
-          cycleMin: new D(o.cycleMin),
-          setupMin: new D(o.setupMin),
-          hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
-        })),
-      },
-      {
-        materialPerKg: new D(rateBook.materialPerKg(p.material).value),
-        scrapPerKg: new D(rateBook.scrapPerKg(p.material).value),
-        overheadPct: new D(rateBook.param("overhead_pct").value),
-        packingPerUnit: new D(rateBook.param("packing_per_unit").value),
-        freightPerKg: new D(rateBook.param("freight_per_kg").value),
-        gstPct: new D(rateBook.param("gst_pct").value),
-      },
-      {
-        volume: new D(tier2.volume),
-        lotSize: new D(tier2.lotSize),
-        marginPct: new D(tier2.marginPct),
-      }
+  return await db.transaction(async (tx) => {
+    // 1. Fetch quote with row lock
+    const quoteRes = await tx.execute(
+      sql`SELECT id, rfq_id, as_of_date, status, version FROM quotes WHERE id = ${quoteId} FOR UPDATE`
     );
 
-    valueLines.push({
-      unitPrice: breakdown.price.toString(),
-      annualVolume: p.annualVolume,
-    });
-  }
+    if (!quoteRes.rows || quoteRes.rows.length === 0) {
+      throw new Error("Quote not found");
+    }
 
-  const totalAnnual = annualValue(valueLines);
-  const requiresHeadApproval = needsApproval(totalAnnual);
-
-  if (requiresHeadApproval) {
-    // Requires Sales Head review (> ₹25 Lakh)
-    await db
-      .update(quotes)
-      .set({
-        status: "pending_approval",
-        rejectionReason: null,
-      })
-      .where(eq(quotes.id, quote.id));
-
-    await db.insert(auditLog).values({
-      actorId: user.id,
-      action: "submit_for_approval",
-      entity: "quote",
-      entityId: String(quote.id),
-      detail: {
-        annualValue: totalAnnual.toFixed(2),
-        threshold: "2500000",
-        requiresApproval: true,
-      },
-    });
-
-    revalidatePath("/approvals");
-    revalidatePath(`/rfqs/${quote.rfqId}`);
-
-    return {
-      success: true,
-      status: "pending_approval" as const,
-      annualValue: totalAnnual.toFixed(2),
-      message: `Quote annual value (₹${totalAnnual.toFixed(2)}) strictly exceeds ₹25 Lakh threshold. Forwarded to Sales Head approval queue.`,
+    const quote = quoteRes.rows[0] as {
+      id: number;
+      rfq_id: number;
+      as_of_date: string;
+      status: string;
+      version: number;
     };
-  } else {
-    // Auto-approved (<= ₹25 Lakh) -> generate snapshot directly
-    const now = new Date();
-    await generateQuoteSnapshot(quote.id, quote.asOfDate, rateBook, user.id);
 
-    await db
+    if (quote.status === "approved") {
+      return { success: true, status: "approved" as const, message: "Quote is already approved." };
+    }
+
+    const allowedStatuses = ["draft", "rejected"];
+    if (!allowedStatuses.includes(quote.status)) {
+      throw new Error(
+        `Cannot submit quote in status '${quote.status}'. Only draft or rejected quotes can be submitted for approval.`
+      );
+    }
+
+    // 2. Fetch all parts for this RFQ
+    const partList = await tx
+      .select()
+      .from(parts)
+      .where(eq(parts.rfqId, quote.rfq_id));
+
+    if (partList.length === 0) {
+      throw new Error("Cannot submit quote: RFQ has no parts defined.");
+    }
+
+    // 3. Verify every part has routing operations and tiers for THIS specific quote
+    for (const p of partList) {
+      const ops = await tx
+        .select()
+        .from(routingOps)
+        .where(eq(routingOps.partId, p.id));
+      if (ops.length === 0) {
+        throw new Error(`Part '${p.name}' has no routing operations defined. Complete costing before submission.`);
+      }
+
+      const tiers = await tx
+        .select()
+        .from(quotePartTiers)
+        .where(and(eq(quotePartTiers.quoteId, quote.id), eq(quotePartTiers.partId, p.id)));
+      if (tiers.length < 3) {
+        throw new Error(`Part '${p.name}' is missing volume tiers for this quote. Save all 3 tiers before submission.`);
+      }
+    }
+
+    // 4. Calculate total annual commercial value across parts using Tier 2 (annual volume tier)
+    const rateRows = {
+      materials: await tx.select().from(rateMaterials),
+      machines: await tx.select().from(rateMachines),
+      params: await tx.select().from(rateParams),
+    };
+    const rateBook = buildRateBook(rateRows, quote.as_of_date);
+
+    const valueLines: { unitPrice: string; annualVolume: number }[] = [];
+
+    for (const p of partList) {
+      const pOps = await tx
+        .select()
+        .from(routingOps)
+        .where(eq(routingOps.partId, p.id))
+        .orderBy(routingOps.seq);
+
+      const pTiers = await tx
+        .select()
+        .from(quotePartTiers)
+        .where(and(eq(quotePartTiers.quoteId, quote.id), eq(quotePartTiers.partId, p.id)))
+        .orderBy(quotePartTiers.tierNo);
+
+      const tier2 = pTiers.find((t) => t.tierNo === 2) || pTiers[0];
+
+      const breakdown = costTier(
+        {
+          grossWtKg: new D(p.grossWtKg),
+          scrapPct: new D(p.scrapPct),
+          toolingCost: new D(p.toolingCost),
+          toolingYears: new D(p.toolingYears),
+          ops: pOps.map((o) => ({
+            cycleMin: new D(o.cycleMin),
+            setupMin: new D(o.setupMin),
+            hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
+          })),
+        },
+        {
+          materialPerKg: new D(rateBook.materialPerKg(p.material).value),
+          scrapPerKg: new D(rateBook.scrapPerKg(p.material).value),
+          overheadPct: new D(rateBook.param("overhead_pct").value),
+          packingPerUnit: new D(rateBook.param("packing_per_unit").value),
+          freightPerKg: new D(rateBook.param("freight_per_kg").value),
+          gstPct: new D(rateBook.param("gst_pct").value),
+        },
+        {
+          volume: new D(tier2.volume),
+          lotSize: new D(tier2.lotSize),
+          marginPct: new D(tier2.marginPct),
+        }
+      );
+
+      valueLines.push({
+        unitPrice: breakdown.price.toString(),
+        annualVolume: p.annualVolume,
+      });
+    }
+
+    const totalAnnual = annualValue(valueLines);
+    const requiresHeadApproval = needsApproval(totalAnnual);
+
+    if (requiresHeadApproval) {
+      // Requires Sales Head review (> ₹25 Lakh)
+      await tx
+        .update(quotes)
+        .set({
+          status: "pending_approval",
+          rejectionReason: null,
+          version: sql`${quotes.version} + 1`,
+        })
+        .where(eq(quotes.id, quote.id));
+
+      await tx.insert(auditLog).values({
+        actorId: user.id,
+        action: "submit_for_approval",
+        entity: "quote",
+        entityId: String(quote.id),
+        detail: {
+          annualValue: totalAnnual.toFixed(2),
+          threshold: "2500000",
+          requiresApproval: true,
+        },
+      });
+
+      return {
+        success: true,
+        status: "pending_approval" as const,
+        annualValue: totalAnnual.toFixed(2),
+        message: `Quote annual value (₹${totalAnnual.toFixed(2)}) strictly exceeds ₹25 Lakh threshold. Forwarded to Sales Head approval queue.`,
+      };
+    } else {
+      // Auto-approved (<= ₹25 Lakh) -> generate snapshot directly inside transaction
+      const now = new Date();
+      await generateQuoteSnapshotInTx(tx, quote.id, quote.as_of_date, rateBook, user.id);
+
+      await tx
+        .update(quotes)
+        .set({
+          status: "approved",
+          approvedBy: user.id,
+          approvedAt: now,
+          rejectionReason: null,
+          version: sql`${quotes.version} + 1`,
+        })
+        .where(eq(quotes.id, quote.id));
+
+      await tx.insert(auditLog).values({
+        actorId: user.id,
+        action: "auto_approve_quote",
+        entity: "quote",
+        entityId: String(quote.id),
+        detail: {
+          annualValue: totalAnnual.toFixed(2),
+          threshold: "2500000",
+          requiresApproval: false,
+        },
+      });
+
+      return {
+        success: true,
+        status: "approved" as const,
+        annualValue: totalAnnual.toFixed(2),
+        message: `Quote annual value (₹${totalAnnual.toFixed(2)}) is within ₹25 Lakh threshold. Auto-approved and snapshot sealed.`,
+      };
+    }
+  }).finally(() => {
+    try {
+      revalidatePath("/approvals");
+      revalidatePath("/rfqs");
+    } catch {}
+  });
+}
+
+/**
+ * Approve quote (Sales Head only).
+ * Transactional: atomically seals immutable snapshot with rateRefs, increments quote version,
+ * transitions status to approved, and logs audit trail.
+ */
+export async function approveQuote(quoteId: number) {
+  const user = await requireRole("sales_head");
+
+  return await db.transaction(async (tx) => {
+    // 1. Lock quote row
+    const quoteRes = await tx.execute(
+      sql`SELECT id, rfq_id, as_of_date, status, version FROM quotes WHERE id = ${quoteId} FOR UPDATE`
+    );
+
+    if (!quoteRes.rows || quoteRes.rows.length === 0) {
+      throw new Error("Quote not found");
+    }
+
+    const quote = quoteRes.rows[0] as {
+      id: number;
+      rfq_id: number;
+      as_of_date: string;
+      status: string;
+      version: number;
+    };
+
+    // Idempotency: if already approved, return without error
+    if (quote.status === "approved") {
+      return { success: true, status: "approved" as const };
+    }
+
+    if (quote.status !== "pending_approval") {
+      throw new Error(`Cannot approve quote in status '${quote.status}'. Must be 'pending_approval'.`);
+    }
+
+    const rateRows = {
+      materials: await tx.select().from(rateMaterials),
+      machines: await tx.select().from(rateMachines),
+      params: await tx.select().from(rateParams),
+    };
+    const rateBook = buildRateBook(rateRows, quote.as_of_date);
+    const now = new Date();
+
+    // 2. Create immutable snapshot inside transaction
+    await generateQuoteSnapshotInTx(tx, quote.id, quote.as_of_date, rateBook, user.id);
+
+    // 3. Update status to approved and increment version
+    await tx
       .update(quotes)
       .set({
         status: "approved",
         approvedBy: user.id,
         approvedAt: now,
         rejectionReason: null,
+        version: sql`${quotes.version} + 1`,
       })
       .where(eq(quotes.id, quote.id));
 
-    await db.insert(auditLog).values({
+    // 4. Audit log
+    await tx.insert(auditLog).values({
       actorId: user.id,
-      action: "auto_approve_quote",
+      action: "approve_quote",
       entity: "quote",
       entityId: String(quote.id),
-      detail: {
-        annualValue: totalAnnual.toFixed(2),
-        threshold: "2500000",
-        requiresApproval: false,
-      },
+      detail: { approvedBy: user.email },
     });
 
-    revalidatePath("/approvals");
-    revalidatePath(`/rfqs/${quote.rfqId}`);
-
-    return {
-      success: true,
-      status: "approved" as const,
-      annualValue: totalAnnual.toFixed(2),
-      message: `Quote annual value (₹${totalAnnual.toFixed(2)}) is within ₹25 Lakh threshold. Auto-approved and snapshot sealed.`,
-    };
-  }
-}
-
-export async function approveQuote(quoteId: number) {
-  const user = await requireRole("sales_head");
-
-  const quoteRows = await db
-    .select()
-    .from(quotes)
-    .where(eq(quotes.id, quoteId))
-    .limit(1);
-
-  if (!quoteRows || quoteRows.length === 0) {
-    throw new Error("Quote not found");
-  }
-
-  const quote = quoteRows[0];
-
-  // Idempotency: if already approved, return without error
-  if (quote.status === "approved") {
-    return { success: true, status: "approved" };
-  }
-
-  if (quote.status !== "pending_approval") {
-    throw new Error(`Cannot approve quote in status '${quote.status}'. Must be 'pending_approval'.`);
-  }
-
-  const rateRows = {
-    materials: await db.select().from(rateMaterials),
-    machines: await db.select().from(rateMachines),
-    params: await db.select().from(rateParams),
-  };
-  const rateBook = buildRateBook(rateRows, quote.asOfDate);
-
-  const now = new Date();
-
-  // Create immutable snapshot
-  await generateQuoteSnapshot(quote.id, quote.asOfDate, rateBook, user.id);
-
-  // Update status to approved
-  await db
-    .update(quotes)
-    .set({
-      status: "approved",
-      approvedBy: user.id,
-      approvedAt: now,
-      rejectionReason: null,
-    })
-    .where(eq(quotes.id, quote.id));
-
-  // Audit log
-  await db.insert(auditLog).values({
-    actorId: user.id,
-    action: "approve_quote",
-    entity: "quote",
-    entityId: String(quote.id),
-    detail: { approvedBy: user.email },
+    return { success: true, status: "approved" as const };
+  }).finally(() => {
+    try {
+      revalidatePath("/approvals");
+      revalidatePath("/rfqs");
+    } catch {}
   });
-
-  revalidatePath("/approvals");
-  revalidatePath(`/rfqs/${quote.rfqId}`);
-
-  return { success: true, status: "approved" as const };
 }
 
+/**
+ * Reject quote with mandatory reason (Sales Head only).
+ * Per spec Section 7 & Task 11: returns the quote to draft status with rejection_reason recorded,
+ * enabling the estimator to modify costing numbers and resubmit.
+ */
 export async function rejectQuote(quoteId: number, reason: string) {
   const user = await requireRole("sales_head");
 
@@ -300,53 +328,128 @@ export async function rejectQuote(quoteId: number, reason: string) {
     throw new Error("Rejection reason is mandatory when rejecting a commercial offer.");
   }
 
-  const quoteRows = await db
-    .select()
-    .from(quotes)
-    .where(eq(quotes.id, quoteId))
-    .limit(1);
+  return await db.transaction(async (tx) => {
+    const quoteRes = await tx.execute(
+      sql`SELECT id, rfq_id, status, version FROM quotes WHERE id = ${quoteId} FOR UPDATE`
+    );
 
-  if (!quoteRows || quoteRows.length === 0) {
-    throw new Error("Quote not found");
-  }
+    if (!quoteRes.rows || quoteRes.rows.length === 0) {
+      throw new Error("Quote not found");
+    }
 
-  const quote = quoteRows[0];
-  if (quote.status !== "pending_approval") {
-    throw new Error(`Cannot reject quote in status '${quote.status}'. Must be 'pending_approval'.`);
-  }
+    const quote = quoteRes.rows[0] as {
+      id: number;
+      rfq_id: number;
+      status: string;
+      version: number;
+    };
 
-  await db
-    .update(quotes)
-    .set({
-      status: "rejected",
-      rejectionReason: reason.trim(),
-    })
-    .where(eq(quotes.id, quote.id));
+    if (quote.status !== "pending_approval") {
+      throw new Error(`Cannot reject quote in status '${quote.status}'. Must be 'pending_approval'.`);
+    }
 
-  await db.insert(auditLog).values({
-    actorId: user.id,
-    action: "reject_quote",
-    entity: "quote",
-    entityId: String(quote.id),
-    detail: { reason: reason.trim(), rejectedBy: user.email },
+    // Return to draft so estimator can edit and re-save per spec Task 11
+    await tx
+      .update(quotes)
+      .set({
+        status: "draft",
+        rejectionReason: reason.trim(),
+        version: sql`${quotes.version} + 1`,
+      })
+      .where(eq(quotes.id, quote.id));
+
+    await tx.insert(auditLog).values({
+      actorId: user.id,
+      action: "reject_quote",
+      entity: "quote",
+      entityId: String(quote.id),
+      detail: { reason: reason.trim(), rejectedBy: user.email },
+    });
+
+    return { success: true, status: "draft" as const };
+  }).finally(() => {
+    try {
+      revalidatePath("/approvals");
+      revalidatePath("/rfqs");
+    } catch {}
   });
-
-  revalidatePath("/approvals");
-  revalidatePath(`/rfqs/${quote.rfqId}`);
-
-  return { success: true, status: "rejected" as const };
 }
 
-async function generateQuoteSnapshot(
+/**
+ * Mark quote and RFQ sent (Sales Head only, approved quotes only per Task 11).
+ */
+export async function markQuoteSent(quoteId: number) {
+  const user = await requireRole("sales_head");
+
+  return await db.transaction(async (tx) => {
+    const quoteRes = await tx.execute(
+      sql`SELECT id, rfq_id, status FROM quotes WHERE id = ${quoteId} FOR UPDATE`
+    );
+
+    if (!quoteRes.rows || quoteRes.rows.length === 0) {
+      throw new Error("Quote not found");
+    }
+
+    const quote = quoteRes.rows[0] as {
+      id: number;
+      rfq_id: number;
+      status: string;
+    };
+
+    if (quote.status !== "approved") {
+      throw new Error(`Only approved quotes can be marked sent (current status: '${quote.status}').`);
+    }
+
+    // 1. Update quote status to 'sent'
+    await tx
+      .update(quotes)
+      .set({
+        status: "sent",
+      })
+      .where(eq(quotes.id, quote.id));
+
+    // 2. Update RFQ status to 'sent'
+    await tx
+      .update(rfqs)
+      .set({
+        status: "sent",
+      })
+      .where(eq(rfqs.id, quote.rfq_id));
+
+    // 3. Audit log
+    await tx.insert(auditLog).values({
+      actorId: user.id,
+      action: "mark_sent",
+      entity: "quote",
+      entityId: String(quote.id),
+      detail: { rfqId: quote.rfq_id, markedSentBy: user.email },
+    });
+
+    return { success: true, status: "sent" as const };
+  }).finally(() => {
+    try {
+      revalidatePath("/approvals");
+      revalidatePath("/rfqs");
+    } catch {}
+  });
+}
+
+/**
+ * Generates immutable quote snapshot inside a database transaction.
+ * Stores full rateRefs (rates used with their effective dates) per Spec Section 7 & Task 11.
+ */
+async function generateQuoteSnapshotInTx(
+  tx: any,
   quoteId: number,
   asOfDate: string,
   rateBook: ReturnType<typeof buildRateBook>,
   _userId: number
 ) {
   // Query quote, rfq, customer
-  const qRes = await db
+  const qRes = await tx
     .select({
       id: quotes.id,
+      rfqId: quotes.rfqId,
       rfqNo: rfqs.rfqNo,
       customerName: customers.name,
       dueDate: rfqs.dueDate,
@@ -359,34 +462,59 @@ async function generateQuoteSnapshot(
 
   const qMeta = qRes[0];
 
-  const partRows = await db
+  const partRows = await tx
     .select()
     .from(parts)
-    .where(eq(parts.rfqId, (await db.select({ rfqId: quotes.rfqId }).from(quotes).where(eq(quotes.id, quoteId)))[0].rfqId));
+    .where(eq(parts.rfqId, qMeta.rfqId));
 
   const partsPayload = [];
+  const rateRefsMap = new Map<string, { name: string; value: string; effectiveFrom: string }>();
+
+  // Helper to record rateRefs
+  const addRateRef = (name: string, ref: { value: string; effectiveFrom: string }) => {
+    if (!rateRefsMap.has(name)) {
+      rateRefsMap.set(name, { name, value: ref.value, effectiveFrom: ref.effectiveFrom });
+    }
+  };
+
+  // Record parameter rateRefs
+  addRateRef("overhead_pct", rateBook.param("overhead_pct"));
+  addRateRef("packing_per_unit", rateBook.param("packing_per_unit"));
+  addRateRef("freight_per_kg", rateBook.param("freight_per_kg"));
+  addRateRef("gst_pct", rateBook.param("gst_pct"));
+  try {
+    addRateRef("default_margin_pct", rateBook.param("default_margin_pct"));
+  } catch {}
 
   for (const p of partRows) {
-    const ops = await db
+    // Record material rateRefs
+    addRateRef(`material ${p.material} per kg`, rateBook.materialPerKg(p.material));
+    addRateRef(`scrap ${p.material} per kg`, rateBook.scrapPerKg(p.material));
+
+    const ops = await tx
       .select()
       .from(routingOps)
       .where(eq(routingOps.partId, p.id))
       .orderBy(routingOps.seq);
 
-    const tiers = await db
+    for (const op of ops) {
+      addRateRef(`machine ${op.machineCode} hour rate`, rateBook.machineHourRate(op.machineCode));
+    }
+
+    const tiers = await tx
       .select()
       .from(quotePartTiers)
-      .where(eq(quotePartTiers.partId, p.id))
+      .where(and(eq(quotePartTiers.quoteId, quoteId), eq(quotePartTiers.partId, p.id)))
       .orderBy(quotePartTiers.tierNo);
 
-    const tierBreakdowns = tiers.map((t) => {
+    const tierBreakdowns = tiers.map((t: any) => {
       const b = costTier(
         {
           grossWtKg: new D(p.grossWtKg),
           scrapPct: new D(p.scrapPct),
           toolingCost: new D(p.toolingCost),
           toolingYears: new D(p.toolingYears),
-          ops: ops.map((o) => ({
+          ops: ops.map((o: any) => ({
             cycleMin: new D(o.cycleMin),
             setupMin: new D(o.setupMin),
             hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
@@ -437,7 +565,7 @@ async function generateQuoteSnapshot(
       annualVolume: p.annualVolume,
       toolingCost: p.toolingCost,
       toolingYears: p.toolingYears,
-      ops: ops.map((o) => ({
+      ops: ops.map((o: any) => ({
         seq: o.seq,
         opName: o.opName,
         machineCode: o.machineCode,
@@ -448,22 +576,21 @@ async function generateQuoteSnapshot(
     });
   }
 
-  // Count existing snapshots
-  const snapRows = await db
-    .select({ count: sql<number>`count(*)::int` })
-    .from(quoteSnapshots)
-    .where(eq(quoteSnapshots.quoteId, quoteId));
-
-  const nextSnapNo = (snapRows[0]?.count || 0) + 1;
+  // Atomically get next snapshot number inside transaction (avoids race condition)
+  const snapNoRes = await tx.execute(
+    sql`SELECT COALESCE(MAX(snapshot_no), 0) + 1 AS next_no FROM quote_snapshots WHERE quote_id = ${quoteId}`
+  );
+  const nextSnapNo = parseInt(String(snapNoRes.rows[0]?.next_no || "1"), 10);
 
   const payload = {
     rfq: qMeta,
     asOfDate,
     parts: partsPayload,
+    rateRefs: Array.from(rateRefsMap.values()),
     snapshotSealedAt: new Date().toISOString(),
   };
 
-  await db.insert(quoteSnapshots).values({
+  await tx.insert(quoteSnapshots).values({
     quoteId,
     snapshotNo: nextSnapNo,
     asOfDate,

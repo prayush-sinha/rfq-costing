@@ -21,7 +21,7 @@ This application is an enterprise-grade, deterministic RFQ-to-quotation costing 
 - **Authentication:** Auth.js v5 (NextAuth Credentials Provider with bcrypt password hashing, constant-time dummy comparisons, IP throttling, and server-side database role re-verification)
 - **Document Generation:** `@react-pdf/renderer` (formal commercial quotation PDF generated strictly from immutable database snapshots)
 - **Styling:** Tailwind CSS v4
-- **Testing:** Vitest 5 (134 unit, integration, and database constraint tests across 24 test files)
+- **Testing:** Vitest 5 (143 unit, integration, and database constraint tests across 26 test files)
 
 ---
 
@@ -35,7 +35,7 @@ The database seed populates two pre-configured functional accounts representing 
 | **Sales Head** | `saleshead@companya.in` | Executive commercial oversight: manages append-only rate masters, adds effective-dated material/machine rates, approves/rejects quotes > ₹25L with mandatory rationale, marks commercial outcomes (Won/Lost). |
 
 ### Demo Password
-Per security governance rules, passwords are never hardcoded in git. When running `npm run db:seed`, passwords are generated from the `DEMO_PASSWORD` environment variable (defaults to `CompanyaDemo2026!` if omitted during local test runs).
+Per security governance rules (Rule 15), passwords are never hardcoded in the codebase. When running `npm run db:seed`, passwords are generated from the `DEMO_PASSWORD` environment variable defined in `.env.local` (e.g., set `DEMO_PASSWORD="CompanyaDemo2026!"` for local testing/evaluation).
 
 ---
 
@@ -69,7 +69,7 @@ Populate the required environment variables:
 - `DATABASE_URL`: Primary PostgreSQL connection string (use pooled endpoint containing `-pooler` with `?sslmode=require`).
 - `TEST_DATABASE_URL`: Separate dedicated test branch connection string. **Invariant:** Must be a separate database branch from `DATABASE_URL` to prevent test truncations from touching development data.
 - `AUTH_SECRET`: Cryptographically secure 32-byte base64 secret (`openssl rand -base64 32`).
-- `DEMO_PASSWORD`: Password assigned to seeded demo users (`CompanyaDemo2026!`).
+- `DEMO_PASSWORD`: Password assigned to seeded demo users (e.g. `CompanyaDemo2026!` for local evaluation).
 - `ANTHROPIC_API_KEY`: *(Optional)* Anthropic API key for Claude 3.5 Sonnet extraction. If not provided, the intake pipeline seamlessly falls back to the deterministic heuristic regex parser.
 
 #### Step 4: Run Database Migrations
@@ -99,7 +99,7 @@ Run the complete Vitest test suite to verify all constraints, guards, and engine
 ```bash
 npm test
 ```
-*Expected result:* 134 tests passing across 24 test files.
+*Expected result:* 143 tests passing across 26 test files.
 
 #### Step 8: Start Development Server
 ```bash

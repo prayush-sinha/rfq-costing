@@ -157,4 +157,22 @@ describe("saveCosting optimistic locking & role enforcement", () => {
     );
     expect(tierRows.rows[0].volume).toBe(180000); // Unchanged!
   });
+
+  it("rejects saving when part ID does not belong to the quote's RFQ", async () => {
+    mockState.role = "estimator";
+    const currentVerRes = await pool.query("SELECT version FROM quotes WHERE id = $1", [quoteId]);
+    const curVer = currentVerRes.rows[0].version;
+
+    await expect(
+      saveCosting({
+        quoteId,
+        expectedVersion: curVer,
+        parts: {
+          partId: 999999, // Non-existent or alien part ID
+          ops: [{ seq: 1, opName: "Turning", machineCode: "M-850", cycleMin: "3.2", setupMin: "45" }],
+          tiers: [{ tierNo: 1, volume: 180000, lotSize: "15000", marginPct: "0.12" }],
+        },
+      })
+    ).rejects.toThrow(/does not belong/);
+  });
 });

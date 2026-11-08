@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireUser } from "@/lib/auth/guards";
+import { requireRole, ForbiddenError, UnauthenticatedError } from "@/lib/auth/guards";
 import { db } from "@/db/client";
-import { quotes, rfqs, customers, parts, routingOps, quotePartTiers, quoteSnapshots, auditLog, rateMaterials, rateMachines, rateParams } from "@/db/schema";
+import { quotes, rfqs, customers, quoteSnapshots, auditLog } from "@/db/schema";
 import { eq, desc } from "drizzle-orm";
 import { pdf } from "@react-pdf/renderer";
 import React from "react";
 import { QuotePdfDocument, QuotePdfPayload } from "@/lib/pdf/QuotePdfDocument";
-import { buildRateBook } from "@/lib/costing/rates";
-import { costTier, D } from "@/lib/costing/engine";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,14 +16,15 @@ interface RouteProps {
 
 export async function GET(req: NextRequest, { params }: RouteProps) {
   try {
-    const user = await requireUser();
+    // Only sales head can generate and export formal customer PDF quotations (Task 12 & Rule 4)
+    const user = await requireRole("sales_head");
     const { id } = await params;
     const quoteId = parseInt(id, 10);
     if (Number.isNaN(quoteId)) {
       return NextResponse.json({ error: "Invalid quote ID" }, { status: 400 });
     }
 
-    // 1. Fetch quote & RFQ
+    // 1. Fetch quote & RFQ metadata
     const qRows = await db
       .select({
         id: quotes.id,
@@ -48,7 +47,7 @@ export async function GET(req: NextRequest, { params }: RouteProps) {
 
     const qMeta = qRows[0];
 
-    // 2. Check for sealed snapshot first (Rule 4: PDFs render from snapshot)
+    // 2. Sealed Snapshot Enforcement (Rule 4: PDFs render from snapshot ONLY, never live rates)
     const snapRows = await db
       .select()
       .from(quoteSnapshots)
@@ -56,120 +55,28 @@ export async function GET(req: NextRequest, { params }: RouteProps) {
       .orderBy(desc(quoteSnapshots.snapshotNo))
       .limit(1);
 
-    let pdfData: QuotePdfPayload;
-
-    if (snapRows.length > 0) {
-      // Render directly from immutable snapshot payload
-      const snap = snapRows[0];
-      const payload: any = snap.payload;
-      pdfData = {
-        rfqNo: qMeta.rfqNo,
-        customerName: qMeta.customerName,
-        dueDate: qMeta.dueDate,
-        asOfDate: snap.asOfDate,
-        quoteId,
-        snapshotNo: snap.snapshotNo,
-        parts: payload.parts || [],
-      };
-    } else {
-      // If no snapshot yet, generate live preview
-      const rateRows = {
-        materials: await db.select().from(rateMaterials),
-        machines: await db.select().from(rateMachines),
-        params: await db.select().from(rateParams),
-      };
-      const rateBook = buildRateBook(rateRows, qMeta.asOfDate);
-
-      const partRows = await db
-        .select()
-        .from(parts)
-        .where(eq(parts.rfqId, qMeta.rfqId));
-
-      const partsPayload = [];
-
-      for (const p of partRows) {
-        const ops = await db
-          .select()
-          .from(routingOps)
-          .where(eq(routingOps.partId, p.id))
-          .orderBy(routingOps.seq);
-
-        const tiers = await db
-          .select()
-          .from(quotePartTiers)
-          .where(eq(quotePartTiers.partId, p.id))
-          .orderBy(quotePartTiers.tierNo);
-
-        const tierBreakdowns = tiers.map((t) => {
-          const b = costTier(
-            {
-              grossWtKg: new D(p.grossWtKg),
-              scrapPct: new D(p.scrapPct),
-              toolingCost: new D(p.toolingCost),
-              toolingYears: new D(p.toolingYears),
-              ops: ops.map((o) => ({
-                cycleMin: new D(o.cycleMin),
-                setupMin: new D(o.setupMin),
-                hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
-              })),
-            },
-            {
-              materialPerKg: new D(rateBook.materialPerKg(p.material).value),
-              scrapPerKg: new D(rateBook.scrapPerKg(p.material).value),
-              overheadPct: new D(rateBook.param("overhead_pct").value),
-              packingPerUnit: new D(rateBook.param("packing_per_unit").value),
-              freightPerKg: new D(rateBook.param("freight_per_kg").value),
-              gstPct: new D(rateBook.param("gst_pct").value),
-            },
-            {
-              volume: new D(t.volume),
-              lotSize: new D(t.lotSize),
-              marginPct: new D(t.marginPct),
-            }
-          );
-
-          return {
-            tierNo: t.tierNo,
-            volume: t.volume,
-            lotSize: t.lotSize,
-            marginPct: t.marginPct,
-            breakdown: {
-              material: b.material.toFixed(2),
-              scrapCredit: b.scrapCredit.toFixed(2),
-              conversion: b.conversion.toFixed(2),
-              overhead: b.overhead.toFixed(2),
-              tooling: b.tooling.toFixed(2),
-              packing: b.packing.toFixed(2),
-              freight: b.freight.toFixed(2),
-              cost: b.cost.toFixed(2),
-              price: b.price.toFixed(2),
-              gst: b.gst.toFixed(2),
-              priceInclGst: b.priceInclGst.toFixed(2),
-            },
-          };
-        });
-
-        partsPayload.push({
-          name: p.name,
-          material: p.material,
-          grossWtKg: p.grossWtKg,
-          annualVolume: p.annualVolume,
-          toolingCost: p.toolingCost,
-          toolingYears: p.toolingYears,
-          tiers: tierBreakdowns,
-        });
-      }
-
-      pdfData = {
-        rfqNo: qMeta.rfqNo,
-        customerName: qMeta.customerName,
-        dueDate: qMeta.dueDate,
-        asOfDate: qMeta.asOfDate,
-        quoteId,
-        snapshotNo: 0,
-        parts: partsPayload,
-      };
+    if (snapRows.length === 0) {
+      return NextResponse.json(
+        {
+          error:
+            "Cannot generate PDF: quote has no frozen snapshot. Only approved quotations with immutable snapshots can be exported (Rule 4).",
+        },
+        { status: 400 }
+      );
     }
+
+    // Render strictly from immutable snapshot payload
+    const snap = snapRows[0];
+    const payload: any = snap.payload;
+    const pdfData: QuotePdfPayload = {
+      rfqNo: qMeta.rfqNo,
+      customerName: qMeta.customerName,
+      dueDate: qMeta.dueDate,
+      asOfDate: snap.asOfDate,
+      quoteId,
+      snapshotNo: snap.snapshotNo,
+      parts: payload.parts || [],
+    };
 
     // 3. Render PDF to Buffer
     const documentElement = React.createElement(QuotePdfDocument, { data: pdfData });
@@ -187,11 +94,11 @@ export async function GET(req: NextRequest, { params }: RouteProps) {
       detail: {
         rfqNo: pdfData.rfqNo,
         snapshotNo: pdfData.snapshotNo,
-        isSnapshot: pdfData.snapshotNo > 0,
+        isSnapshot: true,
       },
     });
 
-    // 5. Return PDF response
+    // 5. Return PDF response with strict no-store caching
     return new NextResponse(buffer, {
       status: 200,
       headers: {
@@ -201,6 +108,15 @@ export async function GET(req: NextRequest, { params }: RouteProps) {
       },
     });
   } catch (err: any) {
+    if (err instanceof ForbiddenError) {
+      return NextResponse.json(
+        { error: "Forbidden: sales head role required to download PDF quotation" },
+        { status: 403 }
+      );
+    }
+    if (err instanceof UnauthenticatedError) {
+      return NextResponse.json({ error: "Unauthenticated: sign in required" }, { status: 401 });
+    }
     console.error("PDF generation failed:", err);
     return NextResponse.json(
       { error: err?.message || "Failed to generate quotation PDF" },

@@ -8,8 +8,13 @@ import fs from "node:fs";
 import path from "node:path";
 
 export async function seedDatabase(pool: Pool) {
-  // 1. Seed Users
-  const demoPassword = process.env.DEMO_PASSWORD || "CompanyaDemo2026!";
+  // 1. Seed Users (Rule 15: demo password comes strictly from DEMO_PASSWORD env var)
+  const demoPassword = process.env.DEMO_PASSWORD;
+  if (!demoPassword) {
+    throw new Error(
+      "DEMO_PASSWORD environment variable is required for database seeding (CLAUDE.md Rule 15)"
+    );
+  }
   const hash = await bcrypt.hash(demoPassword, 10);
 
   const users = [

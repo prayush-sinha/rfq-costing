@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-16.4.5_Turbopack-black?logo=next.js)](https://nextjs.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16_Neon-336791?logo=postgresql)](https://neon.tech/)
-[![Vitest](https://img.shields.io/badge/Vitest-134%2F134_Passing-success?logo=vitest)](https://vitest.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-143%2F143_Passing-success?logo=vitest)](https://vitest.dev/)
 [![ESLint](https://img.shields.io/badge/ESLint-0_Warnings-blueviolet?logo=eslint)](https://eslint.org/)
 
 **GitHub Repository:** [https://github.com/prayush-sinha/rfq-costing](https://github.com/prayush-sinha/rfq-costing)  
@@ -52,7 +52,7 @@ It replaces error-prone, disconnected Microsoft Excel spreadsheets with an audit
 - **Precision Math:** `decimal.js` (precision 40, half-up rounding, INR formatting)
 - **Authentication:** Auth.js v5 (Credentials provider, bcrypt hashing, database-backed 5-attempt/15-min lockout, timing-attack protection)
 - **PDF Engine:** `@react-pdf/renderer` with Indian Rupee (₹) symbol support and separate GST breakdown
-- **Testing:** Vitest 5 (134 tests across 24 test suites running against live PostgreSQL)
+- **Testing:** Vitest 5 (143 tests across 26 test suites running against live PostgreSQL)
 
 ---
 
@@ -91,10 +91,10 @@ Visit **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 | Role | Email Address | Password | Permissions |
 |---|---|---|---|
-| **Estimator** | `estimator@companya.in` | `CompanyaDemo2026!` | Create RFQs, AI email intake, configure routings, 3-tier costing, submit quotes $\le$ ₹25L |
-| **Sales Head** | `saleshead@companya.in` | `CompanyaDemo2026!` | Approval queue (> ₹25L), manage rate master, PDF export, mark Won/Lost |
+| **Estimator** | `estimator@companya.in` | *Configured via `DEMO_PASSWORD` (see deployment.md)* | Create RFQs, AI email intake, configure routings, 3-tier costing, submit quotes $\le$ ₹25L |
+| **Sales Head** | `saleshead@companya.in` | *Configured via `DEMO_PASSWORD` (see deployment.md)* | Approval queue (> ₹25L), manage rate master, PDF export, mark Won/Lost |
 
-*(Password can be customized via `DEMO_PASSWORD` in `.env.local` prior to seeding).*
+*(Password is set via the `DEMO_PASSWORD` environment variable in `.env.local` prior to seeding per Rule 15).*
 
 ---
 
@@ -102,7 +102,7 @@ Visit **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 Run the full verification suite:
 ```bash
-# 1. Run full test suite (134/134 passing)
+# 1. Run full test suite (143/143 passing)
 npm test
 
 # 2. Strict TypeScript typecheck (0 errors)
@@ -117,13 +117,12 @@ npm run build
 
 ### Test Suite Summary:
 ```
- Test Files  24 passed (24)
-      Tests  134 passed (134)
-   Start at  17:41:53
-   Duration  305s
+ Test Files  26 passed (26)
+      Tests  143 passed (143)
+   Duration  304s
 ```
 
-All 24 test suites pass against fresh PostgreSQL 16 after applying all migrations:
+All 26 test suites pass against fresh PostgreSQL 16 after applying all migrations:
 - `engine.test.ts` (18 tests) — Precision costing math, margin markup, half-up rounding
 - `price-part.test.ts` (5 tests) — Material, machine, setup, tooling amortization
 - `schema.test.ts` (21 tests) — Database checks, scrap $\le$ 0.5, sequence uniqueness

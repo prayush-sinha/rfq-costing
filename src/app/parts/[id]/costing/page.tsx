@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { requireUser } from "@/lib/auth/guards";
 import { db } from "@/db/client";
-import { parts, rfqs, customers, quotes, routingOps, quotePartTiers, rateMaterials, rateMachines, rateParams } from "@/db/schema";
+import { parts, rfqs, customers, routingOps, quotePartTiers, rateMaterials, rateMachines, rateParams } from "@/db/schema";
 import { eq, asc } from "drizzle-orm";
 import { Navbar } from "@/components/Navbar";
 import { CostingLedgerClient, PartCostingData, QuoteCostingData, InitialOp, InitialTier } from "./CostingLedgerClient";
@@ -49,23 +49,14 @@ export default async function PartCostingPage({ params }: PageProps) {
   const part = partRows[0];
   const today = todayIST();
 
-  // Find or create active draft quote for this RFQ
-  let quote = await db.query.quotes.findFirst({
+  // Active quote for this RFQ (created automatically upon RFQ initialization)
+  const quote = await db.query.quotes.findFirst({
     where: (q, { eq }) => eq(q.rfqId, part.rfqId),
     orderBy: (q, { desc }) => [desc(q.id)],
   });
 
   if (!quote) {
-    const [newQuote] = await db
-      .insert(quotes)
-      .values({
-        rfqId: part.rfqId,
-        status: "draft",
-        version: 1,
-        asOfDate: today,
-      })
-      .returning();
-    quote = newQuote;
+    notFound();
   }
 
   // Existing routing ops
