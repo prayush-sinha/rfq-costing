@@ -101,11 +101,22 @@ npm test
 ```
 *Expected result:* 143 tests passing across 26 test files.
 
-#### Step 8: Start Development Server
+#### Step 8: Start the Application
+
+You can run the application locally in either mode:
+
+**Option A: Optimized Production Mode (Recommended for evaluation)**
+```bash
+npm run build
+npm run start
+```
+*Pre-compiles all 11 routes and static assets for instantaneous navigation with zero Just-In-Time compilation overhead at [http://localhost:3000](http://localhost:3000).*
+
+**Option B: Development Server (with hot-module reloading)**
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+*Starts the Next.js development server at [http://localhost:3000](http://localhost:3000).*
 
 ---
 
