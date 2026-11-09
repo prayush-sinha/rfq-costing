@@ -5,7 +5,6 @@ import { execSync } from "node:child_process";
 const rootDir = "c:/Users/prayu/Desktop/take home task project";
 const sourceDir = path.join(rootDir, "rfq-costing");
 const projectZip = path.join(rootDir, "project.zip");
-const subZip = path.join(rootDir, "rfq-costing-submission.zip");
 const twoFileZip = path.join(rootDir, "submission.zip");
 const redundantCleanZip = path.join(rootDir, "rfq-costing-clean.zip");
 const stagingParent = path.join(rootDir, "staging-zip");
@@ -15,7 +14,7 @@ const stagingDir = path.join(stagingParent, "rfq-costing");
 if (fs.existsSync(redundantCleanZip)) fs.unlinkSync(redundantCleanZip);
 if (fs.existsSync(projectZip)) fs.unlinkSync(projectZip);
 if (fs.existsSync(path.join(sourceDir, "project.zip"))) fs.unlinkSync(path.join(sourceDir, "project.zip"));
-if (fs.existsSync(subZip)) fs.unlinkSync(subZip);
+if (fs.existsSync(path.join(rootDir, "rfq-costing-submission.zip"))) fs.unlinkSync(path.join(rootDir, "rfq-costing-submission.zip"));
 if (fs.existsSync(twoFileZip)) fs.unlinkSync(twoFileZip);
 if (fs.existsSync(stagingParent)) {
   fs.rmSync(stagingParent, { recursive: true, force: true });
@@ -57,7 +56,6 @@ copyRecursive(sourceDir, stagingDir);
 
 console.log("Compressing clean submission zip with POSIX forward-slash separators...");
 const cleanStaging = stagingDir.replace(/\\/g, "/");
-const cleanZipPath = subZip.replace(/\\/g, "/");
 const cleanProjectZipPath = projectZip.replace(/\\/g, "/");
 
 // 1. Create project.zip (root relative as zip -r project.zip . would produce)
@@ -76,31 +74,11 @@ fs.copyFileSync(projectZip, path.join(sourceDir, "project.zip"));
 const statsProj = fs.statSync(projectZip);
 console.log(`\n✓ project.zip created (flat root matching 'zip -r project.zip .'):`);
 console.log(`  Path: ${projectZip}`);
-console.log(`  Path (in project): ${path.join(sourceDir, "project.zip")}`);
 console.log(`  Size: ${(statsProj.size / 1024 / 1024).toFixed(2)} MB (${statsProj.size.toLocaleString()} bytes)`);
-
-// 2. Create rfq-costing-submission.zip (with rfq-costing/ folder prefix)
-const psScript = `
-[System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression') | Out-Null;
-[System.Reflection.Assembly]::LoadWithPartialName('System.IO.Compression.FileSystem') | Out-Null;
-$zip = [System.IO.Compression.ZipFile]::Open('${cleanZipPath}', [System.IO.Compression.ZipArchiveMode]::Create);
-Get-ChildItem -Path '${cleanStaging}' -Recurse -File | ForEach-Object {
-    $rel = 'rfq-costing/' + $_.FullName.Substring('${cleanStaging}'.Length).TrimStart('\\', '/').Replace('\\', '/');
-    [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip, $_.FullName, $rel, [System.IO.Compression.CompressionLevel]::Optimal) | Out-Null;
-};
-$zip.Dispose();
-`;
-
-execSync(`powershell -NoProfile -Command "${psScript.replace(/\r?\n/g, " ")}"`);
 
 fs.rmSync(stagingParent, { recursive: true, force: true });
 
-const stats = fs.statSync(subZip);
-console.log(`\n✓ Pristine full codebase archive created with POSIX paths:`);
-console.log(`  Path: ${subZip}`);
-console.log(`  Size: ${(stats.size / 1024 / 1024).toFixed(2)} MB (${stats.size.toLocaleString()} bytes)`);
-
-// Create strict 2-file submission.zip as specified in the client brief
+// 2. Create strict 2-file submission.zip as specified in the client brief
 console.log("\nCompressing strict brief submission archive (TDD.docx, deployment.md)...");
 const cleanTwoFileZipPath = twoFileZip.replace(/\\/g, "/");
 const tddPath = path.join(sourceDir, "TDD.docx").replace(/\\/g, "/");
