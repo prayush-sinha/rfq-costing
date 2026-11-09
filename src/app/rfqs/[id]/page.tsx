@@ -46,43 +46,42 @@ export default async function RfqDetailPage({ params }: PageProps) {
 
   const rfq = rfqRow[0];
 
-  // Audit log RFQ open (audit trail requirement)
-  await db.insert(auditLog).values({
-    actorId: user.id,
-    action: "open_rfq",
-    entity: "rfq",
-    entityId: String(rfq.id),
-    detail: { rfqNo: rfq.rfqNo },
-  });
-
-  // Query Parts with routing operation count
-  const partRows = await db
-    .select({
-      id: parts.id,
-      name: parts.name,
-      material: parts.material,
-      grossWtKg: parts.grossWtKg,
-      scrapPct: parts.scrapPct,
-      annualVolume: parts.annualVolume,
-      toolingCost: parts.toolingCost,
-      toolingYears: parts.toolingYears,
-      drawingRef: parts.drawingRef,
-      opsCount: sql<number>`count(${routingOps.id})::int`,
-    })
-    .from(parts)
-    .leftJoin(routingOps, eq(parts.id, routingOps.partId))
-    .where(eq(parts.rfqId, rfqId))
-    .groupBy(parts.id);
-
-  // Check quote status
-  const quoteRows = await db
-    .select({
-      id: quotes.id,
-      status: quotes.status,
-    })
-    .from(quotes)
-    .where(eq(quotes.rfqId, rfqId))
-    .limit(1);
+  // Query parts, quotes, AI suggestions, and write audit log concurrently
+  const [, partRows, quoteRows, initialSuggestions] = await Promise.all([
+    db.insert(auditLog).values({
+      actorId: user.id,
+      action: "open_rfq",
+      entity: "rfq",
+      entityId: String(rfq.id),
+      detail: { rfqNo: rfq.rfqNo },
+    }),
+    db
+      .select({
+        id: parts.id,
+        name: parts.name,
+        material: parts.material,
+        grossWtKg: parts.grossWtKg,
+        scrapPct: parts.scrapPct,
+        annualVolume: parts.annualVolume,
+        toolingCost: parts.toolingCost,
+        toolingYears: parts.toolingYears,
+        drawingRef: parts.drawingRef,
+        opsCount: sql<number>`count(${routingOps.id})::int`,
+      })
+      .from(parts)
+      .leftJoin(routingOps, eq(parts.id, routingOps.partId))
+      .where(eq(parts.rfqId, rfqId))
+      .groupBy(parts.id),
+    db
+      .select({
+        id: quotes.id,
+        status: quotes.status,
+      })
+      .from(quotes)
+      .where(eq(quotes.rfqId, rfqId))
+      .limit(1),
+    getAiSuggestions(rfqId),
+  ]);
 
   const detailData: RfqDetailData = {
     ...rfq,
@@ -91,9 +90,6 @@ export default async function RfqDetailPage({ params }: PageProps) {
   };
 
   const today = todayIST();
-
-  // Query existing AI suggestions
-  const initialSuggestions = await getAiSuggestions(rfqId);
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 font-sans">

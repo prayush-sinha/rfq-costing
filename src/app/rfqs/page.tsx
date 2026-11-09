@@ -11,27 +11,28 @@ export const dynamic = "force-dynamic";
 export default async function RfqsPage() {
   const user = await requireUser();
 
-  // Query RFQs with customer name, owner email, parts count, total volume
-  const rfqRows = await db
-    .select({
-      id: rfqs.id,
-      rfqNo: rfqs.rfqNo,
-      customerName: customers.name,
-      dueDate: rfqs.dueDate,
-      status: rfqs.status,
-      lostReason: rfqs.lostReason,
-      ownerEmail: users.email,
-      partsCount: sql<number>`count(${parts.id})::int`,
-      totalAnnualVolume: sql<number>`coalesce(sum(${parts.annualVolume}), 0)::int`,
-    })
-    .from(rfqs)
-    .innerJoin(customers, eq(rfqs.customerId, customers.id))
-    .innerJoin(users, eq(rfqs.ownerId, users.id))
-    .leftJoin(parts, eq(rfqs.id, parts.rfqId))
-    .groupBy(rfqs.id, customers.name, users.email)
-    .orderBy(desc(rfqs.createdAt));
-
-  const customerList = await db.select().from(customers);
+  // Query RFQs and customers in parallel for fast rendering
+  const [rfqRows, customerList] = await Promise.all([
+    db
+      .select({
+        id: rfqs.id,
+        rfqNo: rfqs.rfqNo,
+        customerName: customers.name,
+        dueDate: rfqs.dueDate,
+        status: rfqs.status,
+        lostReason: rfqs.lostReason,
+        ownerEmail: users.email,
+        partsCount: sql<number>`count(${parts.id})::int`,
+        totalAnnualVolume: sql<number>`coalesce(sum(${parts.annualVolume}), 0)::int`,
+      })
+      .from(rfqs)
+      .innerJoin(customers, eq(rfqs.customerId, customers.id))
+      .innerJoin(users, eq(rfqs.ownerId, users.id))
+      .leftJoin(parts, eq(rfqs.id, parts.rfqId))
+      .groupBy(rfqs.id, customers.name, users.email)
+      .orderBy(desc(rfqs.createdAt)),
+    db.select().from(customers),
+  ]);
   const today = todayIST();
 
   return (

@@ -59,35 +59,33 @@ export default async function PartCostingPage({ params }: PageProps) {
     notFound();
   }
 
-  // Existing routing ops
-  const existingOps = await db
-    .select({
-      seq: routingOps.seq,
-      opName: routingOps.opName,
-      machineCode: routingOps.machineCode,
-      cycleMin: routingOps.cycleMin,
-      setupMin: routingOps.setupMin,
-    })
-    .from(routingOps)
-    .where(eq(routingOps.partId, partId))
-    .orderBy(asc(routingOps.seq));
-
-  // Existing quote part tiers
-  const existingTiers = await db
-    .select({
-      tierNo: quotePartTiers.tierNo,
-      volume: quotePartTiers.volume,
-      lotSize: quotePartTiers.lotSize,
-      marginPct: quotePartTiers.marginPct,
-    })
-    .from(quotePartTiers)
-    .where(eq(quotePartTiers.quoteId, quote.id))
-    .orderBy(asc(quotePartTiers.tierNo));
-
-  // Query all rate tables
-  const allMaterials = await db.select().from(rateMaterials);
-  const allMachines = await db.select().from(rateMachines);
-  const allParams = await db.select().from(rateParams);
+  // Fetch routing operations, tiers, and rate cards concurrently for fast rendering
+  const [existingOps, existingTiers, allMaterials, allMachines, allParams] = await Promise.all([
+    db
+      .select({
+        seq: routingOps.seq,
+        opName: routingOps.opName,
+        machineCode: routingOps.machineCode,
+        cycleMin: routingOps.cycleMin,
+        setupMin: routingOps.setupMin,
+      })
+      .from(routingOps)
+      .where(eq(routingOps.partId, partId))
+      .orderBy(asc(routingOps.seq)),
+    db
+      .select({
+        tierNo: quotePartTiers.tierNo,
+        volume: quotePartTiers.volume,
+        lotSize: quotePartTiers.lotSize,
+        marginPct: quotePartTiers.marginPct,
+      })
+      .from(quotePartTiers)
+      .where(eq(quotePartTiers.quoteId, quote.id))
+      .orderBy(asc(quotePartTiers.tierNo)),
+    db.select().from(rateMaterials),
+    db.select().from(rateMachines),
+    db.select().from(rateParams),
+  ]);
 
   // Check if newer rates exist than the pinned quote as_of_date
   const hasNewerRates =

@@ -11,21 +11,21 @@ export const dynamic = "force-dynamic";
 export default async function RatesPage() {
   const user = await requireUser();
 
-  // Fetch all rate records sorted chronologically for each item
-  const materials = await db
-    .select()
-    .from(rateMaterials)
-    .orderBy(asc(rateMaterials.grade), desc(rateMaterials.effectiveFrom));
-
-  const machines = await db
-    .select()
-    .from(rateMachines)
-    .orderBy(asc(rateMachines.machineCode), desc(rateMachines.effectiveFrom));
-
-  const params = await db
-    .select()
-    .from(rateParams)
-    .orderBy(asc(rateParams.key), desc(rateParams.effectiveFrom));
+  // Fetch all rate records in parallel for fast round-trip resolution
+  const [materials, machines, params] = await Promise.all([
+    db
+      .select()
+      .from(rateMaterials)
+      .orderBy(asc(rateMaterials.grade), desc(rateMaterials.effectiveFrom)),
+    db
+      .select()
+      .from(rateMachines)
+      .orderBy(asc(rateMachines.machineCode), desc(rateMachines.effectiveFrom)),
+    db
+      .select()
+      .from(rateParams)
+      .orderBy(asc(rateParams.key), desc(rateParams.effectiveFrom)),
+  ]);
 
   // Current date in Asia/Kolkata timezone (YYYY-MM-DD)
   const today = todayIST();
