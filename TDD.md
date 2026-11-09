@@ -8,7 +8,6 @@
 **Date:** November 2026  
 **Version:** 1.0.0 (Candidate Submission)  
 **GitHub Repository:** [https://github.com/prayush-sinha/rfq-costing](https://github.com/prayush-sinha/rfq-costing)  
-**Live Application Link:** [https://rfq-costing.vercel.app](https://rfq-costing.vercel.app) *(Configured for Vercel + Neon; see deployment.md for local and cloud run instructions)*
 
 ---
 

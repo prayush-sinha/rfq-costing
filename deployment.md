@@ -120,15 +120,15 @@ npm run dev
 
 ---
 
-## 4. Production Deployment (Vercel + Neon)
+## 4. Production Deployment Guide (Optional Cloud Hosting)
 
-### 1. Vercel Project Setup
+### 1. Cloud / Vercel Project Setup
 1. Push your repository to GitHub.
-2. In Vercel, import the `rfq-costing` repository.
-3. In **Project Settings → Environment Variables**, add the production configuration:
-   - `DATABASE_URL` (Neon pooled connection string)
+2. In your cloud hosting provider (e.g., Vercel, Railway, AWS ECS), import the `rfq-costing` repository.
+3. In **Project Settings → Environment Variables**, add the required environment variable names:
+   - `DATABASE_URL` (PostgreSQL pooled connection string)
    - `AUTH_SECRET` (Production cryptographic secret)
-   - `AUTH_URL` (Your production Vercel URL, e.g. `https://rfq-costing.vercel.app`)
+   - `AUTH_URL` (Canonical production base URL)
    - `DEMO_PASSWORD` (Production demo password)
    - `ANTHROPIC_API_KEY` (Production Claude API key)
 
