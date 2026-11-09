@@ -66,6 +66,7 @@ function LoginForm() {
     } else {
       setEmail("saleshead@companya.in");
     }
+    setPassword("CompanyaDemo2026!");
     setError(null);
   };
 
@@ -171,14 +172,19 @@ function LoginForm() {
       </form>
 
       <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800">
-        <p className="text-xs font-mono uppercase tracking-wider text-zinc-500 mb-2">
-          Demo Accounts (Prefill Email)
-        </p>
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-xs font-mono uppercase tracking-wider text-zinc-500">
+            Quick 1-Click Demo Login
+          </p>
+          <span className="text-[11px] font-mono text-zinc-500">
+            Pwd: <code className="font-semibold text-zinc-800 dark:text-zinc-200">CompanyaDemo2026!</code>
+          </span>
+        </div>
         <div className="grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={() => fillDemo("estimator")}
-            className="text-left p-2.5 rounded-lg border border-zinc-200 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/60 transition-colors"
+            className="text-left p-2.5 rounded-lg border border-zinc-200 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900"
           >
             <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
               Estimator
@@ -190,7 +196,7 @@ function LoginForm() {
           <button
             type="button"
             onClick={() => fillDemo("sales_head")}
-            className="text-left p-2.5 rounded-lg border border-zinc-200 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/60 transition-colors"
+            className="text-left p-2.5 rounded-lg border border-zinc-200 hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-800/60 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900"
           >
             <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
               Sales Head
