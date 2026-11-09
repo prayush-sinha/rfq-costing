@@ -19,7 +19,8 @@ import {
 import { eq, and, sql, desc } from "drizzle-orm";
 import { annualValue, needsApproval } from "@/lib/quotes/approval";
 import { buildRateBook } from "@/lib/costing/rates";
-import { costTier, D } from "@/lib/costing/engine";
+import { D } from "@/lib/costing/engine";
+import { pricePart } from "@/lib/costing/price-part";
 import { revalidatePath } from "next/cache";
 
 export interface QuoteReviewItem {
@@ -88,33 +89,13 @@ export async function submitQuoteForApproval(quoteId: number) {
       throw new Error("Cannot submit quote: RFQ has no parts defined.");
     }
 
-    // 3. Verify every part has routing operations and tiers for THIS specific quote
-    for (const p of partList) {
-      const ops = await tx
-        .select()
-        .from(routingOps)
-        .where(eq(routingOps.partId, p.id));
-      if (ops.length === 0) {
-        throw new Error(`Part '${p.name}' has no routing operations defined. Complete costing before submission.`);
-      }
-
-      const tiers = await tx
-        .select()
-        .from(quotePartTiers)
-        .where(and(eq(quotePartTiers.quoteId, quote.id), eq(quotePartTiers.partId, p.id)));
-      if (tiers.length < 3) {
-        throw new Error(`Part '${p.name}' is missing volume tiers for this quote. Save all 3 tiers before submission.`);
-      }
-    }
-
-    // 4. Calculate total annual commercial value across parts using Tier 2 (annual volume tier)
+    // 3. Verify every part has routing ops and 3 tiers, and calculate annual commercial value
     const rateRows = {
       materials: await tx.select().from(rateMaterials),
       machines: await tx.select().from(rateMachines),
       params: await tx.select().from(rateParams),
     };
     const rateBook = buildRateBook(rateRows, quote.as_of_date);
-
     const valueLines: { unitPrice: string; annualVolume: number }[] = [];
 
     for (const p of partList) {
@@ -124,43 +105,25 @@ export async function submitQuoteForApproval(quoteId: number) {
         .where(eq(routingOps.partId, p.id))
         .orderBy(routingOps.seq);
 
+      if (pOps.length === 0) {
+        throw new Error(`Part '${p.name}' has no routing operations defined. Complete costing before submission.`);
+      }
+
       const pTiers = await tx
         .select()
         .from(quotePartTiers)
         .where(and(eq(quotePartTiers.quoteId, quote.id), eq(quotePartTiers.partId, p.id)))
         .orderBy(quotePartTiers.tierNo);
 
-      const tier2 = pTiers.find((t) => t.tierNo === 2) || pTiers[0];
+      if (pTiers.length < 3) {
+        throw new Error(`Part '${p.name}' is missing volume tiers for this quote. Save all 3 tiers before submission.`);
+      }
 
-      const breakdown = costTier(
-        {
-          grossWtKg: new D(p.grossWtKg),
-          scrapPct: new D(p.scrapPct),
-          toolingCost: new D(p.toolingCost),
-          toolingYears: new D(p.toolingYears),
-          ops: pOps.map((o) => ({
-            cycleMin: new D(o.cycleMin),
-            setupMin: new D(o.setupMin),
-            hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
-          })),
-        },
-        {
-          materialPerKg: new D(rateBook.materialPerKg(p.material).value),
-          scrapPerKg: new D(rateBook.scrapPerKg(p.material).value),
-          overheadPct: new D(rateBook.param("overhead_pct").value),
-          packingPerUnit: new D(rateBook.param("packing_per_unit").value),
-          freightPerKg: new D(rateBook.param("freight_per_kg").value),
-          gstPct: new D(rateBook.param("gst_pct").value),
-        },
-        {
-          volume: new D(tier2.volume),
-          lotSize: new D(tier2.lotSize),
-          marginPct: new D(tier2.marginPct),
-        }
-      );
+      const tier2 = pTiers.find((t) => t.tierNo === 2) || pTiers[0];
+      const priced = pricePart(p, pOps, [tier2], rateBook);
 
       valueLines.push({
-        unitPrice: breakdown.price.toString(),
+        unitPrice: priced.tiers[0].price.toString(),
         annualVolume: p.annualVolume,
       });
     }
@@ -470,36 +433,21 @@ async function generateQuoteSnapshotInTx(
   const partsPayload = [];
   const rateRefsMap = new Map<string, { name: string; value: string; effectiveFrom: string }>();
 
-  // Helper to record rateRefs
-  const addRateRef = (name: string, ref: { value: string; effectiveFrom: string }) => {
-    if (!rateRefsMap.has(name)) {
-      rateRefsMap.set(name, { name, value: ref.value, effectiveFrom: ref.effectiveFrom });
-    }
-  };
-
-  // Record parameter rateRefs
-  addRateRef("overhead_pct", rateBook.param("overhead_pct"));
-  addRateRef("packing_per_unit", rateBook.param("packing_per_unit"));
-  addRateRef("freight_per_kg", rateBook.param("freight_per_kg"));
-  addRateRef("gst_pct", rateBook.param("gst_pct"));
   try {
-    addRateRef("default_margin_pct", rateBook.param("default_margin_pct"));
+    const defMargin = rateBook.param("default_margin_pct");
+    rateRefsMap.set("default_margin_pct", {
+      name: "default_margin_pct",
+      value: defMargin.value,
+      effectiveFrom: defMargin.effectiveFrom,
+    });
   } catch {}
 
   for (const p of partRows) {
-    // Record material rateRefs
-    addRateRef(`material ${p.material} per kg`, rateBook.materialPerKg(p.material));
-    addRateRef(`scrap ${p.material} per kg`, rateBook.scrapPerKg(p.material));
-
     const ops = await tx
       .select()
       .from(routingOps)
       .where(eq(routingOps.partId, p.id))
       .orderBy(routingOps.seq);
-
-    for (const op of ops) {
-      addRateRef(`machine ${op.machineCode} hour rate`, rateBook.machineHourRate(op.machineCode));
-    }
 
     const tiers = await tx
       .select()
@@ -507,34 +455,16 @@ async function generateQuoteSnapshotInTx(
       .where(and(eq(quotePartTiers.quoteId, quoteId), eq(quotePartTiers.partId, p.id)))
       .orderBy(quotePartTiers.tierNo);
 
-    const tierBreakdowns = tiers.map((t: any) => {
-      const b = costTier(
-        {
-          grossWtKg: new D(p.grossWtKg),
-          scrapPct: new D(p.scrapPct),
-          toolingCost: new D(p.toolingCost),
-          toolingYears: new D(p.toolingYears),
-          ops: ops.map((o: any) => ({
-            cycleMin: new D(o.cycleMin),
-            setupMin: new D(o.setupMin),
-            hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
-          })),
-        },
-        {
-          materialPerKg: new D(rateBook.materialPerKg(p.material).value),
-          scrapPerKg: new D(rateBook.scrapPerKg(p.material).value),
-          overheadPct: new D(rateBook.param("overhead_pct").value),
-          packingPerUnit: new D(rateBook.param("packing_per_unit").value),
-          freightPerKg: new D(rateBook.param("freight_per_kg").value),
-          gstPct: new D(rateBook.param("gst_pct").value),
-        },
-        {
-          volume: new D(t.volume),
-          lotSize: new D(t.lotSize),
-          marginPct: new D(t.marginPct),
-        }
-      );
+    const priced = pricePart(p, ops, tiers, rateBook);
 
+    for (const ref of priced.rateRefs) {
+      if (!rateRefsMap.has(ref.name)) {
+        rateRefsMap.set(ref.name, ref);
+      }
+    }
+
+    const tierBreakdowns = tiers.map((t: any, idx: number) => {
+      const b = priced.tiers[idx];
       return {
         tierNo: t.tierNo,
         volume: t.volume,
@@ -679,40 +609,15 @@ export async function getQuotesForReview(): Promise<QuoteReviewItem[]> {
 
           if (pOps.length === 0) continue;
 
-          const breakdown = costTier(
-            {
-              grossWtKg: new D(p.grossWtKg),
-              scrapPct: new D(p.scrapPct),
-              toolingCost: new D(p.toolingCost),
-              toolingYears: new D(p.toolingYears),
-              ops: pOps.map((o) => ({
-                cycleMin: new D(o.cycleMin),
-                setupMin: new D(o.setupMin),
-                hourRate: new D(rateBook.machineHourRate(o.machineCode).value),
-              })),
-            },
-            {
-              materialPerKg: new D(rateBook.materialPerKg(p.material).value),
-              scrapPerKg: new D(rateBook.scrapPerKg(p.material).value),
-              overheadPct: new D(rateBook.param("overhead_pct").value),
-              packingPerUnit: new D(rateBook.param("packing_per_unit").value),
-              freightPerKg: new D(rateBook.param("freight_per_kg").value),
-              gstPct: new D(rateBook.param("gst_pct").value),
-            },
-            {
-              volume: new D(tier2.volume),
-              lotSize: new D(tier2.lotSize),
-              marginPct: new D(tier2.marginPct),
-            }
-          );
-          realTotal = realTotal.plus(breakdown.price.times(p.annualVolume));
+          const priced = pricePart(p, pOps, [tier2], rateBook);
+          realTotal = realTotal.plus(priced.tiers[0].price.times(p.annualVolume));
         }
       } catch {
         // Fallback to 0 if rates or configurations are incomplete
       }
     }
 
-    const needsHeadApproval = realTotal.gt(2500000);
+    const needsHeadApproval = needsApproval(realTotal);
 
     items.push({
       ...r,

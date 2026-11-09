@@ -39,10 +39,6 @@ export async function runAiIntake(
   emailText: string
 ): Promise<IntakeResult> {
   const user = await requireUser();
-  if (user.role !== "estimator" && user.role !== "sales_head") {
-    throw new Error("Only estimators and sales head can run AI intake");
-  }
-
   const today = todayIST();
 
   // 1. Check daily AI usage cap

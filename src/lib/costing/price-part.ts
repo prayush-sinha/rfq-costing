@@ -2,7 +2,8 @@ import { D, costTier, type Breakdown } from "./engine";
 import type { RateBook } from "./rates";
 
 export interface PartRecord {
-  partId: number;
+  partId?: number;
+  id?: number;
   material: string;
   grossWtKg: string;
   scrapPct: string;
@@ -17,9 +18,9 @@ export interface OpRecord {
 }
 
 export interface TierRecord {
-  volume: string;
-  lotSize: string;
-  marginPct: string;
+  volume: string | number;
+  lotSize: string | number;
+  marginPct: string | number;
 }
 
 export interface RateRef {
@@ -77,5 +78,9 @@ export function pricePart(
     })
   );
 
-  return { partId: part.partId, tiers: results, rateRefs: [...refs.values()] };
+  return {
+    partId: part.partId ?? part.id ?? 0,
+    tiers: results,
+    rateRefs: [...refs.values()],
+  };
 }
