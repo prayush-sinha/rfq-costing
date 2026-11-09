@@ -70,7 +70,6 @@ Get-ChildItem -Path '${cleanStaging}' -Recurse -File | ForEach-Object {
 $zipProj.Dispose();
 `;
 execSync(`powershell -NoProfile -Command "${psProjectZipScript.replace(/\r?\n/g, " ")}"`);
-fs.copyFileSync(projectZip, path.join(sourceDir, "project.zip"));
 const statsProj = fs.statSync(projectZip);
 console.log(`\n✓ project.zip created (flat root matching 'zip -r project.zip .'):`);
 console.log(`  Path: ${projectZip}`);
