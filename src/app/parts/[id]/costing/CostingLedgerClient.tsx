@@ -531,7 +531,8 @@ export function CostingLedgerClient({
                       <button
                         type="button"
                         onClick={() => handleRemoveOp(idx)}
-                        className="text-red-500 hover:text-red-700 text-xs"
+                        aria-label={`Remove operation ${op.seq}: ${op.opName}`}
+                        className="text-red-500 hover:text-red-700 text-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-500 rounded p-0.5"
                       >
                         ✕
                       </button>
@@ -870,11 +871,16 @@ export function CostingLedgerClient({
       </div>
       {/* Routing Suggestions Modal */}
       {showSuggestionsModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
-          <div className="w-full max-w-2xl rounded-xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-800 dark:bg-zinc-900 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-2xs">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="routing-suggestions-title"
+            className="w-full max-w-2xl rounded-xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-800 dark:bg-zinc-900 space-y-4"
+          >
             <div className="flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800">
               <div>
-                <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+                <h3 id="routing-suggestions-title" className="text-sm font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
                   <span>✦ Historical Routing Suggestions</span>
                   <span className="rounded bg-purple-50 px-2 py-0.5 text-[10px] font-semibold text-purple-700 dark:bg-purple-950 dark:text-purple-300">
                     Similarity Ranked
@@ -887,7 +893,8 @@ export function CostingLedgerClient({
               <button
                 type="button"
                 onClick={() => setShowSuggestionsModal(false)}
-                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-lg"
+                aria-label="Close routing suggestions modal"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 rounded p-1"
               >
                 ✕
               </button>

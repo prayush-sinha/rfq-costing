@@ -309,7 +309,8 @@ export function QuotesClient({ initialData, knownMaterials, userRole: _userRole 
                 type="button"
                 disabled={data.page <= 1 || isSearching}
                 onClick={() => handleSearch(data.page - 1)}
-                className="rounded border border-zinc-300 px-2 py-1 text-xs disabled:opacity-40 hover:bg-zinc-50 dark:border-zinc-700"
+                aria-label="Previous page of quotes"
+                className="rounded border border-zinc-300 px-2.5 py-1 text-xs disabled:opacity-40 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:border-zinc-700 dark:hover:bg-zinc-800 dark:focus-visible:ring-zinc-100 transition-colors"
               >
                 Previous
               </button>
@@ -317,7 +318,8 @@ export function QuotesClient({ initialData, knownMaterials, userRole: _userRole 
                 type="button"
                 disabled={data.page >= data.totalPages || isSearching}
                 onClick={() => handleSearch(data.page + 1)}
-                className="rounded border border-zinc-300 px-2 py-1 text-xs disabled:opacity-40 hover:bg-zinc-50 dark:border-zinc-700"
+                aria-label="Next page of quotes"
+                className="rounded border border-zinc-300 px-2.5 py-1 text-xs disabled:opacity-40 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:border-zinc-700 dark:hover:bg-zinc-800 dark:focus-visible:ring-zinc-100 transition-colors"
               >
                 Next
               </button>
@@ -328,16 +330,22 @@ export function QuotesClient({ initialData, knownMaterials, userRole: _userRole 
 
       {/* Import Modal */}
       {showImportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
-          <div className="w-full max-w-xl rounded-xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-800 dark:bg-zinc-900 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-2xs">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-import-title"
+            className="w-full max-w-xl rounded-xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-800 dark:bg-zinc-900 space-y-4"
+          >
             <div className="flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800">
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+              <h3 id="modal-import-title" className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                 Import Past Quotes (CSV or Excel)
               </h3>
               <button
                 type="button"
                 onClick={() => setShowImportModal(false)}
-                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-lg"
+                aria-label="Close import modal"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 rounded p-1"
               >
                 ✕
               </button>

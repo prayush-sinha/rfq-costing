@@ -284,11 +284,26 @@ export function RfqDetailClient({
 
       {/* Mark Lost Modal */}
       {showLostModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800 space-y-4">
-            <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              Record Commercial Loss Reason
-            </h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-2xs">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-lost-title"
+            className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800 space-y-4"
+          >
+            <div className="flex items-center justify-between border-b border-zinc-200 pb-2 dark:border-zinc-800">
+              <h3 id="modal-lost-title" className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                Record Commercial Loss Reason
+              </h3>
+              <button
+                type="button"
+                onClick={() => setShowLostModal(false)}
+                aria-label="Close loss record dialog"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 rounded p-1"
+              >
+                ✕
+              </button>
+            </div>
             <p className="text-xs text-zinc-500">
               Per Company A sales governance, every lost quote must record an explicit reason for post-bid review and market intelligence.
             </p>
@@ -310,7 +325,7 @@ export function RfqDetailClient({
                   value={lostReason}
                   onChange={(e) => setLostReason(e.target.value)}
                   placeholder="e.g. Competitor quoted 6% lower with local forgings; or OEM postponed model launch."
-                  className="mt-1 block w-full rounded-md border border-zinc-300 p-2.5 text-xs text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                  className="mt-1 block w-full rounded-md border border-zinc-300 p-2.5 text-xs text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 focus:outline-none focus:border-zinc-900"
                 />
               </div>
 
@@ -337,15 +352,22 @@ export function RfqDetailClient({
 
       {/* Add Part Modal */}
       {showAddPart && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-2xs">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-add-part-title"
+            className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800 space-y-4"
+          >
             <div className="flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800">
-              <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              <h3 id="modal-add-part-title" className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                 Add Part to {rfq.rfqNo}
               </h3>
               <button
+                type="button"
                 onClick={() => setShowAddPart(false)}
-                className="text-zinc-400 hover:text-zinc-600 text-sm"
+                aria-label="Close add part modal"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 rounded p-1"
               >
                 ✕
               </button>

@@ -39,16 +39,17 @@ export function Navbar({ user }: NavbarProps) {
             </div>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const active = pathname.startsWith(link.href);
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                  aria-current={active ? "page" : undefined}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:focus-visible:ring-zinc-100 ${
                     active
-                      ? "bg-zinc-100 text-zinc-900 font-semibold dark:bg-zinc-800 dark:text-zinc-50"
+                      ? "bg-zinc-100 text-zinc-900 font-semibold dark:bg-zinc-800 dark:text-zinc-50 shadow-2xs"
                       : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/50"
                   }`}
                 >
@@ -84,7 +85,8 @@ export function Navbar({ user }: NavbarProps) {
 
           <button
             onClick={() => signOut({ callbackUrl: "/login" })}
-            className="rounded-md border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 transition-colors"
+            aria-label="Sign out of Company A Costing"
+            className="rounded-md border border-zinc-200 px-3 py-1.5 text-xs font-medium text-zinc-700 hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:focus-visible:ring-zinc-100 transition-colors"
           >
             Sign out
           </button>
@@ -92,24 +94,25 @@ export function Navbar({ user }: NavbarProps) {
       </div>
 
       {/* Mobile nav bar */}
-      <div className="flex md:hidden border-t border-zinc-200 dark:border-zinc-800 px-4 py-1.5 gap-1 overflow-x-auto">
+      <nav aria-label="Mobile Navigation" className="flex md:hidden border-t border-zinc-200 dark:border-zinc-800 px-4 py-1.5 gap-1 overflow-x-auto">
         {navLinks.map((link) => {
           const active = pathname.startsWith(link.href);
           return (
             <Link
               key={link.href}
               href={link.href}
-              className={`px-2.5 py-1 text-xs font-medium rounded-md whitespace-nowrap ${
+              aria-current={active ? "page" : undefined}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-100 ${
                 active
                   ? "bg-zinc-100 text-zinc-900 font-semibold dark:bg-zinc-800 dark:text-zinc-50"
-                  : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400"
+                  : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
               }`}
             >
               {link.label}
             </Link>
           );
         })}
-      </div>
+      </nav>
     </header>
   );
 }

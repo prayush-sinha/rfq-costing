@@ -130,7 +130,7 @@ export function IntakePanel({ rfqId, initialSuggestions, userRole: _userRole }: 
         <button
           type="button"
           onClick={handleLoadSample}
-          className="self-start sm:self-auto inline-flex items-center rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700 transition-colors shadow-sm"
+          className="self-start sm:self-auto inline-flex items-center rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-700 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700 dark:focus-visible:ring-zinc-100 transition-colors shadow-xs"
         >
           📄 Load Sample RFQ Email
         </button>
@@ -140,7 +140,9 @@ export function IntakePanel({ rfqId, initialSuggestions, userRole: _userRole }: 
         {/* Email Input Box */}
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs font-medium text-zinc-700 dark:text-zinc-300">
-            <label htmlFor="rfq-email-input">Customer RFQ Email Prose</label>
+            <label htmlFor="rfq-email-input" className="font-semibold">
+              Customer RFQ Email Prose
+            </label>
             <span className="text-zinc-400 font-mono text-[11px]">
               {emailText.length} / 20,000 chars
             </span>
@@ -152,7 +154,7 @@ export function IntakePanel({ rfqId, initialSuggestions, userRole: _userRole }: 
             maxLength={20000}
             onChange={(e) => setEmailText(e.target.value)}
             placeholder="Paste raw customer RFQ inquiry or email text here..."
-            className="w-full rounded-lg border border-zinc-300 bg-zinc-50/50 p-3 text-xs font-mono text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:bg-white focus:outline-none dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-100 dark:focus:border-zinc-100"
+            className="w-full rounded-lg border border-zinc-300 bg-zinc-50/50 p-3 text-xs font-mono text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-100 dark:focus:border-zinc-100 dark:focus-visible:ring-zinc-100 transition-colors"
           />
 
           <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
@@ -163,7 +165,7 @@ export function IntakePanel({ rfqId, initialSuggestions, userRole: _userRole }: 
               type="button"
               onClick={handleExtract}
               disabled={isPending || !emailText.trim()}
-              className="inline-flex items-center rounded-lg bg-zinc-900 px-4 py-2 text-xs font-semibold text-white hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 transition-colors shadow-sm"
+              className="inline-flex items-center rounded-lg bg-zinc-900 px-4 py-2 text-xs font-semibold text-white hover:bg-zinc-800 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus-visible:ring-zinc-100 transition-colors shadow-sm"
             >
               {isPending ? "Analyzing & Verifying Quotes..." : "✦ Analyze & Extract Parameters"}
             </button>
@@ -270,15 +272,17 @@ export function IntakePanel({ rfqId, initialSuggestions, userRole: _userRole }: 
                                 type="button"
                                 disabled={decidingId === sug.id}
                                 onClick={() => handleDecision(sug.id, "accepted")}
-                                className="rounded bg-emerald-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-emerald-700 disabled:opacity-50 transition-colors shadow-xs"
+                                aria-label={`Accept extraction for ${formatFieldName(sug.field)}: ${sug.value}`}
+                                className="rounded bg-emerald-600 px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-emerald-700 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-1 transition-colors shadow-2xs"
                               >
-                                Accept
+                                {decidingId === sug.id ? "Saving..." : "Accept"}
                               </button>
                               <button
                                 type="button"
                                 disabled={decidingId === sug.id}
                                 onClick={() => handleDecision(sug.id, "rejected")}
-                                className="rounded border border-zinc-300 px-2.5 py-1 text-[11px] font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 disabled:opacity-50 transition-colors"
+                                aria-label={`Reject extraction for ${formatFieldName(sug.field)}`}
+                                className="rounded border border-zinc-300 px-2.5 py-1 text-[11px] font-semibold text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800 disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:focus-visible:ring-zinc-100 transition-colors"
                               >
                                 Reject
                               </button>

@@ -158,10 +158,12 @@ export function RatesClient({
     <div className="space-y-6">
       {/* Action / Notification Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-zinc-200 pb-4 dark:border-zinc-800">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" role="tablist" aria-label="Rate category tabs">
           <button
+            role="tab"
+            aria-selected={activeTab === "materials"}
             onClick={() => setActiveTab("materials")}
-            className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:focus-visible:ring-zinc-100 ${
               activeTab === "materials"
                 ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-sm"
                 : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800"
@@ -170,8 +172,10 @@ export function RatesClient({
             Raw Materials ({materials.length})
           </button>
           <button
+            role="tab"
+            aria-selected={activeTab === "machines"}
             onClick={() => setActiveTab("machines")}
-            className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:focus-visible:ring-zinc-100 ${
               activeTab === "machines"
                 ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-sm"
                 : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800"
@@ -180,14 +184,16 @@ export function RatesClient({
             Machine Hour Rates ({machines.length})
           </button>
           <button
+            role="tab"
+            aria-selected={activeTab === "params"}
             onClick={() => setActiveTab("params")}
-            className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 focus-visible:ring-offset-1 dark:focus-visible:ring-zinc-100 ${
               activeTab === "params"
                 ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 shadow-sm"
                 : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800"
             }`}
           >
-            Commercial Parameters ({params.length})
+            Plant Parameters ({params.length})
           </button>
         </div>
 
@@ -360,15 +366,22 @@ export function RatesClient({
 
       {/* Modal for adding rate */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800 space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-2xs">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-add-rate-title"
+            className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl dark:bg-zinc-900 dark:border dark:border-zinc-800 space-y-4"
+          >
             <div className="flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800">
-              <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              <h3 id="modal-add-rate-title" className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                 Publish New Rate Entry
               </h3>
               <button
+                type="button"
                 onClick={() => setShowAddModal(false)}
-                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-sm"
+                aria-label="Close add rate modal"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 rounded p-1"
               >
                 ✕
               </button>

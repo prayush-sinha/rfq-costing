@@ -104,7 +104,6 @@ console.log(`  Size: ${(stats.size / 1024 / 1024).toFixed(2)} MB (${stats.size.t
 console.log("\nCompressing strict brief submission archive (TDD.docx, deployment.md)...");
 const cleanTwoFileZipPath = twoFileZip.replace(/\\/g, "/");
 const tddPath = path.join(sourceDir, "TDD.docx").replace(/\\/g, "/");
-const tddMdPath = path.join(sourceDir, "TDD.md").replace(/\\/g, "/");
 const deployPath = path.join(sourceDir, "deployment.md").replace(/\\/g, "/");
 
 const psTwoFileScript = `
@@ -113,7 +112,6 @@ const psTwoFileScript = `
 $zip2 = [System.IO.Compression.ZipFile]::Open('${cleanTwoFileZipPath}', [System.IO.Compression.ZipArchiveMode]::Create);
 [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip2, '${tddPath}', 'TDD.docx', [System.IO.Compression.CompressionLevel]::Optimal) | Out-Null;
 [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip2, '${deployPath}', 'deployment.md', [System.IO.Compression.CompressionLevel]::Optimal) | Out-Null;
-[System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip2, '${tddMdPath}', 'TDD.md', [System.IO.Compression.CompressionLevel]::Optimal) | Out-Null;
 $zip2.Dispose();
 `;
 execSync(`powershell -NoProfile -Command "${psTwoFileScript.replace(/\r?\n/g, " ")}"`);

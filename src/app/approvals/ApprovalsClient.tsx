@@ -312,19 +312,23 @@ export function ApprovalsClient({ quotes: initialQuotes, userRole }: ApprovalsCl
 
       {/* Reject Modal */}
       {showRejectModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-2xs">
           <form
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-reject-title"
             onSubmit={handleConfirmReject}
             className="w-full max-w-md rounded-xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-800 dark:bg-zinc-900 space-y-4"
           >
             <div className="flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800">
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+              <h3 id="modal-reject-title" className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                 Reject Commercial Offer
               </h3>
               <button
                 type="button"
                 onClick={() => setShowRejectModal(false)}
-                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-lg"
+                aria-label="Close rejection dialog"
+                className="text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 rounded p-1"
               >
                 ✕
               </button>
